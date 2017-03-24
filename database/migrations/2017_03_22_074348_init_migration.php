@@ -21,7 +21,7 @@ class InitMigration extends Migration
                 $table->string('image');
                 $table->text('description')->nullable();
                 $table->string('alias');
-                $table->string('woking_hours');
+                $table->string('working_hours');
                 $table->float('rating');
 
                 $table->unique('alias', 'unique_alias');
@@ -53,7 +53,7 @@ class InitMigration extends Migration
                 $table->increments('id');
                 $table->string('email')->nullable();
                 $table->string('phone_1');
-                $table->string('phone')->nullable();
+                $table->string('phone_2')->nullable();
                 $table->text('description')->nullable();
                 $table->integer('restaurant_id', false, true);
 
