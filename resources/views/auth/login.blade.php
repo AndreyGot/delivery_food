@@ -39,6 +39,7 @@
                         </div>
 
                         {{--<div class="form-group">
+
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
@@ -57,6 +58,7 @@
                                {{-- <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     Forgot Your Password?
                                 </a>--}}
+
                             </div>
                         </div>
                     </form>

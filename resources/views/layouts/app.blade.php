@@ -18,6 +18,7 @@
         window.Laravel = '<?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>'
+
     </script>
 </head>
 <body>
@@ -50,6 +51,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
+
                             <li><a href="{{ route('admin_login_form') }}">Login</a></li>
                             {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
                         @else
@@ -61,12 +63,14 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ route('admin_logout') }}"
+
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('admin_logout') }}" method="POST" style="display: none;">
+
                                             {{ csrf_field() }}
                                         </form>
                                     </li>

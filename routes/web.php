@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Security',
@@ -29,3 +30,13 @@ Route::group([
     Route::get('login', 'SecurityController@showLoginForm')->name('admin_login_form');
     Route::post('login', 'SecurityController@login')->name('admin_login');
 });
+
+Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
+Route::get('restaurant/list', 'RestaurantController@listRestaurant')->name('listRestaurant');
+Route::get('restaurant/show', 'RestaurantController@showRestaurant')->name('showRestaurant');
+Route::get('restaurant/add', 'RestaurantController@addForm')->name('addRestaurantForm');
+Route::post('restaurant/add','RestaurantController@saveNewRestaurant')->name('saveNewRestaurant');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index');
+
