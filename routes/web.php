@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
+Route::get('restaurant/list', 'RestaurantController@listRestaurant')->name('listRestaurant');
+Route::get('restaurant/show', 'RestaurantController@showRestaurant')->name('showRestaurant');
+Route::get('restaurant/add', 'RestaurantController@addForm')->name('addRestaurantForm');
+Route::post('restaurant/add','RestaurantController@saveNewRestaurant')->name('saveNewRestaurant');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index');

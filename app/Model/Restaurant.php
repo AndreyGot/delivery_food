@@ -26,6 +26,7 @@ class Restaurant extends Model
 {
     protected $table = 'restaurant';
     public $timestamps = false;
+    protected $fillable = ['name','description','alias','working_hours','image','rating'];
 
     public function restaurantContact()
     {
