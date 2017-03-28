@@ -9,7 +9,9 @@
 namespace App\Model;
 
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
 
 /**
  * Class Admin
@@ -18,15 +20,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $email
  * @property string $password
- * @property integer $user_status_id
+ * @property string $remember_token
+ * @property UserStatus $userStatus
  */
-class Admin extends Model
+class Admin extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'admin';
     public $timestamps = false;
 
     public function userStatus()
     {
-        $this->belongsTo('App\Model\UserStatus');
+        return $this->belongsTo('App\Model\UserStatus');
     }
 }

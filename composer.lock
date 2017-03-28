@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "27af06e68a7b7eef5109d68006e0d2b2",
-    "content-hash": "76036da3b5b55b91dbe1e1affa01bf9e",
+    "hash": "3fb991c5a05ca0cf9356b9593c8533ba",
+    "content-hash": "d0460262a9cc288541ae3e73ab3c1113",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1826,6 +1826,47 @@
                 "dump"
             ],
             "time": "2017-01-24 13:02:38"
+        },
+        {
+            "name": "verot/class.upload.php",
+            "version": "0.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verot/class.upload.php.git",
+                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/class.upload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Verot",
+                    "email": "colin@verot.net"
+                }
+            ],
+            "description": "This PHP class uploads files and manipulates images very easily.",
+            "homepage": "http://www.verot.net/php_class_upload.htm",
+            "keywords": [
+                "gd",
+                "upload"
+            ],
+            "time": "2016-07-16 19:59:53"
         },
         {
             "name": "vlucas/phpdotenv",
