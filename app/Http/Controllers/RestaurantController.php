@@ -9,7 +9,7 @@ class RestaurantController extends Controller
 {
 	public function listRestaurant()
 	{
-		$restaurants = Restaurant::select(['id','name','image'])->get();
+		$restaurants = Restaurant::select(['id','name','image','alias'])->get();
 		// dd($restaurants);
 		return view('restaurant.listRestaurant')->with(['restaurants'=>$restaurants]);
 	}
@@ -22,7 +22,7 @@ class RestaurantController extends Controller
   public function saveNewRestaurant(Request $request)
   {
       // $this->validate($request, [
-      //     'title' => 'required|max:255',
+      //     'name' => 'required|max:255',
       //     'desc' => 'required|max:255',
       //     'alias' => 'required|unique:articles,alias',
       //     'meta_desc' => 'required',
@@ -32,9 +32,17 @@ class RestaurantController extends Controller
       // dd($data);
       $restaurant = new Restaurant;
       $restaurant->fill($data);
-      // $restaurant->keywords = 'some keyword';
+      // $restaurant->image = 'image';
       $restaurant->save();
 
       return redirect('/adminPanel');
+  }
+
+  public function showRestaurant($alias)
+  {
+    $restaurant = Restaurant::select(['id','name','image','description','working_hours','rating'])->where('alias', $alias)->first();
+    return view('restaurant.restaurant_content')->with(['header'=>$this->header,
+                                                        'restaurant'=>$restaurant]
+    );
   }
 }
