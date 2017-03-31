@@ -16,7 +16,7 @@
                     {{ $category->name }}
                 </td>
                 <td>
-                    <img src="{{ $category->image }}" alt="" style="max-width: 100px">
+                    <img src="{{ asset($category->image)  }}" alt="" style="max-width: 100px">
                 </td>
                 <td>
                     {{ $category->alias }}

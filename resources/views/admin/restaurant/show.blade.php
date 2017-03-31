@@ -7,7 +7,7 @@
 
 @section('content')
     <h1>{{ $restaurant->name }}</h1>
-    <img class="thumbnail" src="{{ $restaurant->image }}" alt="">
+    <img class="thumbnail" src="{{ asset($restaurant->image) }}" alt="">
     <p>Алиас: {{ $restaurant->alias }}</p>
     <p class="thumbnail">
         {{ $restaurant->description }}

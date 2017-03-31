@@ -19,7 +19,7 @@
                     {{ $food->name }}
                 </td>
                 <td>
-                    <img src="{{ $food->image }}" alt="" style="max-width: 100px">
+                    <img src="{{ asset($food->image) }}" alt="" style="max-width: 100px">
                 </td>
                 <td>
                     {{ $food->price }}
