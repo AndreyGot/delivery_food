@@ -17,10 +17,12 @@ class SecurityController extends Controller
     use AuthenticatesUsers;
 
     protected $redirectTo = '/';
+
     public function __construct()
     {
 //        $this->middleware('guest', ['except' => 'logout']);
     }
+
     public function register()
     {
 //        $userStatus = new UserStatus();
@@ -36,5 +38,10 @@ class SecurityController extends Controller
 //        $userStatus->admins()->save($admin);
 //        $admin->save();
         return response(__METHOD__);
+    }
+
+    public function showLoginForm()
+    {
+        return view('admin.auth.login');
     }
 }

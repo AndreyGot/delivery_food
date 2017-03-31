@@ -9,7 +9,11 @@
 namespace App\Model;
 
 
+use App\Model\Helper\CyrToLatConverter;
+use App\Model\Helper\ImageSaver;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class Food
@@ -22,15 +26,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $bonus
  * @property integer $rating
  * @property integer $category_id
+ * @property Category $category
  */
 class Food extends Model
 {
+    use ImageSaver, CyrToLatConverter;
+
     protected $table = 'food';
     public $timestamps = false;
+    protected $fillable = ['name', 'description', 'price', 'bonus', 'rating', 'category_id'];
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo('App\Model\Categories');
+        return $this->belongsTo('App\Model\Category');
+
     }
 
     public function cart()
@@ -46,5 +55,27 @@ class Food extends Model
     public function specials()
     {
         return $this->belongsToMany('App\Model\Special', 'special_has_food');
+    }
+
+    public function save(array $options = [])
+    {
+        $newImageName = Auth::user()->id . '_' . time();
+        $imagePath = config('custom.imageDirectories.food') . $this->convertCyrToLat($this->name) . '/';
+
+        if ($isFileUploaded = $this->uploadImage != null) {
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.jpg');
+        }
+
+        if ($saved = parent::save($options)) {
+            if ($isFileUploaded) {
+                $this->saveImage($this->uploadImage->getRealPath(),
+                    $newImageName,
+                    $imagePath,
+                    config('custom.imageSize.food')
+                );
+            }
+        }
+
+        return $saved;
     }
 }
