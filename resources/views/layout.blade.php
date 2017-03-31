@@ -86,10 +86,8 @@
     </div>
 
         <div>
-            <a href="{{route('adminPanel')}}">Все рестораны</a>
-            <a href="{{route('adminPanel')}}">Admin Panel</a>
+            <p>Главная страница</p>
         </div>
-
 
 
         @yield('content') 
@@ -97,7 +95,7 @@
         @include('shop.tamplates.howto')
         --}}
         @include('shop.tamplates.footer')
-
+        @include('shop.tamplates.cart_panel')
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
