@@ -15,7 +15,7 @@
                     {{ $restaurant->name }}
                 </td>
                 <td>
-                    <img src="{{ $restaurant->image }}" alt="" style="max-width: 100px">
+                    <img src="{{ asset($restaurant->image) }}" alt="" style="max-width: 100px">
                 </td>
                 <td>
                     {{ $restaurant->alias }}

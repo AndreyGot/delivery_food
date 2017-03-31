@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <h1>{{ $category->name }}</h1>
-    <img class="thumbnail" src="{{ $category->image }}" alt="">
+    <img class="thumbnail" src="{{ asset($category->image) }}" alt="">
     <p>Ресторан: {{ $category->restaurant->name }}</p>
     <p>Алиас: {{ $category->alias }}</p>
     <p class="thumbnail">
