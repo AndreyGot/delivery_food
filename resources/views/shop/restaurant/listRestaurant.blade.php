@@ -8,7 +8,7 @@
         <div class="col s-4">
             <div class="catalog-item">
                 <h2>{{ $restaurant->name }}</h2>
-                <p>{{ $restaurant->image }}</p>
+                <img src="{{$restaurant->image}}">
                 <p>{{ $restaurant->description }}</p>
                 <p>{{ $restaurant->working_hours }}</p>
                 <p>рейтинг {{ $restaurant->rating }}</p>
