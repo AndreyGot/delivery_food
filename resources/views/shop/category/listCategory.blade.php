@@ -1,7 +1,7 @@
 <div>Categories</div>
 <div class="container content">
   <div class="row">
-		<a href="{{route('restourant_list_shop')}}">Все рестораны</a>
+		<a href="{{route('restaurant_list_shop')}}">Все рестораны</a>
     @foreach ($categories as $category)
         <h2>{{ $category->name }}</h2>
         <p>{{ $category->image }}</p>
