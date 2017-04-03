@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\Helper\CyrToLatConverter;
 use App\Model\Restaurant;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,7 @@ class CategoryController extends Controller
         $requestData = $request->all();
         $category->fill($requestData);
         $category->setUploadImage($request->file('image_field'));
+        $category->setAlias($category->name);
         $category->save();
 
         return redirect(route('admin_category_list_byRestaurant', ['restaurant' => $restaurant]));
@@ -103,6 +105,9 @@ class CategoryController extends Controller
 
     public function editCategory(Restaurant $restaurant, $categoryAlias, Request $request)
     {
+        /**
+         * @var Category $category
+         */
         $category = Category::where([
             'restaurant_id' => $restaurant->id,
             'alias' => $categoryAlias
@@ -115,9 +120,12 @@ class CategoryController extends Controller
         }
 
         $category->fill($data);
+        $category->setAlias($category->name);
 
         $category->save();
 
         return redirect(route('admin_category_edit_form', [ $restaurant, 'categoryAlias' => $category->alias ]));
     }
+
+
 }

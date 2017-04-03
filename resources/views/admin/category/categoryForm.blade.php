@@ -45,12 +45,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            {{--<div class="form-group">
                 <label for="alias" class="col-xs-4 control-label">Алиас</label>
                 <div class="col-xs-6">
                     <input id="alias" type="text" class="form-control" name="alias" value="{{ isset($category) ? $category->alias : null }}" required autofocus>
                 </div>
-            </div>
+            </div>--}}
 
             <div class="form-group">
                 <div class="col-xs-8 col-xs-offset-4">

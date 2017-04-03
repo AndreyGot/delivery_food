@@ -8,6 +8,10 @@ use App\Model\Restaurant;
 
 class RestaurantController extends Controller
 {
+    private static $restaurantRules = [
+
+    ];
+
     public function listRestaurant()
     {
         $restaurants = Restaurant::all();
@@ -29,6 +33,7 @@ class RestaurantController extends Controller
         $imageObj = $request->file('image_field');
         $restaurant = new Restaurant();
         $restaurant->fill($data);
+        $restaurant->setAlias($restaurant->name);
         $restaurant->setUploadImage($imageObj);
         $restaurant->save();
 
@@ -75,7 +80,7 @@ class RestaurantController extends Controller
         }
 
         $restaurant->fill($data);
-
+        $restaurant->setAlias($restaurant->name);
         $restaurant->save();
 
         return view('admin.restaurant.addRestaurantForm', [

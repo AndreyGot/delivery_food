@@ -21,6 +21,7 @@
     <div class="container">
         <div class="navbar-header">
             <a href="{{ route('adminPanel') }}" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
+            <a href="{{ route('main_index') }}" class="navbar-brand">Перейти к магазину</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

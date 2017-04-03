@@ -8,6 +8,7 @@
 
 namespace App\Model;
 
+use App\Model\Helper\CyrToLatConverter;
 use App\Model\Helper\ImageSaver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,11 @@ use Illuminate\Support\Facades\Auth;
  */
 class Restaurant extends Model
 {
-    use ImageSaver;
+    use ImageSaver, CyrToLatConverter;
 
     protected $table = 'restaurant';
     public $timestamps = false;
-    protected $fillable = ['name', 'description', 'alias', 'working_hours', 'image', 'rating'];
+    protected $fillable = ['name', 'description', 'working_hours', 'image', 'rating'];
 
     public function restaurantContact()
     {
@@ -74,5 +75,10 @@ class Restaurant extends Model
     public function getRouteKeyName()
     {
         return 'alias';
+    }
+
+    public function setAlias($cyrilicAlias)
+    {
+        return $this->alias = strtolower($this->convertCyrToLat($cyrilicAlias));
     }
 }

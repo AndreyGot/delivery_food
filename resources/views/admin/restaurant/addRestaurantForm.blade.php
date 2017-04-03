@@ -24,14 +24,6 @@
             </div>
 
             <div class="form-group">
-                <label for="alias" class="col-md-4 control-label">Алиас</label>
-                <div class="col-md-6">
-                    <input id="alias" type="text" class="form-control" name="alias"
-                           value="{{ isset($restaurant) ? $restaurant->alias : null }}">
-                </div>
-            </div>
-
-            <div class="form-group">
                 <label for="working_hours" class="col-md-4 control-label">Время работы</label>
                 <div class="col-md-6">
                     <input id="working_hours" type="text" class="form-control" name="working_hours"

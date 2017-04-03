@@ -9,6 +9,7 @@
 namespace App\Model;
 
 
+use App\Model\Helper\Validatable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -25,7 +26,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Validatable;
 
     protected $table = 'admin';
     public $timestamps = false;
@@ -34,4 +35,16 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo('App\Model\UserStatus');
     }
+
+    public static function getValidationRules()
+    {
+        return [
+            'name' => 'bail|required',
+            'email' => 'bail|required',
+            'password' => 'bail|required',
+            'user_status-id' => 'bail|required',
+        ];
+    }
+
+
 }
