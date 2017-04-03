@@ -15,8 +15,8 @@
 //     return view('index');
 // });
 Route::get('/', 'Shop\IndexController@listRestaurant')->name('main_index');
-Route::get('/restourants', 'Shop\ShopRestaurantController@listRestaurant')->name('restourant_list_shop');
-Route::get('/restourants/{alias}', 'Shop\ShopRestaurantController@showRestaurant')->name('restourant_show_shop');
+Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('restaurant_list_shop');
+Route::get('/restaurant/{alias}', 'Shop\ShopRestaurantController@showRestaurant')->name('restaurant_show_shop');
 Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('category_list_shop');
 Route::get('/foods/{category_id}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_categori_id');
 
@@ -89,12 +89,6 @@ Route::group([
     });
 
 });
-
-
-//Auth::routes();
-//Route::get('/home', 'HomeController@index');
-//Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
-
 
 Route::get('/home', 'HomeController@index');
 

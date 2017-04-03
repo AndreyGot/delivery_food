@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
 	public function listRestaurant()
 	{
-		$restaurants = Restaurant::select(['id','name','image','alias'])->get();
+		$restaurants = Restaurant::all();
 		$categories = Category::select(['id','name','description','image','alias','restaurant_id'])->get();
 		// dd($categories);
 		return view('index')->with(['restaurants'=>$restaurants,'categories'=>$categories]);

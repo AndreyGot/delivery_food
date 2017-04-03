@@ -13,6 +13,7 @@ class ShopFoodController extends Controller
 	public function filterByCategory($category_id)
 	{
     // dd($category_id);
+    // $restaurants = Restaurant::all();
 		$foods = Food::select(['id','name','image','description','price','bonus','rating','category_id'])->where('category_id', $category_id)->get();
     
     $сategory = Category::select(['id','name','description','image','alias','restaurant_id'])->where('id', $category_id)->first();
