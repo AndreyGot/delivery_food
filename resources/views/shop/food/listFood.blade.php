@@ -5,7 +5,7 @@
 	<div class="container content">
 	  <div class="row">
 			<a class="btn btn-info" href="{{route('main_index')}}" role="button">Перейти на главную</a>
-			<a class="btn btn-info" href="{{route('restaurant_show_shop',['alias'=>$restaurant->alias])}}" 
+			<a class="btn btn-info" href="{{route('shop_restaurant_show',['alias'=>$restaurant->alias])}}" 
 					role="button">Вернутся к меню ресторана</a>
 			<h2>{{ $restaurant->name }}</h2>
 			<img src="{{$restaurant->image}}" style="width: 10%;">

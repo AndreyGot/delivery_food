@@ -12,7 +12,7 @@
                 <p>Описание: {{ $restaurant->description }}</p>
                 <p>Рабочее время: {{ $restaurant->working_hours }}</p>
                 <p>Рейтинг {{ $restaurant->rating }}</p>
-                <a class ="btn btn-info" href="{{route('restaurant_show_shop',['alias'=>$restaurant->alias])}}" 
+                <a class ="btn btn-info" href="{{route('shop_restaurant_show',[$restaurant])}}" 
                     role ="button">Перейти к ресторану</a>
             </div>
         </div>

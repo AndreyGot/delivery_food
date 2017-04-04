@@ -12,9 +12,9 @@ class IndexController extends Controller
 	public function listRestaurant()
 	{
 		$restaurants = Restaurant::all();
-		$categories = Category::select(['id','name','description','image','alias','restaurant_id'])->get();
-		// dd($categories);
-		return view('index')->with(['restaurants'=>$restaurants,'categories'=>$categories]);
-		// return view('index')->with(['categories'=>$categories]);
+		return view('index')->with(['restaurants'=>$restaurants]);
+		// $categories = Category::select(['id','name','description','image','alias','restaurant_id'])->get();
+		// dd($restaurants);
+		// return view('index')->with(['restaurants'=>$restaurants,'categories'=>$categories]);
 	}
 }

@@ -12,16 +12,17 @@ class ShopRestaurantController extends Controller
 {
 	public function listRestaurant()
 	{
-		$restaurants = Restaurant::select(['id','name','image','description','alias','working_hours','rating'])->get();
-		return view('shop.restaurant.listRestaurant')->with(['restaurants'=>$restaurants]);
-	}
+    $restaurants = Restaurant::all();
+    return view('shop.restaurant.listRestaurant',['restaurants'=>$restaurants]);
+  }
   
-  public function showRestaurant($alias)
+  public function showRestaurant(Restaurant $restaurant)
   {
-    $restaurant = Restaurant::select(['id','name','image','description','alias','working_hours','rating'])->where('alias', $alias)->first();
-    $categories = Category::select(['id','name','alias','image'])->where('restaurant_id', $restaurant->id)->get();
-    // dd($categories, $restaurant);
+    $categories = Category::where('restaurant_id', $restaurant->id)->get();
     return view('shop.restaurant.showRestaurant')->with(['restaurant'=>$restaurant,'categories'=>$categories]
+		// $restaurants = Restaurant::select(['id','name','image','description','alias','working_hours','rating'])->get();
+    // dd($restaurant);
+    // $restaurant = Restaurant::select(['id','name','image','description','alias','working_hours','rating'])->where('alias', $alias)->first();
     );
   }
 }
