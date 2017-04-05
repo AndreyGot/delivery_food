@@ -84,11 +84,9 @@
         </nav>
 
     </div>
-
         <div>
             <p>Главная страница</p>
         </div>
-
 
         @yield('content') 
         {{--

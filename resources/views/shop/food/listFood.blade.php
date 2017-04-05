@@ -8,7 +8,7 @@
 			<a class="btn btn-info" href="{{route('shop_restaurant_show',['alias'=>$restaurant->alias])}}" 
 					role="button">Вернутся к меню ресторана</a>
 			<h2>{{ $restaurant->name }}</h2>
-			<img src="{{$restaurant->image}}" style="width: 10%;">
+			<img src="{{ asset($restaurant->image) }}" style="width: 10%;">
 	  </div>
 	</div>
 	<div class="catalog container">
@@ -18,7 +18,7 @@
 	        <div class="itool2 product-item product-item--button">
 	        	<div class="product-item_image">
 	        		<div class="product-item_image_wrapper">
-	        			<img src="{{$food->image}}">
+	        			<img src="{{ asset($food->image) }}" style="width: 80%;">
 	        		</div>
 	        	</div>
 						<div class="product-item_title">

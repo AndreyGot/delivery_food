@@ -20,6 +20,7 @@ Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name
 Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
 Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
 Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+Route::get('/cart', 'Shop\CartController@cart')->name('shop_show_cart');
 
 
 Route::group([
@@ -92,4 +93,3 @@ Route::group([
 });
 
 Route::get('/home', 'HomeController@index');
-

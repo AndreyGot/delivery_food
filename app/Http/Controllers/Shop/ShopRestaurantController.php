@@ -13,7 +13,7 @@ class ShopRestaurantController extends Controller
 	public function listRestaurant()
 	{
     $restaurants = Restaurant::all();
-    return view('shop.restaurant.listRestaurant',['restaurants'=>$restaurants]);
+    return view('shop.restaurant.mediumListRestaurant',['restaurants'=>$restaurants]);
   }
   
   public function showRestaurant(Restaurant $restaurant)

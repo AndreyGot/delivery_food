@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-xs-3 text-right">
-            <a href="cart.html" onclick="return checkCartOpen();" class="btn btn--orange">Оформить заказ</a>
+            <a href="{{route('shop_show_cart')}}" class="btn btn--orange">Оформить заказ</a>
         </div>
     </div>
 </div>
