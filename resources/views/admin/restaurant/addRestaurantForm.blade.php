@@ -11,7 +11,14 @@
                 <label for="name" class="col-md-4 control-label">Название ресторана</label>
                 <div class="col-md-6">
                     <input id="name" type="text" class="form-control" name="name"
-                           value="{{ isset($restaurant) ? $restaurant->name : null }}" required autofocus>
+                           value="{{ isset($restaurant) ? $restaurant->name : old('name') }}">
+                    @if(count($errors) && !empty($nameErrors = $errors->get('name')))
+                        <div class="alert alert-danger">
+                            @foreach($nameErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -19,7 +26,14 @@
                 <label for="description" class="col-md-4 control-label">Описание</label>
                 <div class="col-md-6">
                     <textarea id="description" type="text" class="form-control"
-                              name="description">{{ isset($restaurant) ? $restaurant->description : null }}</textarea>
+                              name="description">{{ isset($restaurant) ? $restaurant->description : old('description') }}</textarea>
+                    @if(count($errors) && !empty($descriptionErrors = $errors->get('description')))
+                        <div class="alert alert-danger">
+                            @foreach($descriptionErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -27,7 +41,14 @@
                 <label for="working_hours" class="col-md-4 control-label">Время работы</label>
                 <div class="col-md-6">
                     <input id="working_hours" type="text" class="form-control" name="working_hours"
-                           value="{{ isset($restaurant) ? $restaurant->working_hours : null }}">
+                           value="{{ isset($restaurant) ? $restaurant->working_hours : old('working_hours') }}">
+                    @if(count($errors) && !empty($workingHoursErrors = $errors->get('working_hours')))
+                        <div class="alert alert-danger">
+                            @foreach($workingHoursErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -35,14 +56,28 @@
                 <label for="rating" class="col-md-4 control-label">Рейтинг</label>
                 <div class="col-md-6">
                     <input id="rating" type="text" class="form-control" name="rating"
-                           value="{{ isset($restaurant) ? $restaurant->rating : null }}">
+                           value="{{ isset($restaurant) ? $restaurant->rating : old('rating') }}">
+                    @if(count($errors) && !empty($ratingErrors = $errors->get('rating')))
+                        <div class="alert alert-danger">
+                            @foreach($ratingErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="image" class="col-xs-4 control-label">Избражение</label>
+                <label for="image" class="col-xs-4 control-label">Изображение</label>
                 <div class="col-md-6">
                     <input id="image" type="file" name="image_field" value="">
+                    @if(count($errors) && !empty($imageFieldErrors = $errors->get('image_field')))
+                        <div class="alert alert-danger">
+                            @foreach($imageFieldErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 

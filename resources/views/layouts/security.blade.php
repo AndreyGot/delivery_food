@@ -15,6 +15,10 @@
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
     <link href="{{ asset('css/laravel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    @section('styles')
+
+    @show
+
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top" id="main_menu">

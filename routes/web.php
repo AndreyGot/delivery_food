@@ -58,6 +58,13 @@ Route::group([
                     ->name('admin_restaurant_edit_form');
                 Route::post('edit/{restaurant}', 'RestaurantController@editRestaurant')
                     ->name('admin_restaurant_edit');
+
+                Route::group(['prefix' => '{restaurant}/contacts/'], function () {
+//                    Route::get('add', 'RestaurantController@addContactsForm')->name('admin_restaurant_contacts_add_form');
+                    Route::post('add', 'RestaurantController@addContact')->name('admin_restaurant_contacts_add');
+                    Route::post('edit/{restaurantContacts}', 'RestaurantController@editContact')->name('admin_restaurant_contacts_edit');
+                    Route::get('remove/{restaurantContacts}', 'RestaurantController@removeContact')->name('admin_restaurant_contacts_remove');
+                });
             });
             Route::group(['prefix' => 'category'], function () {
                 Route::get('add', 'CategoryController@getForm')->name('admin_category_add_form');

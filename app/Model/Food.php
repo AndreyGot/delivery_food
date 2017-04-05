@@ -34,7 +34,7 @@ class Food extends Model
 
     protected $table = 'food';
     public $timestamps = false;
-    protected $fillable = ['name', 'description', 'price', 'bonus', 'rating', 'category_id'];
+    protected $fillable = ['name', 'description', 'price', 'bonus', 'rating', 'category_id',];
 
     public function category()
     {

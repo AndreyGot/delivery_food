@@ -10,10 +10,13 @@ namespace App\Http\Controllers\Security;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Security\CategoryRequest;
+use App\Http\Requests\Security\FoodRequest;
 use App\Model\Category;
 use App\Model\Food;
 use App\Model\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FoodController extends Controller
 {
@@ -34,8 +37,16 @@ class FoodController extends Controller
         ]);
     }
 
-    public function addFoodByCategory(Restaurant $restaurant, $categoryAlias, Request $request)
+    public function addFoodByCategory(Restaurant $restaurant, $categoryAlias, FoodRequest $request)
     {
+
+        Validator::make($request->all(),
+            [
+                'image_field' => 'required',
+            ],
+            [
+                'image_field.required' => 'Выберите изображение!'
+            ])->validate();
         $category = Category::where([
             'restaurant_id' => $restaurant->id,
             'alias' => $categoryAlias,
@@ -75,7 +86,6 @@ class FoodController extends Controller
 
     public function removeFood(Food $food)
     {
-//        dd($food->category);
         $food->delete();
         return redirect()->route('admin_food_list_byCategory', [
             $food->category->restaurant,
@@ -94,8 +104,9 @@ class FoodController extends Controller
         ]);
     }
 
-    public function editFood(Food $food, Request $request)
+    public function editFood(Food $food, FoodRequest $request)
     {
+
         $data = $request->all();
         $food->fill($data);
         $imageObj = $request->file('image_field');

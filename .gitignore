@@ -8,4 +8,5 @@ Homestead.yaml
 .env
 diff.diff
 
+/test.php
 /public/uploads

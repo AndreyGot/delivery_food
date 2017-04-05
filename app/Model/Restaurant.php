@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Auth;
  * @property string $working_hours
  * @property float $rating
  * @property [] $categories
+ * @property RestaurantContacts $restaurantContact
  */
 class Restaurant extends Model
 {
