@@ -16,21 +16,21 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Model
  *
  * @property string $name
- * @property Admin $admin
- * @property User $user
+ * @property User $admin
+ * @property Profile $user
  */
 class UserStatus extends Model
 {
     protected $table = 'user_status';
     public $timestamps = false;
 
-    public function admins()
-    {
-        return $this->hasMany('App\Model\Admin');
-    }
-
-    public function users()
+    public function user()
     {
         return $this->hasMany('App\Model\User');
     }
+
+    /*public function users()
+    {
+        return $this->hasMany('App\Model\Profile');
+    }*/
 }

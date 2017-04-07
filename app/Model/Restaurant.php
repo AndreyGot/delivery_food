@@ -46,7 +46,7 @@ class Restaurant extends Model
 
     public function specials()
     {
-        return $this->belongsToMany('App\Model\Restaurant', 'special_has_restaurant');
+        return $this->belongsToMany('App\Model\Special', 'special_has_restaurant');
 
     }
 

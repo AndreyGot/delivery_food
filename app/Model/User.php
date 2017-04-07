@@ -3,53 +3,53 @@
  * Created by PhpStorm.
  * User: development
  * Date: 23.03.2017
- * Time: 16:38
+ * Time: 17:26
  */
 
 namespace App\Model;
 
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model\Helper\Validatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
 
 /**
- * Class User
+ * Class Admin
  * @package App\Model
  *
- * @property string $first_name
- * @property string $second_name
- * @property string $birth_date
- * @property string $registration_date
- * @property string $last_login_date
+ * @property string $nickname
  * @property string $email
  * @property string $password
- * @property string $phone_1
- * @property string $phone_2
- * @property integer $bonus_score
- * @property integer $user_status_id
- *
+ * @property string $remember_token
+ * @property UserStatus $userStatus
  */
-class User extends Model
+class User extends Authenticatable
 {
+    use Notifiable, Validatable;
+
     protected $table = 'user';
     public $timestamps = false;
 
     public function userStatus()
     {
-        return $this->hasOne('App\Model\UserStatus');
+        return $this->belongsTo('App\Model\UserStatus');
     }
 
-    public function cart()
+    public function profile()
     {
-        return $this->belongsTo('App\Model\Cart');
+        return $this->hasOne('App\Model\Profile');
     }
 
-    public function orders()
+    /*public static function getValidationRules()
     {
-        return $this->hasMany('App\Model\Order');
-    }
+        return [
+            'name' => 'bail|required',
+            'email' => 'bail|required',
+            'password' => 'bail|required',
+            'user_status_id' => 'bail|required',
+        ];
+    }*/
 
-    public function userAddresses()
-    {
-        return $this->hasMany('App\Model\User');
-    }
+
 }

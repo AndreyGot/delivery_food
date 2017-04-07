@@ -95,6 +95,15 @@ Route::group([
         Route::post('login', 'SecurityController@login')->name('admin_login');
     });
 
+
+
+});
+
+Route::group(['namespace' => 'User'], function () {
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::get('register', 'RegisterController@showRegistrationForm');
+
+    });
 });
 
 

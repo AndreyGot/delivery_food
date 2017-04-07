@@ -38,8 +38,14 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'users',
         ],
+
+        /*'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin'
+        ],*/
+
 
         'api' => [
             'driver' => 'token',
@@ -65,15 +71,15 @@ return [
     */
 
     'providers' => [
-        'admin' => [
+        /*'admin' => [
             'driver' => 'eloquent',
             'model' => \App\Model\Admin::class,
-        ],
+        ],*/
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => \App\Model\User::class,
+        ],
     ],
 
     /*

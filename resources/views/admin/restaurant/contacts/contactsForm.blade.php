@@ -1,5 +1,3 @@
-
-
         <h2>{{ $headingTitle }}</h2>
         <form method="POST" action="{{ $action }}">
             {{ csrf_field() }}
@@ -80,5 +78,3 @@
                 </div>
             </div>
         </form>
-
-

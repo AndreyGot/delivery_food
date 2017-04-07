@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Restaurant;
 use App\Model\Category; 
-use App\Model\User; 
+use App\Model\Profile;
 
 class ShopRestaurantController extends Controller
 {
