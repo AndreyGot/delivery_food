@@ -103,9 +103,21 @@ Route::group([
 
 Route::group(['namespace' => 'User'], function () {
     Route::group(['namespace' => 'Auth'], function () {
-        Route::get('register', 'RegisterController@showRegistrationForm');
+        Route::get('register', 'RegisterController@showRegistrationForm')->name('user_register_form');
+        Route::post('register', 'RegisterController@register');
+        Route::match(['get', 'post'], 'logout', 'LoginController@logout')->name('user_logout');
+        Route::get('login', 'LoginController@showLoginForm')->name('user_login_form');
+        Route::post('login', 'LoginController@login');
+
 
     });
 });
 
-Route::get('/home', 'HomeController@index');
+
+//Auth::routes();
+//Route::get('/home', 'HomeController@index');
+//Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
+
+
+//Route::get('/home', 'HomeController@index');
+

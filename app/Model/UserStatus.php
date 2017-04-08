@@ -23,6 +23,7 @@ class UserStatus extends Model
 {
     protected $table = 'user_status';
     public $timestamps = false;
+    protected $fillable = ['name'];
 
     public function user()
     {

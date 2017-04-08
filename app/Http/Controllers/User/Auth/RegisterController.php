@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\User;
+use App\Model\User;
 use App\Http\Controllers\Controller;
+use App\Model\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -39,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('guest');
+        $this->middleware('guest');
     }
 
     /**
@@ -51,8 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'nickname' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:user',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -65,11 +66,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $userStatus = UserStatus::where(['name' => 'USER'])->first();
+        if (empty($userStatus)) {
+            $userStatus = UserStatus::create(['name' => 'USER']);
+        }
+
+        $user = new User();
+        $user->nickname = $data['nickname'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->userStatus()->associate($userStatus);
+        $user->save();
+        return $user;
     }
 
     public function showRegistrationForm()
@@ -79,6 +87,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+//        dd($request->all());
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
