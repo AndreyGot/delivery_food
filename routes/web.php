@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::get('/', 'Shop\IndexController@listRestaurant')->name('main_index');
+Route::get('/', 'Shop\IndexController@index')->name('main_index');
 
 Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
 Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');

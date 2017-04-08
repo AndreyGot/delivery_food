@@ -1,9 +1,15 @@
 <div class="catalog container">
-    <div class="new-header"><i class="sprite sprite-catalog"></i> Выберите категорию</div>
+    <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
     <div class="catalog_container row row--inline">
         @foreach ($restaurants as $restaurant)
         <div class="col-xs-3">
             <div class="catalog-item">
+                <p>
+                    @if ( !$restaurant->specials->isEmpty())
+                        <i class="sprite sprite-fire"></i>
+                        {{'акция'}}
+                    @endif
+                </p>
                 <h2>{{ $restaurant->name }}</h2>
                 <img src="{{ asset($restaurant->image) }}">
                 <p>Описание: {{ $restaurant->description }}</p>

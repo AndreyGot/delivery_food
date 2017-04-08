@@ -22,7 +22,9 @@
         <p>Рейтинг: {{ $restaurant->rating }}</p>
       </div>
     </div>
-
+    
+    @include('shop.special.listSpecial')
+    <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете блюдо</div>
 		@foreach ($categories as $category)
       <div class="itool2 product-item product-item--button">
         <div class="product-item_image">
