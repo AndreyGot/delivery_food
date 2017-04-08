@@ -14,11 +14,13 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::get('/', 'Shop\IndexController@listRestaurant')->name('main_index');
-Route::get('/restourants', 'Shop\ShopRestaurantController@listRestaurant')->name('restourant_list_shop');
-Route::get('/restourants/{alias}', 'Shop\ShopRestaurantController@showRestaurant')->name('restourant_show_shop');
-Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('category_list_shop');
-Route::get('/foods/{category_id}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_categori_id');
+Route::get('/', 'Shop\IndexController@index')->name('main_index');
+
+Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
+Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
+Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
+Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+Route::get('/cart', 'Shop\CartController@cart')->name('shop_show_cart');
 
 
 Route::group([
@@ -106,11 +108,4 @@ Route::group(['namespace' => 'User'], function () {
     });
 });
 
-
-//Auth::routes();
-//Route::get('/home', 'HomeController@index');
-//Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
-
-
 Route::get('/home', 'HomeController@index');
-

@@ -33,7 +33,7 @@ class Category extends Model
 
     protected $table = 'category';
     public $timestamps = false;
-    protected $fillable = ['name', 'description', 'alias', 'restaurant_id'];
+    protected $fillable = ['id', 'name', 'description','image', 'alias', 'restaurant_id'];
 
 
     public function restaurant()

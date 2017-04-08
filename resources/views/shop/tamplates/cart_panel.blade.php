@@ -1,9 +1,9 @@
 <div class="cart-pane " data-score="">
     <div class="container row">
-        <a href="cart.html" class="col s-2 cart-pane__logo">
+        <a href="cart.html" class="col-xs-2 cart-pane__logo">
             <i class="sprite sprite-ico-cart-footer"></i> Корзина
         </a>
-        <div class="col s-7 text-center">
+        <div class="col-xs-7 text-center">
             <div class="cart-pane__item">
                 БЛЮД В КОРЗИНЕ: <div class="cart-pane__number">0</div>
             </div>
@@ -21,8 +21,8 @@
                 НА СУММУ <div class="cart-pane__sum">0 Р</div>
             </div>
         </div>
-        <div class="col s-3 text-right">
-            <a href="cart.html" onclick="return checkCartOpen();" class="btn btn--orange">Оформить заказ</a>
+        <div class="col-xs-3 text-right">
+            <a href="{{route('shop_show_cart')}}" class="btn btn--orange">Оформить заказ</a>
         </div>
     </div>
 </div>

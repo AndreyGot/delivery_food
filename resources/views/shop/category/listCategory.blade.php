@@ -1,7 +1,11 @@
+@extends('layout')
+
+@section('content')
+
 <div>Categories</div>
 <div class="container content">
   <div class="row">
-		<a href="{{route('restourant_list_shop')}}">Все рестораны</a>
+		<a href="{{route('shop_restaurant_show')}}">Все рестораны</a>
     @foreach ($categories as $category)
         <h2>{{ $category->name }}</h2>
         <p>{{ $category->image }}</p>
@@ -11,3 +15,5 @@
 
   </div>
 </div>
+
+@endsection
