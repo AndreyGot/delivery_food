@@ -54,7 +54,10 @@ class RebuildUserEntities extends Migration
 
         Schema::table('admin', function (Blueprint $table) {
             $table->dropForeign(['user_status_id']);
-            $table->renameColumn('name', 'nickname');
+
+            $table->dropColumn('name');
+            $table->string('nickname');
+
             $table->rename('user');
         });
 
@@ -114,7 +117,8 @@ class RebuildUserEntities extends Migration
 
         Schema::table('user', function (Blueprint $table) {
             $table->dropForeign(['user_status_id']);
-            $table->renameColumn( 'nickname', 'name');
+            $table->dropColumn('nickname');
+            $table->string('name');
             $table->rename('admin');
         });
 
