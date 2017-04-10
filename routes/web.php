@@ -111,6 +111,12 @@ Route::group(['namespace' => 'User'], function () {
 
 
     });
+    Route::group([
+        'prefix' => 'cart',
+        'namespace' => 'Cart'
+        ], function () {
+        Route::post('add', 'CartController@addProduct')->name('user_cart_add');
+    });
 });
 
 

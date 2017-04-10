@@ -54,6 +54,6 @@ class Profile extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->hasOne('App\Model\User');
     }
 }

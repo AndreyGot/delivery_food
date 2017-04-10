@@ -96,8 +96,14 @@
         @include('shop.tamplates.cart_panel')
 
     <!-- Scripts -->
+    <script></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/library.js') }}"></script>
-    <script src="{{ asset('js/script_for_exspres.js') }}"></script>
+    {{--<script src="{{ asset('js/library.js') }}"></script>--}}
+    {{--<script src="{{ asset('js/script_for_exspres.js') }}"></script>--}}
+
+    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
+    <script src="{{ asset('js/shop/shop.js') }}"></script>
+
+
 </body>
 </html>

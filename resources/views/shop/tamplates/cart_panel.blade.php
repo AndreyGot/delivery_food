@@ -5,7 +5,7 @@
         </a>
         <div class="col-xs-7 text-center">
             <div class="cart-pane__item">
-                БЛЮД В КОРЗИНЕ: <div class="cart-pane__number">0</div>
+                БЛЮД В КОРЗИНЕ: <div  class="cart-pane__number"><span id="zz-cartTotalCount">0</span></div>
             </div>
             <div class="cart-pane__item">
                 <div class="tooltip">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="cart-pane__item">
-                НА СУММУ <div class="cart-pane__sum">0 Р</div>
+                НА СУММУ <div class="cart-pane__sum"><span id="zz-cartTotalCost">0</span> Р</div>
             </div>
         </div>
         <div class="col-xs-3 text-right">
