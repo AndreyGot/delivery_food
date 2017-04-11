@@ -8006,6 +8006,7 @@ a.restoran-item:hover .restoran-item_title {
 .btn--enter, .btn--reg{
     text-transform: uppercase;
     font-size: 13px;
+    margin-top: 40px;
 }
 .navbar-default{
     border: none;
@@ -8136,5 +8137,63 @@ a.restoran-item:hover .restoran-item_title {
 #subscribe {
     color: #6b4000;
     font-size: 20px;
+}
+.restoran-item:before{
+    background-image: none;
+}
+.restoran-item{
+    position: relative;
+}
+.absol-action{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.promos .product-item_title_wrapper p{
+    margin-bottom: 0;
+}
+.promos li{
+    width: 370px!important;
+}
+.js-tab-container{
+    padding-left: 0;
+    padding-right: 0;
+}
+.promos ul, .promos .bx-viewport{
+    height: auto!important;
+}
+.promos .time{
+    width: 20px;
+}
+.promos .btn-info{
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+}
+.product-item_cart .action-p{
+    margin: 3px;
+}
+.product-item_cart .p-text-slid{
+    margin:0;
+}
+.product-item_cart .p-text-slid2{
+    margin-bottom: 8px;
+}
+.logo img{
+    width: 60px;
+    height: auto;
+}
+.container{
+    min-width: 0;
+}
+@media all and (max-width: 992px){
+    .logo{margin-left: 0;}
+    .btn--enter, .btn--reg{
+        padding: 5px 50px;
+        margin-top: 15px;
+    }
+    .btn--enter{
+        padding: 5px 73px;
+    }
 }
 /*-----*/

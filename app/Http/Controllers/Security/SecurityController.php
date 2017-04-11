@@ -11,12 +11,14 @@ namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class SecurityController extends Controller
 {
     use AuthenticatesUsers;
 
     protected $redirectTo = '/';
+
 
     public function __construct()
     {
@@ -44,4 +46,9 @@ class SecurityController extends Controller
     {
         return view('admin.auth.login');
     }
+    /*protected function guard()
+    {
+        return Auth::guard('admin');
+
+    }*/
 }

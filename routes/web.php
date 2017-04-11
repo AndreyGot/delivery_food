@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::get('/', 'Shop\IndexController@listRestaurant')->name('main_index');
+Route::get('/', 'Shop\IndexController@index')->name('main_index');
 
 Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
 Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
@@ -60,6 +60,13 @@ Route::group([
                     ->name('admin_restaurant_edit_form');
                 Route::post('edit/{restaurant}', 'RestaurantController@editRestaurant')
                     ->name('admin_restaurant_edit');
+
+                Route::group(['prefix' => '{restaurant}/contacts/'], function () {
+//                    Route::get('add', 'RestaurantController@addContactsForm')->name('admin_restaurant_contacts_add_form');
+                    Route::post('add', 'RestaurantController@addContact')->name('admin_restaurant_contacts_add');
+                    Route::post('edit/{restaurantContacts}', 'RestaurantController@editContact')->name('admin_restaurant_contacts_edit');
+                    Route::get('remove/{restaurantContacts}', 'RestaurantController@removeContact')->name('admin_restaurant_contacts_remove');
+                });
             });
             Route::group(['prefix' => 'category'], function () {
                 Route::get('add', 'CategoryController@getForm')->name('admin_category_add_form');
@@ -90,6 +97,27 @@ Route::group([
         Route::post('login', 'SecurityController@login')->name('admin_login');
     });
 
+
+
 });
 
-Route::get('/home', 'HomeController@index');
+Route::group(['namespace' => 'User'], function () {
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::get('register', 'RegisterController@showRegistrationForm')->name('user_register_form');
+        Route::post('register', 'RegisterController@register');
+        Route::match(['get', 'post'], 'logout', 'LoginController@logout')->name('user_logout');
+        Route::get('login', 'LoginController@showLoginForm')->name('user_login_form');
+        Route::post('login', 'LoginController@login');
+
+
+    });
+});
+
+
+//Auth::routes();
+//Route::get('/home', 'HomeController@index');
+//Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
+
+
+//Route::get('/home', 'HomeController@index');
+

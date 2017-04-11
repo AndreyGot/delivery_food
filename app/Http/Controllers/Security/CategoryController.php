@@ -10,10 +10,12 @@ namespace App\Http\Controllers\Security;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Security\CategoryRequest;
 use App\Model\Category;
 use App\Model\Helper\CyrToLatConverter;
 use App\Model\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class CategoryController extends Controller
@@ -35,8 +37,15 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function addCategoryByRestaurant(Restaurant $restaurant, Request $request)
+    public function addCategoryByRestaurant(Restaurant $restaurant, CategoryRequest $request)
     {
+        Validator::make($request->all(),
+            [
+                'image_field' => 'required',
+            ],
+            [
+                'image_field.required' => 'Выберите изображение!'
+            ])->validate();
         $category = new Category();
         $requestData = $request->all();
         $category->fill($requestData);
@@ -103,7 +112,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function editCategory(Restaurant $restaurant, $categoryAlias, Request $request)
+    public function editCategory(Restaurant $restaurant, $categoryAlias, CategoryRequest $request)
     {
         /**
          * @var Category $category

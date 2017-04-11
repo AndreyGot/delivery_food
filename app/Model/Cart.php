@@ -23,7 +23,7 @@ class Cart extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Model\Profile');
     }
 
     public function foods()
