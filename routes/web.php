@@ -20,8 +20,22 @@ Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name
 Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
 Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
 Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+
 Route::get('/cart', 'Shop\CartController@cart')->name('shop_show_cart');
 
+
+Route::group([
+    'prefix' => 'user',
+    'middleware' => 'checkUser'
+    // 'namespace' => 'Shop'
+], function () {
+
+    Route::get('profile', 'Shop\ShopUserController@profileUser')->name('shop_profile_user');
+    Route::get('setingsProfile/{profile}', 'Shop\ShopUserController@setingsProfileUser')->name('shop_setting_profile_user');
+    Route::post('editProfile/{profile}', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
+    Route::get('addressUser/{profile}', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
+    // Route::post('saveAddressUser/{userAddress}', 'Shop\ShopUserController@saveUserAddress')->name('add_user_address');
+});
 
 Route::group([
     'prefix' => 'admin',

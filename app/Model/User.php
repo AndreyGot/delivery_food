@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasOne('App\Model\Profile');
+        return $this->belongsTo('App\Model\Profile');
     }
 
     /*public static function getValidationRules()

@@ -31,6 +31,7 @@ class Profile extends Model
 {
     protected $table = 'profile';
     public $timestamps = false;
+    protected $fillable = ['first_name', 'second_name', 'phone_1', 'userEmail'];
 
     /*public function userStatus()
     {
@@ -54,6 +55,6 @@ class Profile extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->hasOne('App\Model\User');
     }
 }

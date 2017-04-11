@@ -13,7 +13,7 @@ class ShopRestaurantController extends Controller
 	public function listRestaurant()
 	{
     $restaurants = Restaurant::all();
-    // dd($restaurant);
+
     return view('shop.restaurant.mediumListRestaurant',['restaurants'=>$restaurants]);
   }
   
@@ -21,6 +21,7 @@ class ShopRestaurantController extends Controller
   {
     $specials = $restaurant->specials;
     $categories = Category::where('restaurant_id', $restaurant->id)->get();
+    
     return view('shop.restaurant.showRestaurant')->with(['restaurant'=>$restaurant,'categories'=>$categories,'specials'=>$specials]
     );
   }

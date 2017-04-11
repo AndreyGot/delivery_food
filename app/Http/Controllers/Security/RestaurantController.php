@@ -129,7 +129,7 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function removeContact(Restaurant $restaurant, RestaurantContacts $restaurantContacts, RestaurantContacts $restaurantContacts)
+    public function removeContact(Restaurant $restaurant, RestaurantContacts $restaurantContacts)
     {
         $restaurantContacts->delete();
         return redirect()->route('admin_showRestaurant',[
