@@ -8211,4 +8211,87 @@ a.restoran-item:hover .restoran-item_title {
     }
 }
 /* END media header top*/
+/*top slider*/
 
+@media all and (max-width:992px){
+    .main-promo .title {
+        font-size: 28px;
+    }
+    .animage3 {
+        position: absolute;
+        top: 195px;
+        right: -32px;
+        width: 300px;
+        height: auto;
+    }
+    .animage6{
+        width: 400px;
+        height: auto;
+    }
+    .animage7{
+        top: 89px;
+        right: 26px;
+        width: 90px;
+        height: auto;
+    }
+    .animage5{
+        right: 0;
+        width: 340px;
+        height: auto;
+    }
+    .animage1{
+        width: 300px;
+        height: auto;
+        top: 177px;
+    }
+}
+@media all and (max-width:680px){
+    .main-promo .container{
+        height: auto;
+    }
+    .animage2,
+    .animage4{
+        right: -12px;
+        top: 15px;
+        width: 260px;
+        height: auto;
+    }
+    .animage1,
+    .animage3{
+        right: 0;
+        width: 250px;
+    }
+    .main-promo .animation1{
+        background: none;
+    }
+    .main-promo .title{
+        font-size: 24px;
+    }
+}
+@media all and (max-width:500px){
+    .animage1,
+    .animage3,
+    .animage6,
+    .animage7,
+    .animage5{
+        display: none!important;
+    }
+    .animage2,
+    .animage4{
+        top: 230px;
+        z-index: 9;
+    }
+    .main-promo .title{
+        padding: 20px 0 0 0;
+        font-size: 22px;
+        text-align: center;
+    }
+    .main-promo .rest-link{
+        font-size: 12px;
+    }
+    .main-promo .note {
+        font-size: 15px;
+        text-align: center;
+    }
+}
+/*END top slider*/
