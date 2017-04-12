@@ -36,12 +36,16 @@
 	        			<i class="sprite sprite-ico-stack"></i>
 	        			<span>цена: {{ $food->price }}</span> P
 	        		</p>
-	        			<button class="btn btn--green">Заказать</button>
+	        			<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}">Заказать</button>
 	        	</div>
 	        </div>
 	        @endforeach
 	    </div>
 	</div>
-
+	<script>
+		window.urlBag = {
+		    addToCart: '{{ route('user_cart_add') }}'
+		};
+	</script>
 @endsection
 
