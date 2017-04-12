@@ -8325,5 +8325,32 @@ a.restoran-item:hover .restoran-item_title {
         font-size: 24px;
     }
 }
-
+@media all and (max-width:330px){
+    .index-control a:first-child{
+        border-right: 1px solid #ededed;
+        padding: 8px 35px;
+        margin-bottom: 20px;
+    }
+}
 /*END bloc restaran*/
+
+/*block info*/
+@media all and (max-width:1200px){
+    .howto .item{
+        min-width: 0;
+        width: 32%;
+    }
+}
+@media all and (max-width:992px){
+    .howto .item{
+        width: 40%;
+    }
+}
+@media all and (max-width:768px){
+    .howto .item{
+        display: block;
+        width: 100%;
+        padding: 40px 0 0 0;
+    }
+}
+/*END block info*/
