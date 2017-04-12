@@ -83,11 +83,16 @@ jQuery(document).ready(function ($) {
             data: {
                 food_id: clickedButton.data('food_id')
             },
-            success: function (cartSummary) {
-                $('#zz-cartShowTotalCost').text(cartSummary.totalCost);
-                $('#zz-cartTotalCount').text(cartSummary.totalCount);
-                $('#zz-cartTotalCost').text(cartSummary.totalCost);
-                itemBlock.remove();
+            success: function (response) {
+                if (!response.isEmpty) {
+                    $('#zz-cartShowTotalCost').text(response.cartSummary.totalCost);
+                    $('#zz-cartTotalCount').text(response.cartSummary.totalCount);
+                    $('#zz-cartTotalCost').text(response.cartSummary.totalCost);
+                    itemBlock.remove();
+                } else {
+                    location.href = response.redirectURL
+                }
+
 
                 console.log(cartSummary);
             }

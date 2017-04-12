@@ -88,7 +88,11 @@ class CartController extends Controller
                 $cartCookie = $cart->removeProduct($food, true);
                 $cartSummary = $cart->getCartSummary();
 
-                return response()->json($cartSummary)->cookie($cartCookie);
+                return response()->json([
+                    'cartSummary' => $cartSummary,
+                    'isEmpty' => $cart->isEmpty(),
+                    'redirectURL' => route('user_cart_show'),
+                ])->cookie($cartCookie);
             }
         }
 
@@ -105,6 +109,6 @@ class CartController extends Controller
         $cart = new CookieCart();
 
 
-        return response()->json(['redirectURL' => route('main_index')])->cookie($cart->clearCart());
+        return response()->json(['redirectURL' => route('user_cart_show')])->cookie($cart->clearCart());
     }
 }
