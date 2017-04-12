@@ -27,9 +27,11 @@ class ShopUserController extends Controller
     return view('shop.user.mediumProfileUser', ['profile'=>$profile, 'user'=>$user]);
   }
 
-  public function setingsProfileUser(Profile $profile)
+  public function setingsProfileUser()
   {
-    $user = $profile->user;
+    $user = Auth::user();
+    // dd($user->profile);
+    $profile = $user->profile;
 
     return view('shop.user.mediumProfileForm', ['profile'=>$profile,
       'userEmail'=>$user->email,
@@ -39,6 +41,7 @@ class ShopUserController extends Controller
 
   public function editProfileUser(Profile $profile, UserRequest $request)
   {
+
     $data = $request->all();
     $profileNew = $profile->fill($data);
     $profileOld = Profile::where('id', $profileNew->id)->get();

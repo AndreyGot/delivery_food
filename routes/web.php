@@ -31,9 +31,9 @@ Route::group([
 ], function () {
 
     Route::get('profile', 'Shop\ShopUserController@profileUser')->name('shop_profile_user');
-    Route::get('setingsProfile/{profile}', 'Shop\ShopUserController@setingsProfileUser')->name('shop_setting_profile_user');
-    Route::post('editProfile/{profile}', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
-    Route::get('addressUser/{profile}', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
+    Route::get('setingsProfile', 'Shop\ShopUserController@setingsProfileUser')->name('shop_setting_profile_user');
+    Route::post('editProfile', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
+    Route::get('addressUser', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
     // Route::post('saveAddressUser/{userAddress}', 'Shop\ShopUserController@saveUserAddress')->name('add_user_address');
 });
 

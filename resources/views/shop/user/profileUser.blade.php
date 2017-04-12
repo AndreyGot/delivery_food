@@ -26,9 +26,9 @@
     <div class="row">
     	<a class="btn btn-info" href="{{route('shop_profile_user')}}" role="button">Профиль пользователя</a>
     	<a class="btn btn-info" 
-    			href="{{route('shop_setting_profile_user',[$profile])}}" 
+    			href="{{route('shop_setting_profile_user')}}" 
     			role="button">Настройки профиля</a>
-    	<a class="btn btn-info" href="{{route('shop_address_user',[$profile])}}" role="button">Мои адреса</a>
+    	<a class="btn btn-info" href="{{route('shop_address_user')}}" role="button">Мои адреса</a>
     	<a class="btn btn-info" href="#" role="button">История заказов</a>
     </div>
  

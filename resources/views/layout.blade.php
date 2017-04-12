@@ -65,8 +65,8 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{route('shop_profile_user')}}">Мой профиль</a>
-                                        <a href="{{route('shop_setting_profile_user',[$profile])}}">Настройки профиля</a>
-                                        <a href="{{route('shop_address_user',[$profile])}}">Адреса</a>
+                                        <a href="{{route('shop_setting_profile_user')}}">Настройки профиля</a>
+                                        <a href="{{route('shop_address_user')}}">Адреса</a>
                                         <a href="#">История заказов</a>
                                         <a href="{{ route('user_logout') }}"
                                             onclick="event.preventDefault();
@@ -80,6 +80,7 @@
                                         </form>
                                     </li>
                                 </ul>
+
                             </li>
                         @endif
                     </ul>
