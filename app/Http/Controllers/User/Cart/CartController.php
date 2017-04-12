@@ -10,73 +10,65 @@ namespace App\Http\Controllers\User\Cart;
 
 
 use App\Http\Controllers\Controller;
+use App\Model\CookieCart;
 use App\Model\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Cookie;
 
 class CartController extends Controller
 {
     public function addProduct(Request $request)
     {
         $food = Food::find($request->food_id);
+
+
         if (!is_null($food)) {
             if (Auth::user()) {
 
             }
-            /* @var \Symfony\Component\HttpFoundation\Cookie $cartCookie */
-            $cartCookie = $this->addProductToCookie($food, $request);
-            $cartSummary = $this->buildCartSummary($cartCookie);
+
 //            dd($cartSummary);
+
+            $cart = new CookieCart();
+            $cartCookie = $cart->addProduct($food);
+            $cartSummary = $cart->getCartSummary();
+
             return response()->json($cartSummary)->cookie($cartCookie);
         }
 //        dd($request->cookie('test')['products']);
         return response('');
     }
 
-    private function addProductToCookie(Food $food, Request $request, $quantity = 1)
+    public function showCart()
     {
-        $cart = $request->cookie('cart');
-//        dd($cart);
-        if (is_null($cart)) {
-            $cart = [];
-        } else{
-            if (array_key_exists($food->id, $cart)) {
-                $cart[$food->id]['quantity'] += $quantity;
-            } else {
-                $cart[$food->id] = $this->buildCartProduct($food, $quantity);
+        $cart = new CookieCart();
+
+        $cartFoodList = $cart->getCartFoodList();
+
+        return view('user.cart.cartShow', [
+            'cartFoodList' => $cartFoodList,
+            'cartSummary' => $cart->getCartSummary(),
+        ]);
+    }
+
+    public function removeProduct(Request $request)
+    {
+        $food = Food::find($request->food_id);
+
+        if (!empty($food)) {
+            if (!is_null($food)) {
+                if (Auth::user()) {
+
+                }
+
+                $cart = new CookieCart();
+                $cartCookie = $cart->removeProduct($food);
+                $cartSummary = $cart->getCartSummary();
+
+                return response()->json($cartSummary)->cookie($cartCookie);
             }
-
         }
 
-//        dd($cart);
-        return cookie('cart', $cart, 365 * 24 * 60);
-    }
-
-    private function buildCartProduct(Food $food, $quantity = 1)
-    {
-        return [
-            'name' => $food->name,
-            'quantity' => $quantity,
-        ];
-    }
-
-    private function buildCartSummary(Cookie $cartCookie)
-    {
-        /* @var array $cartData */
-        $cartData = $cartCookie->getValue();
-        $foodIdList = array_keys($cartData);
-        $foodList = Food::find($foodIdList);
-        /* @var Food $food*/
-        $summaryData = [
-            'totalCount' => 0,
-            'totalCost' => 0,
-        ];
-        foreach ($foodList as $food) {
-            $foodPrice = (double)$food->price;
-            $summaryData['totalCost'] += (int)$cartData[$food->id]['quantity'] * $foodPrice;
-            $summaryData['totalCount'] += (int)$cartData[$food->id]['quantity'];
-        }
-        return $summaryData;
+        return view('');
     }
 }

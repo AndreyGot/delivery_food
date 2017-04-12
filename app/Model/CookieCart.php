@@ -10,35 +10,42 @@ namespace App\Model;
 
 
 use Illuminate\Support\Facades\Cookie;
-use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;
+
+//use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;
 
 class CookieCart
 {
     private $cart = [];
+    private $cartSummary = [];
+    const CART_LIFETIME = 365 * 24 * 60;
 
     public function __construct()
     {
         $this->cart = Cookie::get('cart');
 
+        if (!empty($this->cart)) {
+
+            $this->cartSummary = $this->buildCartSummary($this->cart);
+        }
+
     }
 
 
-    public function addProduct(Food $food, $quantity)
+    public function addProduct(Food $food, $quantity = 1)
     {
 
-        if (is_null($this->cart)) {
+        if (empty($this->cart)) {
             $this->cart = [];
-        } else{
-            if (array_key_exists($food->id, $this->cart)) {
-                $this->cart[$food->id]['quantity'] += $quantity;
-            } else {
-                $this->cart[$food->id] = $this->buildCartProduct($food, $quantity);
-            }
-
         }
-        $cartCookie = cookie('cart', $this->cart, 365 * 24 * 60);
 
-        return $cartCookie;
+        if (array_key_exists($food->id, $this->cart)) {
+            $this->cart[$food->id]['quantity'] += $quantity;
+        } else {
+            $this->cart[$food->id] = $this->buildCartProduct($food, $quantity);
+        }
+
+
+        return $this->generateCartCookie();
     }
 
     private function buildCartProduct(Food $food, $quantity = 1)
@@ -49,13 +56,14 @@ class CookieCart
         ];
     }
 
-    private function buildCartSummary(SymfonyCookie $cartCookie)
+    private function buildCartSummary(array $cartData)
     {
+//        dd($cartData);
         /* @var array $cartData */
-        $cartData = $cartCookie->getValue();
-        $foodIdList = array_keys($cartData);
-        $foodList = Food::find($foodIdList);
-        /* @var Food $food*/
+//        $foodIdList = array_keys($cartData);
+//        $foodList = Food::find($foodIdList);
+        $foodList = $this->buildFoodList($cartData);
+        /* @var Food $food */
         $summaryData = [
             'totalCount' => 0,
             'totalCost' => 0,
@@ -65,6 +73,74 @@ class CookieCart
             $summaryData['totalCost'] += (int)$cartData[$food->id]['quantity'] * $foodPrice;
             $summaryData['totalCount'] += (int)$cartData[$food->id]['quantity'];
         }
+
         return $summaryData;
+    }
+
+    /**
+     * @return array|string
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCartSummary()
+    {
+
+        return !empty($this->cartSummary) ? $this->cartSummary : [
+            'totalCost' => 0,
+            'totalCount' => 0,
+        ];
+    }
+
+    public function getCartFoodList()
+    {
+        $cartFoodList = [];
+        if (!empty($foodList = $this->buildFoodList($this->cart))) {
+            /* @var Food $food */
+            foreach ($foodList as $food) {
+                $cartFoodList[$food->id] = [
+                    'food' => $food,
+                    'quantity' => $this->cart[$food->id]['quantity']
+                ];
+            }
+        }
+
+        return $cartFoodList;
+    }
+
+    public function removeProduct(Food $food, $removeAll = false)
+    {
+        if (key_exists($food->id, $this->cart)) {
+            if ($removeAll) {
+                unset($this->cart[$food->id]);
+            } else {
+                if (($this->cart[$food->id]['quantity'] -= 1) < 1) {
+                    unset($this->cart[$food->id]);
+                }
+            }
+        }
+
+        return $this->generateCartCookie();
+    }
+
+    private function buildFoodList($cartData)
+    {
+        $foodIdList = array_keys($cartData);
+        $foodList = Food::find($foodIdList);
+
+        return $foodList;
+    }
+
+    private function generateCartCookie()
+    {
+        $cartCookie = cookie('cart', $this->cart, self::CART_LIFETIME);
+        $this->cartSummary = $this->buildCartSummary($cartCookie->getValue());
+
+        return $cartCookie;
     }
 }
