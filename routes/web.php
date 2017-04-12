@@ -21,7 +21,6 @@ Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestau
 Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
 Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
 
-Route::get('/cart', 'Shop\CartController@cart')->name('shop_show_cart');
 
 
 Route::group([
@@ -126,13 +125,17 @@ Route::group(['namespace' => 'User'], function () {
 
 
     });
+    Route::group([
+        'prefix' => 'cart',
+        'namespace' => 'Cart'
+        ], function () {
+        Route::post('add', 'CartController@addProduct')->name('user_cart_add');
+        Route::get('/', 'CartController@showCart')->name('user_cart_show');
+        Route::post('remove', 'CartController@removeProduct')->name('user_cart_remove');
+        Route::post('remove/allbyproduct', 'CartController@removeAllByProduct')->name('user_cart_remove_allByProduct');
+        Route::post('clear', 'CartController@clearCart')->name('user_cart_clear');
+
+    });
 });
 
-
-//Auth::routes();
-//Route::get('/home', 'HomeController@index');
-//Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
-
-
-//Route::get('/home', 'HomeController@index');
 
