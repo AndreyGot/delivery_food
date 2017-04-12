@@ -8295,3 +8295,35 @@ a.restoran-item:hover .restoran-item_title {
     }
 }
 /*END top slider*/
+/*bloc restaran*/
+.restoran-item_star-col{
+    font-size: 14px;
+    padding-right: 8px;
+}
+@media all and (max-width:992px){
+    .restoran-item_title{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .restoran-item_description{
+        text-align: center;
+    }
+    .rate{
+        text-align: center;
+    }
+    .restoran-item_star-col{
+        font-size: 16px;
+        padding-right: 0;
+        text-align: center;
+    }
+    .text-center{
+        text-align: center;
+    }
+}
+@media all and (max-width:380px){
+    .new-header{
+        font-size: 24px;
+    }
+}
+
+/*END bloc restaran*/
