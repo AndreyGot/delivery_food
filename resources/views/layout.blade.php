@@ -22,129 +22,104 @@
     <!-- Scripts -->
     <script>
         window.Laravel = '<?php echo json_encode([
-            'csrfToken' => csrf_token(),
+                'csrfToken' => csrf_token(),
         ]); ?>'
 
     </script>
 </head>
 <body>
-    <div id="app">
-        <div class="main-header_top container">
-            <div class="row">
-                <div class="col-md-4 col-sm-2">
-                    <figure class="logo" style="position:relative;">
-                        <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('img/logo.png') }}"></a>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <form class="main-header_form live-search-box" action="#">
-                        <input type="text" name="text" class="search live-search" autocomplete="off" placeholder="Поиск" >
-                    </form>
-                </div>
-                <div class="col-md-4 col-sm-4 text-right">
-                    <a href="#" class="btn btn--enter js-get-modal" data-modal="modal-login">Вход</a>
-                    <a href="#" class="btn btn--reg js-get-modal" data-modal="modal-registration">Регистрация</a>
-                </div>
+
+{{--<div id="app">--}}
+{{--block top header--}}
+<header class="main-header">
+    <div class=" container main-header_top">
+        <div class="row">
+            <div class="col-md-4 col-sm-2">
+                <figure class="logo" style="position:relative;">
+                    <a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}"
+                                                  alt="бесплатный сервис по заказу еды"></a>
+                </figure>
             </div>
-        </div>
-        {{--<nav class="navbar navbar-default navbar-static-top">--}}
-            {{--<div class="container">--}}
-                {{--<div class="navbar-header">--}}
-                    {{--<!-- Collapsed Hamburger -->--}}
-
-                    {{--<!-- Branding Image -->--}}
-                    {{--<a class="navbar-brand" href="{{ url('/') }}">--}}
-                        {{--{{ config('app.name', 'Laravel') }}--}}
-                    {{--</a>--}}
-                    {{--<a href="{{ url('/') }}" class="navbar-brand">--}}
-                        {{--<img src="{{ asset('img/logo.png') }}">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-                {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-                    {{--<!-- Left Side Of Navbar -->--}}
-
-                        {{--<form class="main-header_form live-search-box">--}}
-                            {{--<input type="text" name="text" class="search live-search" autocomplete="off" placeholder="Поиск">--}}
-                        {{--</form>--}}
-
-
-                    {{--<!-- Right Side Of Navbar -->--}}
-                    {{--<ul class="nav navbar-nav navbar-right">--}}
-                        {{--@if (Auth::guest())--}}
-
-
-                            {{--<li><a class="btn btn--enter" href="{{ route('user_login_form') }}">Вход</a></li>--}}
-                            {{--<li><a class="btn btn--reg" href="{{ route('user_register_form') }}">Регистрация</a></li>--}}
-
-                        {{--@else--}}
-                            {{--<li class="dropdown">--}}
-                                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-                                    {{--{{ Auth::user()->nickname }} <span class="caret"></span>--}}
-                                {{--</a>--}}
-
-                                {{--<ul class="dropdown-menu" role="menu">--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{ route('user_logout') }}"--}}
-
-                                            {{--onclick="event.preventDefault();--}}
-                                                     {{--document.getElementById('logout-form').submit();">--}}
-                                            {{--Logout--}}
-                                        {{--</a>--}}
-
-                                        {{--<form id="logout-form" action="{{ route('user_logout') }}" method="POST" style="display: none;">--}}
-
-                                            {{--{{ csrf_field() }}--}}
-                                        {{--</form>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                        {{--@endif--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</nav>--}}
-        <div class="main-header_bottom">
-            <div class="container">
-                <div class="header_text">
-                    Куда доставить еду?
-                </div>
-                <form class="header_box" onsubmit="return inputedAddress();">
-                    <div class="header_city tooltip">
-                        <a  class="tooltip_title"  id="current-city" >Сочи</a>
-
-                    </div>
-                    <div class="header_street">
-                        <input name="street" tabindex="1" placeholder="Укажите улицу" data-value="" value="" type="text">
-                    </div>
-                    <div class="header_house">
-                        <input name="house" tabindex="2" placeholder="Дом" data-value="" value="" type="text">
-                    </div>
-                    <button type="submit" class="header_button btn">Найти рестораны</button>
+            <div class="col-md-4 col-sm-7">
+                <form class="main-header_form live-search-box" action="#">
+                    <input type="text" name="text" class="search live-search" autocomplete="off"
+                           placeholder="Поиск">
                 </form>
+            </div>
+            <div class="col-md-4 col-sm-3 text-right">
+                @if (Auth::guest())
+                    <a href="{{ route('user_login_form') }}" class="btn btn--enter js-get-modal"
+                       data-modal="modal-login">Вход</a>
+                    <a href="{{ route('user_register_form') }}" class="btn btn--reg js-get-modal"
+                       data-modal="modal-registration">Регистрация</a>
+                @else
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
+                                {{ Auth::user()->nickname }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('user_logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('user_logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                        @endif
             </div>
         </div>
     </div>
-       {{--dop menu--}}
+
+    <div class="main-header_bottom">
+        <div class="container">
+            <div class="header_text">
+                Куда доставить еду?
+            </div>
+            <form class="header_box">
+                <div class="header_city tooltip">
+                    <a href="#" class="tooltip_title js-toggle-tooltip" id="current-city">Сочи</a>
+
+                </div>
+                <div class="header_street">
+                    <input name="street" tabindex="1" placeholder="Укажите улицу" data-value="" value=""
+                           type="text">
+                </div>
+                <div class="header_house">
+                    <input name="house" tabindex="2" placeholder="Дом" data-value="" value="" type="text">
+                </div>
+                <button type="submit" class="header_button btn">Найти рестораны</button>
+            </form>
+        </div>
+    </div>
+</header>
+{{--END block top header--}}
+
+@yield('content')
+{{--
+@include('shop.tamplates.howto')
+--}}
+
+@include('shop.tamplates.footer')
+@include('shop.tamplates.cart_panel')
 
 
-        @yield('content') 
-        {{--
-        @include('shop.tamplates.howto')
-        --}}
-
-        @include('shop.tamplates.footer')
-        @include('shop.tamplates.cart_panel')
-
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/library.js') }}"></script>
-    <script src="{{ asset('js/script_for_exspres.js') }}"></script>
-    <script src="{{ asset('js/jquery.maskedinput.js') }}"></script>
-    <script>
-        jQuery(function($){
-            $("#phone").mask("+7(999) 999-99-99",{placeholder:" "});
-        });
-    </script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/library.js') }}"></script>
+<script src="{{ asset('js/script_for_exspres.js') }}"></script>
+<script src="{{ asset('js/jquery.maskedinput.js') }}"></script>
+<script>
+    jQuery(function ($) {
+        $("#phone").mask("+7(999) 999-99-99", {placeholder: " "});
+    });
+</script>
 </body>
 </html>
