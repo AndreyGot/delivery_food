@@ -18,7 +18,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/laravel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/exspres_dostavka.css')}}" rel="stylesheet" type="text/css">
-
+    <link href="{{ asset('js/slick/slick.css')}}" rel="stylesheet" type="text/css">
     <!-- Scripts -->
     <script>
         window.Laravel = '<?php echo json_encode([
@@ -121,5 +121,7 @@
         $("#phone").mask("+7(999) 999-99-99", {placeholder: " "});
     });
 </script>
+<script src="{{ asset('js/slick/slick.js') }}"></script>
+<script src="{{ asset('js/settings-slik.js') }}"></script>
 </body>
 </html>

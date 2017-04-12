@@ -1,17 +1,11 @@
 @if(!$specials->isEmpty())
-
-
-        <div class="promos">
-            <div class="new-header"><i class="sprite sprite-fire"></i> Акции прямо сейчас</div>
-            <div class="container js-tab-container">
-                <div class=" js-tab-all js-tab--open">
-                    <ul class="carousel">
-                        @foreach ($specials as $special)
-                            @if(!$special->status == 0)
-                        <li>
-                            <div class="product-item restoran-item--promo" data-id="27536768" data-type="promo">
-                                <a href="#">
-
+            <div class="new-header new-header--mod"><i class="sprite sprite-fire "></i> Акции прямо сейчас</div>
+            <div class="container pos">
+                <div class="slider-slick">
+                    @foreach ($specials as $special)
+                        @if(!$special->status == 0)
+                            <div class="product-item restoran-item--promo">
+                                <a class="img-slid-top" href="#">
                                     <img src="{{ asset("img/logo.png") }}" alt="Pesto">
                                     <div class="product-item_title">
                                         <div class="product-item_title_wrapper">
@@ -20,7 +14,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                <div class="product-item_cart row">
+                                <div class="product-item_cart ">
                                     <div class="time">
                                         <i class="sprite sprite-ico-clocker"></i>
                                         @if($special->end_date == null)
@@ -31,16 +25,13 @@
                                     <p class="p-text-slid">Бонус: {{ $special->bonus_rate }}</p>
                                     <p class="p-text-slid p-text-slid2">Скидка: {{ $special->discount }}</p>
                                     <a class ="btn btn-info" href="#"
-                                    role ="button">Перейти к акции</a>
+                                       role ="button">Перейти к акции</a>
                                 </div>
                             </div>
-                        </li>
-                            @endif
-                        @endforeach
-                    </ul>
+                        @endif
+                    @endforeach
                 </div>
-                <div class="index-control">
-                </div>
+                <div class="top-arrow"></div>
+                <div class="bottom-arrow"></div>
             </div>
-        </div>
 @endif
