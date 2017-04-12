@@ -8,8 +8,8 @@
         <div class="col-xs-7 text-center">
             <div class="cart-pane__item">
                 БЛЮД В КОРЗИНЕ:
-                <div class="cart-pane__number"><span
-                            id="zz-cartTotalCount">{{ !empty($cartSummary) ? $cartSummary['totalCount'] : 0 }}</span>
+                <div class="cart-pane__number">
+                    <span id="zz-cartTotalCount">{{ !empty($cartSummary) ? $cartSummary['totalCount'] : 0 }}</span>
                 </div>
             </div>
             <div class="cart-pane__item">
@@ -25,8 +25,8 @@
             </div>
             <div class="cart-pane__item">
                 НА СУММУ
-                <div class="cart-pane__sum"><span
-                            id="zz-cartTotalCost">{{ !empty($cartSummary) ? $cartSummary['totalCost'] : 0 }}</span> Р
+                <div class="cart-pane__sum">
+                    <span id="zz-cartTotalCost">{{ !empty($cartSummary) ? $cartSummary['totalCost'] : 0 }}</span> Р
                 </div>
             </div>
         </div>

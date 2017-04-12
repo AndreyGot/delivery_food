@@ -131,6 +131,9 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('add', 'CartController@addProduct')->name('user_cart_add');
         Route::get('/', 'CartController@showCart')->name('user_cart_show');
         Route::post('remove', 'CartController@removeProduct')->name('user_cart_remove');
+        Route::post('remove/allbyproduct', 'CartController@removeAllByProduct')->name('user_cart_remove_allByProduct');
+        Route::post('clear', 'CartController@clearCart')->name('user_cart_clear');
+
     });
 });
 

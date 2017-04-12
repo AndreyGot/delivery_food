@@ -45,7 +45,9 @@ class CartController extends Controller
 
         $cartFoodList = $cart->getCartFoodList();
 
-        return view('user.cart.cartShow', [
+        $view = !$cart->isEmpty() ? 'user.cart.cartShow' : 'user.cart.cartEmpty';
+
+        return view( $view, [
             'cartFoodList' => $cartFoodList,
             'cartSummary' => $cart->getCartSummary(),
         ]);
@@ -70,5 +72,39 @@ class CartController extends Controller
         }
 
         return view('');
+    }
+
+    public function removeAllByProduct(Request $request)
+    {
+        $food = Food::find($request->food_id);
+
+        if (!empty($food)) {
+            if (!is_null($food)) {
+                if (Auth::user()) {
+
+                }
+
+                $cart = new CookieCart();
+                $cartCookie = $cart->removeProduct($food, true);
+                $cartSummary = $cart->getCartSummary();
+
+                return response()->json($cartSummary)->cookie($cartCookie);
+            }
+        }
+
+        return view('');
+    }
+
+    public function clearCart()
+    {
+
+        if (Auth::user()) {
+
+        }
+
+        $cart = new CookieCart();
+
+
+        return response()->json(['redirectURL' => route('main_index')])->cookie($cart->clearCart());
     }
 }

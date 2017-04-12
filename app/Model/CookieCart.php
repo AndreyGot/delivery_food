@@ -56,12 +56,13 @@ class CookieCart
         ];
     }
 
+    public function isEmpty()
+    {
+        return empty($this->cart);
+    }
+    
     private function buildCartSummary(array $cartData)
     {
-//        dd($cartData);
-        /* @var array $cartData */
-//        $foodIdList = array_keys($cartData);
-//        $foodList = Food::find($foodIdList);
         $foodList = $this->buildFoodList($cartData);
         /* @var Food $food */
         $summaryData = [
@@ -111,6 +112,12 @@ class CookieCart
         }
 
         return $cartFoodList;
+    }
+
+    public function clearCart()
+    {
+        $this->cart = [];
+        return $this->generateCartCookie();
     }
 
     public function removeProduct(Food $food, $removeAll = false)
