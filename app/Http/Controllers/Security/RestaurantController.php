@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Security\RestaurantRequest;
+use App\Model\RestaurantContacts;
 use Illuminate\Http\Request;
 use App\Model\Restaurant;
+use Illuminate\Support\Facades\Validator;
 
 class RestaurantController extends Controller
 {
+
+
     public function listRestaurant()
     {
         $restaurants = Restaurant::all();
@@ -23,12 +28,20 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function saveNewRestaurant(Request $request)
+    public function saveNewRestaurant(RestaurantRequest $request)
     {
         $data = $request->all();
+        Validator::make($request->all(),
+            [
+                'image_field' => 'required',
+            ],
+            [
+                'image_field.required' => 'Выберите изображение!'
+            ])->validate();
         $imageObj = $request->file('image_field');
         $restaurant = new Restaurant();
         $restaurant->fill($data);
+        $restaurant->setAlias($restaurant->name);
         $restaurant->setUploadImage($imageObj);
         $restaurant->save();
 
@@ -37,8 +50,16 @@ class RestaurantController extends Controller
 
     public function showRestaurant(Restaurant $restaurant)
     {
+
         return view('admin.restaurant.show', [
             'restaurant' => $restaurant,
+            'headingTitle' => 'Контакты ресторана',
+            'action' => is_null($restaurant->restaurantContact) ? route('admin_restaurant_contacts_add',[
+                $restaurant,
+            ]) : route('admin_restaurant_contacts_edit',[
+                $restaurant,
+                $restaurant->restaurantContact
+            ]),
 
         ]);
     }
@@ -51,6 +72,7 @@ class RestaurantController extends Controller
             }
             $category->delete();
         }
+        $restaurant->restaurantContact->delete();
         $restaurant->delete();
         return redirect(route('admin_listRestaurant'));
     }
@@ -59,13 +81,13 @@ class RestaurantController extends Controller
     {
         return view('admin.restaurant.addRestaurantForm', [
             'restaurant' => $restaurant,
-            'action' => route('admin_restaurant_edit_form', [
-                'restaurant' => $restaurant
+            'action' => route('admin_restaurant_edit', [
+                $restaurant
             ]),
         ]);
     }
 
-    public function editRestaurant(Restaurant $restaurant, Request $request)
+    public function editRestaurant(Restaurant $restaurant, RestaurantRequest $request)
     {
         $data = $request->all();
         $restaurant->fill($data);
@@ -75,14 +97,43 @@ class RestaurantController extends Controller
         }
 
         $restaurant->fill($data);
-
+        $restaurant->setAlias($restaurant->name);
         $restaurant->save();
 
         return view('admin.restaurant.addRestaurantForm', [
             'restaurant' => $restaurant,
-            'action' => route('admin_restaurant_edit_form', [
-                'restaurant' => $restaurant
+            'action' => route('admin_restaurant_edit', [
+                $restaurant
             ]),
+        ]);
+    }
+
+    public function addContact(Restaurant $restaurant, RestaurantContacts $request)
+    {
+        $restaurantContacts = new RestaurantContacts();
+        $data = $request->all();
+        $restaurantContacts->fill($data);
+        $restaurantContacts->save();
+        return redirect()->route('admin_showRestaurant', [
+            $restaurant
+        ]);
+    }
+
+    public function editContact(Restaurant $restaurant, RestaurantContacts $restaurantContacts, RestaurantContacts $request)
+    {
+        $data = $request->all();
+        $restaurantContacts->fill($data);
+        $restaurantContacts->save();
+        return redirect()->route('admin_showRestaurant',[
+            $restaurant,
+        ]);
+    }
+
+    public function removeContact(Restaurant $restaurant, RestaurantContacts $restaurantContacts)
+    {
+        $restaurantContacts->delete();
+        return redirect()->route('admin_showRestaurant',[
+            $restaurant,
         ]);
     }
 }

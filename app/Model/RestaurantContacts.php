@@ -25,6 +25,7 @@ class RestaurantContacts extends Model
 {
     protected $table = 'restaurant_contacts';
     public $timestamps = false;
+    protected $fillable = ['email', 'phone_1', 'phone_2', 'description', 'restaurant_id'];
 
     public function restaurant()
     {

@@ -9,6 +9,7 @@
 namespace App\Model;
 
 
+use App\Model\Helper\CyrToLatConverter;
 use App\Model\Helper\ImageSaver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -28,11 +29,11 @@ use Illuminate\Support\Facades\Auth;
  */
 class Category extends Model
 {
-    use ImageSaver;
+    use ImageSaver, CyrToLatConverter;
 
     protected $table = 'category';
     public $timestamps = false;
-    protected $fillable = ['name', 'description', 'alias', 'restaurant_id'];
+    protected $fillable = ['id', 'name', 'description','image', 'alias', 'restaurant_id'];
 
 
     public function restaurant()
@@ -76,5 +77,10 @@ class Category extends Model
     public function getRouteKeyName()
     {
         return 'alias';
+    }
+
+    public function setAlias($cyrilicAlias)
+    {
+        return $this->alias = $this->convertCyrToLat($cyrilicAlias);
     }
 }

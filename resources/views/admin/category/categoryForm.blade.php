@@ -27,14 +27,28 @@
             <div class="form-group">
                 <label for="name" class="col-xs-4 control-label">Название категории</label>
                 <div class="col-xs-6">
-                    <input id="name" type="text" class="form-control" name="name" value="{{ isset($category) ? $category->name : null }}" required autofocus>
+                    <input id="name" type="text" class="form-control" name="name" value="{{ isset($category) ? $category->name : old('name') }}"  autofocus>
+                    @if(count($errors) && !empty($nameErrors = $errors->get('name')))
+                        <div class="alert alert-danger">
+                            @foreach($nameErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="description" class="col-xs-4 control-label">Описание</label>
                 <div class="col-xs-6">
-                    <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ isset($category) ? $category->description : null }}</textarea>
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ isset($category) ? $category->description : old('description') }}</textarea>
+                    @if(count($errors) && !empty($descriptionErrors = $errors->get('description')))
+                        <div class="alert alert-danger">
+                            @foreach($descriptionErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -42,13 +56,13 @@
                 <label for="image" class="col-xs-4 control-label">Изображение</label>
                 <div class="col-xs-6">
                     <input class="form-control" id="image" type="file" name="image_field" value="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="alias" class="col-xs-4 control-label">Алиас</label>
-                <div class="col-xs-6">
-                    <input id="alias" type="text" class="form-control" name="alias" value="{{ isset($category) ? $category->alias : null }}" required autofocus>
+                    @if(count($errors) && !empty($imageErrors = $errors->get('image_field')))
+                        <div class="alert alert-danger">
+                            @foreach($imageErrors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
 

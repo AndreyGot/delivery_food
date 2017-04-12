@@ -53,29 +53,34 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
 
-                            <li><a href="{{ route('admin_login_form') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ route('user_login_form') }}">Login</a></li>
+                            <li><a href="{{ route('user_register_form') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->nickname }} <span class="caret"></span>
                                 </a>
+
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('admin_logout') }}"
-
+                                        <a href="{{route('shop_profile_user')}}">Мой профиль</a>
+                                        <a href="{{route('shop_setting_profile_user')}}">Настройки профиля</a>
+                                        <a href="{{route('shop_address_user')}}">Адреса</a>
+                                        <a href="#">История заказов</a>
+                                        <a href="{{ route('user_logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Выход
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('admin_logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('user_logout') }}" method="POST" style="display: none;">
 
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
                                 </ul>
+
                             </li>
                         @endif
                     </ul>
@@ -84,11 +89,9 @@
         </nav>
 
     </div>
-
         <div>
             <p>Главная страница</p>
         </div>
-
 
         @yield('content') 
         {{--
@@ -98,8 +101,14 @@
         @include('shop.tamplates.cart_panel')
 
     <!-- Scripts -->
+    <script></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/library.js') }}"></script>
-    <script src="{{ asset('js/script_for_exspres.js') }}"></script>
+    {{--<script src="{{ asset('js/library.js') }}"></script>--}}
+    {{--<script src="{{ asset('js/script_for_exspres.js') }}"></script>--}}
+
+    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
+    <script src="{{ asset('js/shop/shop.js') }}"></script>
+
+
 </body>
 </html>

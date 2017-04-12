@@ -18,6 +18,6 @@ class CheckAdmin
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect()->route('admin_login_form');
     }
 }

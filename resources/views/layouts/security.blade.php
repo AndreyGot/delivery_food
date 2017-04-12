@@ -15,12 +15,17 @@
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
     <link href="{{ asset('css/laravel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    @section('styles')
+
+    @show
+
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top" id="main_menu">
     <div class="container">
         <div class="navbar-header">
             <a href="{{ route('adminPanel') }}" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
+            <a href="{{ route('main_index') }}" class="navbar-brand">Перейти к магазину</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

@@ -10,9 +10,12 @@ namespace App\Http\Controllers\Security;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Security\CategoryRequest;
 use App\Model\Category;
+use App\Model\Helper\CyrToLatConverter;
 use App\Model\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class CategoryController extends Controller
@@ -34,12 +37,20 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function addCategoryByRestaurant(Restaurant $restaurant, Request $request)
+    public function addCategoryByRestaurant(Restaurant $restaurant, CategoryRequest $request)
     {
+        Validator::make($request->all(),
+            [
+                'image_field' => 'required',
+            ],
+            [
+                'image_field.required' => 'Выберите изображение!'
+            ])->validate();
         $category = new Category();
         $requestData = $request->all();
         $category->fill($requestData);
         $category->setUploadImage($request->file('image_field'));
+        $category->setAlias($category->name);
         $category->save();
 
         return redirect(route('admin_category_list_byRestaurant', ['restaurant' => $restaurant]));
@@ -101,8 +112,11 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function editCategory(Restaurant $restaurant, $categoryAlias, Request $request)
+    public function editCategory(Restaurant $restaurant, $categoryAlias, CategoryRequest $request)
     {
+        /**
+         * @var Category $category
+         */
         $category = Category::where([
             'restaurant_id' => $restaurant->id,
             'alias' => $categoryAlias
@@ -115,9 +129,12 @@ class CategoryController extends Controller
         }
 
         $category->fill($data);
+        $category->setAlias($category->name);
 
         $category->save();
 
         return redirect(route('admin_category_edit_form', [ $restaurant, 'categoryAlias' => $category->alias ]));
     }
+
+
 }

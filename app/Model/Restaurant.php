@@ -8,6 +8,7 @@
 
 namespace App\Model;
 
+use App\Model\Helper\CyrToLatConverter;
 use App\Model\Helper\ImageSaver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -23,14 +24,15 @@ use Illuminate\Support\Facades\Auth;
  * @property string $working_hours
  * @property float $rating
  * @property [] $categories
+ * @property RestaurantContacts $restaurantContact
  */
 class Restaurant extends Model
 {
-    use ImageSaver;
+    use ImageSaver, CyrToLatConverter;
 
     protected $table = 'restaurant';
     public $timestamps = false;
-    protected $fillable = ['name', 'description', 'alias', 'working_hours', 'image', 'rating'];
+    protected $fillable = ['name', 'description', 'working_hours', 'image', 'rating'];
 
     public function restaurantContact()
     {
@@ -44,7 +46,7 @@ class Restaurant extends Model
 
     public function specials()
     {
-        return $this->belongsToMany('App\Model\Restaurant', 'special_has_restaurant');
+        return $this->belongsToMany('App\Model\Special', 'special_has_restaurant');
 
     }
 
@@ -74,5 +76,10 @@ class Restaurant extends Model
     public function getRouteKeyName()
     {
         return 'alias';
+    }
+
+    public function setAlias($cyrilicAlias)
+    {
+        return $this->alias = strtolower($this->convertCyrToLat($cyrilicAlias));
     }
 }

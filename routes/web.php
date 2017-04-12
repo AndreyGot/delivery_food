@@ -14,12 +14,27 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::get('/', 'Shop\IndexController@listRestaurant')->name('main_index');
-Route::get('/restourants', 'Shop\ShopRestaurantController@listRestaurant')->name('restourant_list_shop');
-Route::get('/restourants/{alias}', 'Shop\ShopRestaurantController@showRestaurant')->name('restourant_show_shop');
-Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('category_list_shop');
-Route::get('/foods/{category_id}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_categori_id');
+Route::get('/', 'Shop\IndexController@index')->name('main_index');
 
+Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
+Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
+Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
+Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+
+
+
+Route::group([
+    'prefix' => 'user',
+    'middleware' => 'checkUser'
+    // 'namespace' => 'Shop'
+], function () {
+
+    Route::get('profile', 'Shop\ShopUserController@profileUser')->name('shop_profile_user');
+    Route::get('setingsProfile', 'Shop\ShopUserController@setingsProfileUser')->name('shop_setting_profile_user');
+    Route::post('editProfile', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
+    Route::get('addressUser', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
+    // Route::post('saveAddressUser/{userAddress}', 'Shop\ShopUserController@saveUserAddress')->name('add_user_address');
+});
 
 Route::group([
     'prefix' => 'admin',
@@ -58,6 +73,13 @@ Route::group([
                     ->name('admin_restaurant_edit_form');
                 Route::post('edit/{restaurant}', 'RestaurantController@editRestaurant')
                     ->name('admin_restaurant_edit');
+
+                Route::group(['prefix' => '{restaurant}/contacts/'], function () {
+//                    Route::get('add', 'RestaurantController@addContactsForm')->name('admin_restaurant_contacts_add_form');
+                    Route::post('add', 'RestaurantController@addContact')->name('admin_restaurant_contacts_add');
+                    Route::post('edit/{restaurantContacts}', 'RestaurantController@editContact')->name('admin_restaurant_contacts_edit');
+                    Route::get('remove/{restaurantContacts}', 'RestaurantController@removeContact')->name('admin_restaurant_contacts_remove');
+                });
             });
             Route::group(['prefix' => 'category'], function () {
                 Route::get('add', 'CategoryController@getForm')->name('admin_category_add_form');
@@ -88,17 +110,28 @@ Route::group([
         Route::post('login', 'SecurityController@login')->name('admin_login');
     });
 
+
+
 });
 
+Route::group(['namespace' => 'User'], function () {
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::get('register', 'RegisterController@showRegistrationForm')->name('user_register_form');
+        Route::post('register', 'RegisterController@register');
+        Route::match(['get', 'post'], 'logout', 'LoginController@logout')->name('user_logout');
+        Route::get('login', 'LoginController@showLoginForm')->name('user_login_form');
+        Route::post('login', 'LoginController@login');
 
-//Auth::routes();
-//Route::get('/home', 'HomeController@index');
-//Route::get('/adminPanel', 'AdminController@index')->name('adminPanel');
-Route::get('restaurant/list', 'RestaurantController@listRestaurant')->name('listRestaurant');
-Route::get('restaurant/show', 'RestaurantController@showRestaurant')->name('showRestaurant');
-Route::get('restaurant/add', 'RestaurantController@addForm')->name('addRestaurantForm');
-Route::post('restaurant/add', 'RestaurantController@saveNewRestaurant')->name('saveNewRestaurant');
 
-Auth::routes();
-Route::get('/home', 'HomeController@index');
+    });
+    Route::group([
+        'prefix' => 'cart',
+        'namespace' => 'Cart'
+        ], function () {
+        Route::post('add', 'CartController@addProduct')->name('user_cart_add');
+        Route::get('/', 'CartController@showCart')->name('user_cart_show');
+        Route::post('remove', 'CartController@removeProduct')->name('user_cart_remove');
+    });
+});
+
 
