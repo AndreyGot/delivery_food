@@ -13,7 +13,7 @@ class FixProfile extends Migration
      */
     public function up()
     {
-        Shema::table('profile', function (Blueprint $table) {
+        Schema::table('profile', function (Blueprint $table) {
             $table->dropColumn('password');
             $table->string('image');
         });
@@ -26,7 +26,7 @@ class FixProfile extends Migration
      */
     public function down()
     {
-        Shema::table('profile', function (Blueprint $table) {
+        Schema::table('profile', function (Blueprint $table) {
             $table->dropColumn('image');
             $table->string('password');
         });
