@@ -8597,3 +8597,25 @@ a.restoran-item:hover .restoran-item_title {
     }
 }
 /*END cart-panel*/
+/*page restaran*/
+.org-page{
+    background-image: url(../img/context/bg-org-sushi.jpg)!important;
+}
+.org-page .restoran-item_tabs{
+    text-align: center;
+}
+.action-restaran{
+    width: 130px;
+    height: auto;
+    margin: 30px auto 5px;
+}
+.product-item-mod{
+    padding: 0;
+}
+.itool22{
+    width: 16.6666666667%!important;
+    height: auto;
+    margin: 15px 1.6%;
+
+}
+/*END page restaran*/
