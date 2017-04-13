@@ -27,11 +27,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $user_status_id
  *
  */
+
 class Profile extends Model
 {
     protected $table = 'profile';
     public $timestamps = false;
-    protected $fillable = ['first_name', 'second_name', 'phone_1', 'userEmail'];
+    protected $fillable = [
+        'id', 
+        'first_name', 
+        'second_name', 
+        'birth_date', 
+        'registration_date', 
+        'last_login_date',  
+        'phone_1', 
+        'phone_2', 
+        'bonus_score'
+    ];
 
     /*public function userStatus()
     {

@@ -10,10 +10,12 @@
                     <div class="restoran-cart" id="org23171478">
                         <h2 class="restoran-cart_title">
                             {{--<a href="/restaurants/menu/eda-edamsk">Еда-Еда</a>--}}
-                            <button class="restoran-cart_delete btn--delete js-cart-restoran-delete">Удалить</button>
+                            <button class="restoran-cart_delete btn--delete" id="zz-btn_cart_clear">
+                                Удалить
+                            </button>
                         </h2>
                         @foreach($cartFoodList as $item)
-                            <div class="product-cart row" id="{{ $item['food']->id }}">
+                            <div class="product-cart row zz-cart_item" id="{{ $item['food']->id }}">
                                 <div class="col s-6">
                                     <div class="product-cart_image">
                                         <img src="{{ asset($item['food']->image) }}" height="50" width="50" alt="{{ $item['food']->name }}">
@@ -27,13 +29,13 @@
                                 <div class="col s-3 product-cart_top js-cart-calc">
                                     <button class="product-cart_calc btn--minus zz-btn_minus_product" data-food_id="{{ $item['food']->id }}">-</button>
                                     <input type="text" class="product-cart_calc-result" disabled="" value="{{ $item['quantity']}}">
-                                    <button class="product-cart_calc btn--plus" data-food_id="{{ $item['food']->id }}">+</button>
+                                    <button class="product-cart_calc btn--plus zz-btn_plus_product" data-food_id="{{ $item['food']->id }}">+</button>
                                 </div>
                                 <div class="col s-2 product-cart_top text-right">
                                     <p class="product-cart_price">{{ $item['food']->price }} Р</p>
                                 </div>
                                 <div class="col s-1">
-                                    <button onclick="" class="product-cart_delete btn--delete js-cart-tovar-delete">
+                                    <button class="product-cart_delete btn--delete zz-removeAllByProduct" data-food_id="{{ $item['food']->id }}">
                                         Удалить
                                     </button>
                                 </div>
@@ -88,7 +90,7 @@
                                 Итого:
                             </div>
                             <div class="col s-3 cart-summary_price">
-                                <b><span id="zz-cartShowTotalCost">{{ $cartSummary['totalCost'] }}</span> P</b>
+                                <b id="zz-cartShowTotalCost">{{ $cartSummary['totalCost'] }} P</b>
                             </div>
                         </div>
                     </div>
@@ -138,7 +140,10 @@
     </div>
     <script>
         window.urlBag = {
-            removeFromCart: '{{ route('user_cart_remove') }}'
+            removeFromCart: '{{ route('user_cart_remove') }}',
+            addToCart: '{{ route('user_cart_add') }}',
+            removeAllByProduct: '{{ route('user_cart_remove_allByProduct') }}',
+            cartClear: '{{ route('user_cart_clear') }}'
         };
     </script>
 @endsection

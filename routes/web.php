@@ -31,7 +31,8 @@ Route::group([
 
     Route::get('profile', 'Shop\ShopUserController@profileUser')->name('shop_profile_user');
     Route::get('setingsProfile', 'Shop\ShopUserController@setingsProfileUser')->name('shop_setting_profile_user');
-    Route::post('editProfile', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
+    Route::post('eddProfile', 'Shop\ShopUserController@eddProfileUser')->name('shop_profile_edd');
+    Route::post('editProfile/{profile}', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
     Route::get('addressUser', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
     // Route::post('saveAddressUser/{userAddress}', 'Shop\ShopUserController@saveUserAddress')->name('add_user_address');
 });
@@ -131,6 +132,9 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('add', 'CartController@addProduct')->name('user_cart_add');
         Route::get('/', 'CartController@showCart')->name('user_cart_show');
         Route::post('remove', 'CartController@removeProduct')->name('user_cart_remove');
+        Route::post('remove/allbyproduct', 'CartController@removeAllByProduct')->name('user_cart_remove_allByProduct');
+        Route::post('clear', 'CartController@clearCart')->name('user_cart_clear');
+
     });
 });
 

@@ -19,7 +19,7 @@ class IndexController extends Controller
 		// dd($specials);
 
 		// $specials = Special::where('status', $status=0)->get();
-
+//dd($specials);
 		/* @var Restaurant $restaurant*/
 		return view('index')->with(['restaurants'=>$restaurants,'specials'=>$specials]);
 	}
