@@ -31,10 +31,11 @@ Route::group([
 
     Route::get('profile', 'Shop\ShopUserController@profileUser')->name('shop_profile_user');
     Route::get('setingsProfile', 'Shop\ShopUserController@setingsProfileUser')->name('shop_setting_profile_user');
-    Route::post('eddProfile', 'Shop\ShopUserController@eddProfileUser')->name('shop_profile_edd');
+    Route::post('addProfile', 'Shop\ShopUserController@addProfileUser')->name('shop_profile_edd');
     Route::post('editProfile/{profile}', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
     Route::get('addressUser', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
-    // Route::post('saveAddressUser/{userAddress}', 'Shop\ShopUserController@saveUserAddress')->name('add_user_address');
+    Route::post('saveAddressUser' , 'Shop\ShopUserController@saveUserAddress')->name('shop_add_user_address');
+    Route::get('deleteUserAddress/{userAddress}', 'Shop\ShopUserController@deleteUserAddress')->name('shop_delete_user_address');
 });
 
 Route::group([

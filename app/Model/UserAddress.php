@@ -25,6 +25,7 @@ class UserAddress extends Model
 {
     protected $table = 'user_address';
     public $timestamps = false;
+    protected $fillable = ['region', 'city', 'street', 'house', 'flat', 'description'];
 
     public function user()
     {
