@@ -24,9 +24,9 @@ class UserAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'password' => 'required|string',
-            // 'first_name' => 'required|string',
-            // 'second_name' => 'required|string',
+            'city' => 'required|string',
+            'street' => 'required|string',
+            'house' => 'required|string',
             // 'phone_1' => 'required',
         ];
     }
@@ -36,10 +36,12 @@ class UserAddressRequest extends FormRequest
         $stringMessage = 'Введите текстовое значение!';
 
         return [
-                // 'first_name.required' => 'Поле должно быть заполненным!',
-                // 'first_name.string' => $stringMessage,
-                // 'second_name.required' => 'Поле должно быть заполненным!',
-                // 'second_name.string' => $stringMessage,
+                'city.required' => 'Поле должно быть заполненным!',
+                'city.string' => $stringMessage,
+                'street.required' => 'Поле должно быть заполненным!',
+                'street.string' => $stringMessage,
+                'house.required' => 'Поле должно быть заполненным!',
+                'house.string' => $stringMessage
                 // 'phone_1.required' => 'Поле "телефон" должно быть заполненным!',
 
         ];
