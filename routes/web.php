@@ -105,6 +105,9 @@ Route::group([
                 Route::post('edit/{food}', 'FoodController@editFood')->name('admin_food_edit');
 
             });
+            Route::group(['prefix' => 'order'], function () {
+                Route::get('list', 'OrderController@ordersList')->name('admin_order_list');
+            });
         });
 
         Route::get('login', 'SecurityController@showLoginForm')->name('admin_login_form');
@@ -134,7 +137,13 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('remove', 'CartController@removeProduct')->name('user_cart_remove');
         Route::post('remove/allbyproduct', 'CartController@removeAllByProduct')->name('user_cart_remove_allByProduct');
         Route::post('clear', 'CartController@clearCart')->name('user_cart_clear');
+    });
 
+    Route::group([
+        'prefix' => 'order',
+        'namespace' => 'Order'
+    ], function () {
+        Route::post('fastorder', 'OrderController@makeFastOrder')->name('user_order_fastOrder_make');
     });
 });
 

@@ -99,33 +99,33 @@
                 <div class="col s-4">
                     <div class="cart-form" data-city="Москва">
                         <div class="cart-form_title">Оформление</div>
-                        <form onsubmit="return makeOrder(true);" id="cart_form">
-                            <input type="tel" name="phone" value="+7 (066) 471-05-42" placeholder="Телефон" required="" autocomplete="off">
+                        <form action="{{ route('user_order_fastOrder_make') }}" id="cart_form" method="post">
+                            {{ csrf_field() }}
+                            <input type="text" name="customer_name" placeholder="Имя" required>
+                            <input type="tel" name="phone" value="" placeholder="Телефон" required autocomplete="off">
+                            <input type="hidden" name="city" value="Сочи">
                             <div class="address-form__input-wrapper">
-                                <input type="text" name="street" data-value="" value="" placeholder="Улица" required="">
+                                <input type="text" name="street" data-value="" value="" placeholder="Улица" required>
                                 <div class="address-live-box scroll"></div>
                             </div>
                             <div class="row">
                                 <div class="col s-4">
-                                    <input type="text" name="home" data-value="" value="" placeholder="Дом" required="">
-                                </div>
-                                <div class="col s-4">
-                                    <input type="text" name="building" value="" placeholder="Корп.">
+                                    <input type="text" name="house" data-value="" value="" placeholder="Дом" required>
                                 </div>
                                 <div class="col s-4">
                                     <input type="text" name="flat" value="" placeholder="Кварт.">
                                 </div>
                             </div>
-                            <textarea name="comment" value="" placeholder="Комментарий"></textarea>
+                            <textarea name="description" value="" placeholder="Комментарий"></textarea>
                             <ul class="cart-switch">
                                 <li>
-                                    <input id="cart-switch1" name="payment_type" value="0" type="radio" checked="checked">
+                                    <input id="cart-switch1" name="payment_method_id" value="1" type="radio" checked="checked">
                                     <label for="cart-switch1">Наличными</label>
                                 </li>
-                                <li>
+                                {{--<li>
                                     <input id="cart-switch2" name="payment_type" value="2" type="radio">
                                     <label for="cart-switch2">Картой онлайн</label>
-                                </li>
+                                </li>--}}
                             </ul>
                             <button type="submit" class="btn btn--green">Заказать</button>
                         </form>

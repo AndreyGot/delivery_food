@@ -32,6 +32,9 @@ class Order extends Model
         return $this->belongsTo('App\Model\OrderStatus');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo('App\Model\Profile');

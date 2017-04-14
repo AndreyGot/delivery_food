@@ -9,6 +9,7 @@
 namespace App\Model;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Model
  *
  * @property string $name
+ * @property Collection $fastOrders
  */
 class OrderStatus extends Model
 {
@@ -25,5 +27,10 @@ class OrderStatus extends Model
     public function orders()
     {
         return $this->hasMany('App\Model\Order');
+    }
+
+    public function fastOrders()
+    {
+        return $this->hasMany('App\Model\FastOrder');
     }
 }
