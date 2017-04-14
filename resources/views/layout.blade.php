@@ -128,7 +128,7 @@
 <script src="{{ asset('js/settings-slik.js') }}"></script>
 <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
 <script src="{{ asset('js/shop/shop.js') }}"></script>
-
+<script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 </html>
