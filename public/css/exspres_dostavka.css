@@ -8119,9 +8119,7 @@ a.restoran-item:hover .restoran-item_title {
 .btn--enter, .btn--reg{
     margin-top: 26px;
 }
-.modal-dialog{
-    top: 27%;
-}
+
 /*-----*/
 /*media header top*/
 @media all and (max-width:992px){
@@ -8616,6 +8614,45 @@ a.restoran-item:hover .restoran-item_title {
     width: 16.6666666667%!important;
     height: auto;
     margin: 15px 1.6%;
-
+}
+.itool2--mod{
+    width: 22.7%;
+}
+@media all and (max-width: 1200px){
+.restoran-item_tabs--mod2 a:first-child{
+    padding: 10px 64px;
+    margin-bottom: 15px;
+}
+    .itool2--mod {
+        width: 22%;
+    }
+}
+@media all and (max-width: 992px){
+    .breadcrumbs-org--align{text-align: center;}
+    .product-item{width: 30.8%;}
+    .itool22{width: 21.4% !important;}
+    .breadcrumbs-org--align2{text-align: center;}
+}
+@media all and (max-width: 768px){
+    .restoran-item_bottom--align{text-align: center;}
+    .breadcrumbs-org{padding: 20px 0 0 0;}
+    .product-item{
+        width: 50%;
+        margin: 0 auto 20px;
+        display: block;
+    }
+    .itool22{width: 50% !important;}
+    .restoran-item_bottom--mod{text-align: center;}
+}
+@media all and (max-width: 540px){
+    .restoran-item_tabs a:first-child{
+        padding: 10px 51px;
+        margin-bottom: 15px;
+    }
+    .product-item{width: 90%;}
+    .itool22{width: 80% !important;}
+    .restoran-item_tabs--mod2 a:first-child {
+        padding: 10px 64px;
+    }
 }
 /*END page restaran*/

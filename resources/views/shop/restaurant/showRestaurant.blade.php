@@ -6,7 +6,7 @@
         <div class="container list-page">
             <div class="breadcrumbs-org ">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-7 breadcrumbs-org--align">
                         <a href="#">F1</a> &nbsp;/&nbsp;
                         <a href="#">Доставка еды</a> &nbsp;/&nbsp;
                         <a href="#" class="breadcrumbs-cuisine">Суши</a> &nbsp;/&nbsp;
@@ -41,26 +41,26 @@
                                 </div>
                             </div>
                             <div class="restoran-item_bottom">
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <div class="row restoran-item_bottom--align">
+                                    <div class="col-md-3 col-sm-3">
                                         <p class="restoran-item_sub-titile">Время работы: </p>
                                         <p class="restoran-item_big need_minimum_summa"><i
                                                     class="sprite sprite-ico-timer-2"></i>{{ $restaurant->working_hours }}
                                         </p>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-sm-3">
                                         <p class="restoran-item_sub-titile">Доставка</p>
                                         <p class="restoran-item_big"><i class="sprite sprite-ico-rocket-w"></i>
                                             Бесплатно
 
                                         </p>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-sm-3">
                                         <p class="restoran-item_sub-titile">Время доставки</p>
                                         <p class="restoran-item_big"><i class="sprite sprite-ico-timer-2"></i> До 1 часа
                                         </p>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-sm-3">
                                         <p class="restoran-item_sub-titile">Оплата картой курьеру:</p>
                                         <p class="restoran-item_big"><i class="sprite sprite-ico-viza"></i> Есть</p>
                                     </div>
