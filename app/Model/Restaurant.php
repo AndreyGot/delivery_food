@@ -55,14 +55,16 @@ class Restaurant extends Model
         $newImageName = Auth::user()->id . '_' . time();
         $imagePath = config('custom.imageDirectories.restaurant') . $this->alias . '/';
 
+
         if ($isFileUploaded = $this->uploadImage != null) {
-            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.jpg');
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $this->uploadImage->getClientOriginalExtension());
         }
 
         if ($saved = parent::save($options)) {
             if ($isFileUploaded) {
                 $this->saveImage($this->uploadImage->getRealPath(),
                     $newImageName,
+//                    $this->uploadImage->get
                     $imagePath,
                     config('custom.imageSize.restaurant')
                 );
