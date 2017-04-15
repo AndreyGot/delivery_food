@@ -133,5 +133,18 @@ class ShopUserController extends Controller
     return redirect(route('shop_address_user'));
     // dd($userAddress);
   }
+
+  public function getEditFormUserAddress(UserAddress $userAddress)
+  {
+    dd($userAddress);
+    return view('shop.user.mediumAddressForm', ['userAddress'=>$userAddress,
+      'action' => route('shop_edit_user_address')
+    ]);
+  }
+
+  public function editUserAddress(UserAddress $userAddress)
+  {
+    # code...
+  }
 }
 
