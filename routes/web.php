@@ -106,7 +106,11 @@ Route::group([
 
             });
             Route::group(['prefix' => 'order'], function () {
-                Route::get('list', 'OrderController@ordersList')->name('admin_order_list');
+                Route::get('list', 'FastOrderController@ordersList')->name('admin_order_list');
+                Route::group(['prefix' => 'fastorder'], function () {
+                    Route::get('show/{fastOrder}', 'FastOrderController@showOrder')->name('admin_order_fast_show');
+                    Route::post('changestatus/{fastOrder}', 'FastOrderController@changeOrderStatus')->name('admin_order_fast_changeStatus');
+                });
             });
         });
 

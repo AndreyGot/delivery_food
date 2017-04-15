@@ -20,6 +20,7 @@
                         <th>Имя заказчика</th>
                         <th>Номер телефона</th>
                         <th>Дата и время <br> оформления заказа</th>
+                        <th>Действия</th>
                     </tr>
 
                     @foreach ($newFastOrders as $order)
@@ -35,6 +36,9 @@
                             </td>
                             <td>
                                 {{ $order->creation_date }}
+                            </td>
+                            <td>
+                                <a class="btn btn-default" href="{{ route('admin_order_fast_show', [$order]) }}">Подробнее</a>
                             </td>
                         </tr>
                     @endforeach

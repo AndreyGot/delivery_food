@@ -19,15 +19,12 @@ trait ImageSaver
 
     protected function saveImage($tmpImagePath, $newImageName, $destinationDirectory, $width = 300)
     {
-//        dd($newImageName);
-//        dd(explode('.', $this->uploadImage->getClientOriginalName()));
         $imageHandler = new \upload($tmpImagePath);
         $imageHandler->file_new_name_body = $newImageName;
         $imageHandler->image_convert = $this->uploadImage->getClientOriginalExtension();
         $imageHandler->image_resize = true;
         $imageHandler->image_ratio_y = true;
         $imageHandler->image_x = $width;
-//        $imageHandler->file_force_extension = 'png';
         $imageHandler->process(config('custom.directoryRoot') . $destinationDirectory);
     }
 
