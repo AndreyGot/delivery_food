@@ -58,7 +58,7 @@ class Category extends Model
         $imagePath = config('custom.imageDirectories.category') . $this->alias . '/';
 
         if ($isFileUploaded = $this->uploadImage != null) {
-            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.jpg');
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $this->uploadImage->getClientOriginalExtension());
         }
 
         if ($saved = parent::save($options)) {
