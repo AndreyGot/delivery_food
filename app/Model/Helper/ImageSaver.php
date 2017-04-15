@@ -21,7 +21,7 @@ trait ImageSaver
     {
         $imageHandler = new \upload($tmpImagePath);
         $imageHandler->file_new_name_body = $newImageName;
-        $imageHandler->image_convert = 'jpg';
+        $imageHandler->image_convert = $this->uploadImage->getClientOriginalExtension();
         $imageHandler->image_resize = true;
         $imageHandler->image_ratio_y = true;
         $imageHandler->image_x = $width;

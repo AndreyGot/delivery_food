@@ -62,6 +62,9 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    @if(Auth::user()->userStatus->name == 'SUPER_ADMIN')
+                                        <a href="{{route('adminPanel')}}">Админ панель</a>
+                                    @endif
                                     <a href="{{route('shop_profile_user')}}">Мой профиль</a>
                                     <a href="{{route('shop_setting_profile_user')}}">Настройки профиля</a>
                                     <a href="{{route('shop_address_user')}}">Адреса</a>

@@ -13,6 +13,9 @@
                         <p>Этаж: {{ $userAddress->flat }}</p>
                         <p>Доп информация: {{ $userAddress->description }}</p>
 
+                        <a href="{{ route('shop_getForm_user_address', [$userAddress]) }}" class="btn btn-info">
+                            Редактировать
+                        </a>
                         <a href="{{ route('shop_delete_user_address', [$userAddress]) }}" class="btn btn-danger">
                             Удалить адрес
                         </a>
