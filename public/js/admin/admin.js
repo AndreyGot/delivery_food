@@ -4,18 +4,22 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
     $('#order_status').bind('change', changeFastOrderStatus);
+
     function changeFastOrderStatus(event) {
+        var order_status_id = $(event.target).val();
+
         $.ajax({
             url: urlBag.changeFastOrderStatus,
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            /*data: {
-             food_id: clickedButton.data('food_id')
-             },*/
+            data: {
+                order_status_id: order_status_id
+            },
             success: function (response) {
-                console.log(response);
+                // console.log(response);
+                window.location.href = response.redirectURL;
             }
         });
     }

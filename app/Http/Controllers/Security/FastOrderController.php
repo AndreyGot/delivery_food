@@ -20,6 +20,8 @@ class FastOrderController extends Controller
     {
         return view('admin.order.orderList', [
             'newFastOrders' => FastOrder::where(['order_status_id' => 1])->get(),
+            'handledFastOrders' => FastOrder::where(['order_status_id' => 2])->get(),
+            'archivedFastOrders' => FastOrder::where(['order_status_id' => 3])->get(),
         ]);
     }
 
@@ -34,7 +36,13 @@ class FastOrderController extends Controller
 
     public function changeOrderStatus(FastOrder $fastOrder, Request $request)
     {
-        $fastOrder->orderStatus()->associate();
-        return response()->json([__CLASS__]);
+        $fastOrder->orderStatus()->associate(OrderStatus::find($request->order_status_id));
+
+        $fastOrder->save();
+
+        return response()->json([
+            'redirectURL' => route('admin_order_list'),
+            'order_status_id' => $request->order_status_id,
+        ]);
     }
 }
