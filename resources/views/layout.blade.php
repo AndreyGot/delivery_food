@@ -43,9 +43,12 @@
             </div>
             <div class="col-md-4 col-sm-7">
                 <form class="main-header_form live-search-box" action="#">
-                    <input type="text" name="text" class="search live-search" autocomplete="off"
+                    <input  id="zz-searchByRestaurants" type="text" name="text" class="search live-search" autocomplete="off"
                            placeholder="Поиск">
                 </form>
+                <div id="zz-live_searchByRestaurants_result">
+
+                </div>
             </div>
             <div class="col-md-4 col-sm-3 text-right">
                 @if (Auth::guest())
@@ -126,6 +129,8 @@
     jQuery(function ($) {
         $("#phone").mask("+7(999) 999-99-99", {placeholder: " "});
     });
+    window.urlBag = {};
+    window.urlBag.searchByRestaurants = '{{ route('shop_search_byRestaurants') }}'
 </script>
 <script src="{{ asset('js/slick/slick.js') }}"></script>
 <script src="{{ asset('js/settings-slik.js') }}"></script>
