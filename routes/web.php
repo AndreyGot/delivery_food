@@ -38,7 +38,7 @@ Route::group([
 
     Route::get('editFormAddressUser/{userAddress}', 
         'Shop\ShopUserController@getEditFormUserAddress')->name('shop_getForm_user_address');
-    Route::post('editAddressUser', 'Shop\ShopUserController@editUserAddress')->name('shop_edit_user_address');
+    Route::post('editAddressUser/{userAddress}', 'Shop\ShopUserController@editUserAddress')->name('shop_edit_user_address');
 
     Route::get('deleteUserAddress/{userAddress}', 'Shop\ShopUserController@deleteUserAddress')->name('shop_delete_user_address');
 });
