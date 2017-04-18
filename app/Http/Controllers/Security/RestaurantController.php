@@ -74,6 +74,7 @@ class RestaurantController extends Controller
         }
         if (!empty($restaurant->restaurantContact)) {
             $restaurant->restaurantContact->delete();
+
         }
         $restaurant->delete();
         return redirect(route('admin_listRestaurant'));

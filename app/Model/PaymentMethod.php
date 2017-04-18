@@ -21,4 +21,14 @@ class PaymentMethod extends Model
 {
     protected $table = 'payment_method';
     public $timestamps = false;
+
+    public function fastOrders()
+    {
+        return $this->hasMany('App\Model\FastOrder');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Model\Order');
+    }
 }

@@ -7,11 +7,13 @@ use App\Model\Special;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 
 class IndexController extends Controller
 {
 	public function index()
 	{
+//	    dd(Cookie::get('orders'));
 		$restaurants = Restaurant::all();
 		$specials = Special::all();
 

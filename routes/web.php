@@ -20,6 +20,7 @@ Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name
 Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
 Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
 Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+Route::post('/search/byrestaurant', 'Shop\ShopRestaurantController@searchByRestaurants')->name('shop_search_byRestaurants');
 
 
 
@@ -38,7 +39,7 @@ Route::group([
 
     Route::get('editFormAddressUser/{userAddress}', 
         'Shop\ShopUserController@getEditFormUserAddress')->name('shop_getForm_user_address');
-    Route::post('editAddressUser', 'Shop\ShopUserController@editUserAddress')->name('shop_edit_user_address');
+    Route::post('editAddressUser/{userAddress}', 'Shop\ShopUserController@editUserAddress')->name('shop_edit_user_address');
 
     Route::get('deleteUserAddress/{userAddress}', 'Shop\ShopUserController@deleteUserAddress')->name('shop_delete_user_address');
 });
@@ -111,6 +112,13 @@ Route::group([
                 Route::post('edit/{food}', 'FoodController@editFood')->name('admin_food_edit');
 
             });
+            Route::group(['prefix' => 'order'], function () {
+                Route::get('list', 'FastOrderController@ordersList')->name('admin_order_list');
+                Route::group(['prefix' => 'fastorder'], function () {
+                    Route::get('show/{fastOrder}', 'FastOrderController@showOrder')->name('admin_order_fast_show');
+                    Route::post('changestatus/{fastOrder}', 'FastOrderController@changeOrderStatus')->name('admin_order_fast_changeStatus');
+                });
+            });
         });
 
         Route::get('login', 'SecurityController@showLoginForm')->name('admin_login_form');
@@ -140,7 +148,13 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('remove', 'CartController@removeProduct')->name('user_cart_remove');
         Route::post('remove/allbyproduct', 'CartController@removeAllByProduct')->name('user_cart_remove_allByProduct');
         Route::post('clear', 'CartController@clearCart')->name('user_cart_clear');
+    });
 
+    Route::group([
+        'prefix' => 'order',
+        'namespace' => 'Order'
+    ], function () {
+        Route::post('fastorder', 'OrderController@makeFastOrder')->name('user_order_fastOrder_make');
     });
 });
 

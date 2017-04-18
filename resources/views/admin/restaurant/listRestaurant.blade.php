@@ -1,5 +1,10 @@
 @extends('admin.mainTemplates.restaurant')
 
+@section('sideBar')
+    <a class="btn btn-success" href="{{ route('admin_listRestaurant') }}" role="button">Список ресторанов</a>
+    <a class="btn btn-success" href="{{ route('admin_addRestaurantForm') }}" role="button">Добавить ресторан</a>
+@endsection
+
 @section('content')
     <table class=" table table-hover">
         <tr>

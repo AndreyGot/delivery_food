@@ -10,6 +10,8 @@ namespace App\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Helper\ImageSaver;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class User
@@ -25,11 +27,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $phone_2
  * @property integer $bonus_score
  * @property integer $user_status_id
- *
+ * @property string $image
  */
 
 class Profile extends Model
 {
+    use ImageSaver;
     protected $table = 'profile';
     public $timestamps = false;
     protected $fillable = [
@@ -41,7 +44,8 @@ class Profile extends Model
         'last_login_date',  
         'phone_1', 
         'phone_2', 
-        'bonus_score'
+        'bonus_score',
+        'image'
     ];
 
     /*public function userStatus()
@@ -67,5 +71,36 @@ class Profile extends Model
     public function user()
     {
         return $this->hasOne('App\Model\User');
+    }
+
+    public function save(array $options = [])
+    {
+//        dd($this->uploadImage->getClientOriginalExtension());
+        /* @var User $user*/
+        $user = Auth::user();
+
+        $newImageName = $user->id .'_'. time();
+        $imagePath = config('custom.imageDirectories.user') . $user->nickname . '/';
+        if ($isFileUploaded = $this->uploadImage != null) {
+            // dd('here');
+            $originalExtension = $this->uploadImage->getClientOriginalExtension();
+            if ($originalExtension == 'jpeg') {
+                $originalExtension = 'jpg';
+            }
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $originalExtension);
+        }
+
+        if ($saved = parent::save($options)) {
+            if ($isFileUploaded) {
+                $this->saveImage($this->uploadImage->getRealPath(),
+                    $newImageName,
+                    $imagePath,
+                    config('custom.imageSize.user')
+                );
+            }
+
+        }
+
+        return $saved;
     }
 }
