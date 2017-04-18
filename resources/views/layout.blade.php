@@ -65,6 +65,9 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    @if(Auth::user()->userStatus->name == 'SUPER_ADMIN')
+                                        <a href="{{route('adminPanel')}}">Админ панель</a>
+                                    @endif
                                     <a href="{{route('shop_profile_user')}}">Мой профиль</a>
                                     <a href="{{route('shop_setting_profile_user')}}">Настройки профиля</a>
                                     <a href="{{route('shop_address_user')}}">Адреса</a>
@@ -133,7 +136,7 @@
 <script src="{{ asset('js/settings-slik.js') }}"></script>
 <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
 <script src="{{ asset('js/shop/shop.js') }}"></script>
-
+<script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 </html>

@@ -12,12 +12,14 @@ return[
     'imageDirectories' => [
         'restaurant' => IMAGES_PATH . 'restaurants/',
         'category' => IMAGES_PATH . 'categories/',
-        'food' => IMAGES_PATH . 'food/'
+        'food' => IMAGES_PATH . 'food/',
+        'user' => IMAGES_PATH . 'user/'
     ],
 
     'imageSize' => [
         'restaurant' => 500,
         'category' => 500,
         'food' => 500,
+        'user' => 500
     ],
 ];

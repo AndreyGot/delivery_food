@@ -16,87 +16,155 @@ use App\Model\UserAddress;
 
 class ShopUserController extends Controller
 {
+
 	public function profileUser()
 	{
-        $user = Auth::user();
+    $user = Auth::user();
+    $message = null;
+    if (is_null($user->profile_id)) {
+      $message = 'Пожалуйста введите свои данные';
+      $profile = new Profile;
+      $profile->first_name = $user->nickname;
+      return view('shop.user.mediumProfileForm', ['profile'=>$profile,
+        'userEmail'=>$user->email,
+        'message' => $message,
+        'action' => route('shop_profile_edd')
+      ]);
+    }
 
-        if (is_null($user->profile_id)) {
-          $profile = new Profile;
-        // dd($profile);
-
-          return view('shop.user.mediumProfileForm', ['profile'=>$profile,
-            'userEmail'=>$user->email,
-            'action' => route('shop_profile_edd')
-          ]);
-        }
-
-        $profile = $user->profile;
-
-    return view('shop.user.mediumProfileUser', ['profile'=>$profile, 'user'=>$user]);
+    $profile = $user->profile;
+    // dd($profile->image);
+    return view('shop.user.mediumProfileUser', ['profile'=>$profile, 'user'=>$user, ]);
   }
 
-  public function eddProfileUser(Profile $profile, UserRequest $request)
+  public function addProfileUser(UserRequest $request)
   {
+    $profile = new Profile();
     $user = Auth::user();
-    if (!$user->profile_id==null) {
+
+    if (!$user->profile_id == null) {
       return redirect(route('shop_profile_user'));
     }
+
     $data = $request->all();
-    $profile = $profile->fill($data);
+    $imageObj = $request->file('image_field');
+    // dd($data);
+    $profile->fill($data);
+    $profile->setUploadImage($imageObj); 
     $profile->registration_date = date("Y-m-d H:i:s");
     $profile->save();
-    // dd($profile->id);
+
     $user->profile_id = $profile->id;
     $user->save();
-    // dd($user->profile_id);
 
     return redirect(route('shop_profile_user'));
-
   }
+
 
   public function setingsProfileUser()
   {
     $user = Auth::user();
-    // dd($user->profile_id);
 
     if (empty ($user->profile_id)) {
-      dd('here profile_id = null');
+      $message = 'Пожалуйста введите свои данные';
+      $profile = new Profile;
+      // dd($profile);
+      $profile->first_name = $user->nickname;
+      return view('shop.user.mediumProfileForm', ['profile'=>$profile,
+        'userEmail'=>$user->email, 'message' => $message,  
+        'action' => route('shop_profile_edd')
+      ]);
     }
+
     $profile = $user->profile;
+    $message = null;
 
     return view('shop.user.mediumProfileForm', ['profile'=>$profile,
       'userEmail'=>$user->email,
+      'message' => $message,
       'action' => route('shop_profile_edit', [$profile])
     ]);
   }
 
   public function editProfileUser(Profile $profile, UserRequest $request)
   {
-
     $data = $request->all();
+    // dd($data);
+    $imageObj = $request->file('image_field');
+    if (!is_null($imageObj)) {
+        $profile->setUploadImage($imageObj);
+    }
     $profile->fill($data);
-    // dd($profile);
     $profile->save();
     
     return redirect(route('shop_profile_user'));
-    // $userEmail = $profileNew->user->email;
-    // dd($profileNew->id);
   }
 
-  public function addressUser(UserAddressRequest $request)
+  public function addressUser()
+  {
+    $user = Auth::user();
+    // dd($user->profile_id);
+    $message = 'Пожалуйста введите свои данные';
+
+    if (empty ($user->profile_id)) {
+      $profile = new Profile;
+      $profile->first_name = $user->nickname;
+      return view('shop.user.mediumProfileForm', ['profile'=>$profile,
+        'userEmail'=>$user->email,
+        'message' => $message,  
+        'action' => route('shop_profile_edd', [$profile])
+      ]);
+    }
+
+    $profile = $user->profile;
+    $userAddresses = $user->profile->userAddresses;
+    // dd($profile);
+    return view('shop.user.mediumAddressUser', ['profile'=>$profile, 
+      'userAddresses'=>$userAddresses, 
+      'action' => route('shop_add_user_address')
+    ]);
+  }
+
+  public function saveUserAddress(UserAddressRequest $request)
+  {
+    $user = Auth::user();
+    
+    $data = $request->all();
+    $userAddress = new UserAddress();
+    $userAddress->fill($data);
+    // dd($userAddress->profile_id);
+    $userAddress->profile_id = $user->profile_id;
+    $userAddress->save();
+    return redirect(route('shop_address_user'));
+  }
+
+  public function deleteUserAddress(UserAddress $userAddress)
+  {
+    $userAddress->delete();
+    return redirect(route('shop_address_user'));
+    // dd($userAddress);
+  }
+
+  public function getEditFormUserAddress(UserAddress $userAddress)
   {
     $user = Auth::user();
     $profile = $user->profile;
-    $userAddress = $user->profile->userAddresses;
-    // dd($profile);
-    return view('shop.user.mediumAddressUser', ['profile'=>$profile, 
-      'userAddress'=>$userAddress]
-    );
+    // dd($userAddress);
+    return view('shop.user.mediumAddressForm', ['profile'=>$profile,
+      'userAddress'=>$userAddress,
+      'action' => route('shop_edit_user_address', [$userAddress])
+    ]);
   }
 
-  public function saveUserAddress(UserAddress $userAddress)
+  public function editUserAddress(UserAddress $userAddress, UserAddressRequest $request)
   {
-    dd($userAddress);
+    $user = Auth::user();
+    $data = $request->all();
+    $userAddress->fill($data);
+    // dd($userAddress);
+    $userAddress->profile_id = $user->profile->id;
+    $userAddress->save();
+    return redirect(route('shop_address_user'));
   }
 }
 
