@@ -22,7 +22,9 @@ class ShopUserController extends Controller
     $user = Auth::user();
     $message = null;
     if (is_null($user->profile_id)) {
+      $message = 'Пожалуйста введите свои данные';
       $profile = new Profile;
+      $profile->first_name = $user->nickname;
       return view('shop.user.mediumProfileForm', ['profile'=>$profile,
         'userEmail'=>$user->email,
         'message' => $message,
@@ -31,7 +33,7 @@ class ShopUserController extends Controller
     }
 
     $profile = $user->profile;
-
+    // dd($profile->image);
     return view('shop.user.mediumProfileUser', ['profile'=>$profile, 'user'=>$user, ]);
   }
 
@@ -45,9 +47,11 @@ class ShopUserController extends Controller
     }
 
     $data = $request->all();
-    $profile = $profile->fill($data);
+    $imageObj = $request->file('image_field');
+    // dd($data);
+    $profile->fill($data);
+    $profile->setUploadImage($imageObj); 
     $profile->registration_date = date("Y-m-d H:i:s");
-    $profile->image = 'img';// это нужно будет убрать после настройки логики под картинки
     $profile->save();
 
     $user->profile_id = $profile->id;
@@ -56,10 +60,10 @@ class ShopUserController extends Controller
     return redirect(route('shop_profile_user'));
   }
 
+
   public function setingsProfileUser()
   {
     $user = Auth::user();
-    // dd($user->nickname);
 
     if (empty ($user->profile_id)) {
       $message = 'Пожалуйста введите свои данные';
@@ -86,6 +90,10 @@ class ShopUserController extends Controller
   {
     $data = $request->all();
     // dd($data);
+    $imageObj = $request->file('image_field');
+    if (!is_null($imageObj)) {
+        $profile->setUploadImage($imageObj);
+    }
     $profile->fill($data);
     $profile->save();
     
@@ -96,11 +104,11 @@ class ShopUserController extends Controller
   {
     $user = Auth::user();
     // dd($user->profile_id);
-    // dd($user);
     $message = 'Пожалуйста введите свои данные';
 
     if (empty ($user->profile_id)) {
       $profile = new Profile;
+      $profile->first_name = $user->nickname;
       return view('shop.user.mediumProfileForm', ['profile'=>$profile,
         'userEmail'=>$user->email,
         'message' => $message,  
