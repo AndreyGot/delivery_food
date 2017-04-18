@@ -96,6 +96,7 @@ class ShopUserController extends Controller
   {
     $user = Auth::user();
     // dd($user->profile_id);
+    // dd($user);
     $message = 'Пожалуйста введите свои данные';
 
     if (empty ($user->profile_id)) {
@@ -103,7 +104,7 @@ class ShopUserController extends Controller
       return view('shop.user.mediumProfileForm', ['profile'=>$profile,
         'userEmail'=>$user->email,
         'message' => $message,  
-        'action' => route('shop_profile_edd', [$userAddress])
+        'action' => route('shop_profile_edd', [$profile])
       ]);
     }
 
