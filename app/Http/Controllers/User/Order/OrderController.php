@@ -27,8 +27,6 @@ class OrderController extends Controller
         $cart = new CookieCart();
         $cartFoodList = $cart->getCartFoodList();
 
-//        dd();
-
         $data = $request->all();
         $fastOrder = new FastOrder();
         $fastOrder->fill($data);
@@ -42,8 +40,7 @@ class OrderController extends Controller
                 'actual_price' => $cartFood['food']->price
             ]);
         }
-        $cart->clearCart();
-//        dd($fastOrder);
-        return redirect()->route('main_index')->cookie($cart->clearCart());
+
+        return redirect()->route('main_index')->cookie($cart->convertCartToOrder($fastOrder->number))->cookie($cart->clearCart());
     }
 }

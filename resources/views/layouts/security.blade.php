@@ -60,4 +60,7 @@
 </div>
 
 </body>
+<script>
+    window.urlBag = {};
+</script>
 </html>

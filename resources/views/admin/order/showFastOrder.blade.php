@@ -36,6 +36,20 @@
         </tr>
     </table>
     <hr>
+    <div class="thumbnail">
+        <p><b>Адрес доставки</b></p>
+        <p>Улица: {{ $fastOrder->street or '' }}</p>
+        <p>Дом: {{ $fastOrder->house or '' }}</p>
+        <p>Квартира: {{ $fastOrder->flat or '' }}</p>
+    </div>
+    @if(!empty($fastOrder->description))
+        <div class="thumbnail">
+            {{ $fastOrder->description }}
+        </div>
+    @endif
+
+
+    <hr>
     <table class=" table table-hover">
         <tr>
             <th>Название</th>
@@ -79,8 +93,6 @@
         </tr>
     </table>
     <script>
-        window.urlBag = {
-            changeFastOrderStatus: '{{ route('admin_order_fast_changeStatus', [$fastOrder]) }}'
-        }
+        window.urlBag.changeFastOrderStatus = '{{ route('admin_order_fast_changeStatus', [$fastOrder]) }}';
     </script>
 @endsection

@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="col-xs-3 text-right">
-            <a href="" class="btn btn--orange">Оформить заказ</a>
+            <a href="{{ route('user_cart_show') }}" class="btn btn--orange">Оформить заказ</a>
         </div>
     </div>
 </div>

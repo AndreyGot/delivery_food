@@ -5,6 +5,11 @@ jQuery(document).ready(function ($) {
     $('.zz-btn_plus_product').bind('click', plusProduct);
     $('.zz-removeAllByProduct').bind('click', removeAllByProduct);
     $('#zz-btn_cart_clear').bind('click', cartClear);
+    var searchField = $('#zz-searchByRestaurants');
+    searchField.bind('input', searchByRestaurants);
+    searchField.bind('blur', function (event) {
+        $('.setip').remove();
+    });
 
 
     function addToCart(event) {
@@ -136,5 +141,35 @@ jQuery(document).ready(function ($) {
         var currentCount = countInput.val();
         var resultCount = +currentCount + 1;
         countInput.val(resultCount);
+    }
+
+    function searchByRestaurants(event) {
+        var searchField = $(event.target);
+        var resultContainer = $('.setip');
+
+        if (searchField.val().length >= 3) {
+            $.ajax({
+                url: urlBag.searchByRestaurants,
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    search_request: searchField.val()
+                },
+                success: function (response) {
+                    console.log(resultContainer.length);
+                    if (!resultContainer.length) {
+                        resultContainer = $('<div class="setip"></div>');
+                        searchField.parent().append(resultContainer);
+                    }
+                    resultContainer.html(response);
+                    // searchField.parent().append($(response))
+                }
+            })
+        } else {
+            resultContainer.remove();
+        }
+;
     }
 });

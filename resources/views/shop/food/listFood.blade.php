@@ -43,9 +43,7 @@
 	    </div>
 	</div>
 	<script>
-		window.urlBag = {
-		    addToCart: '{{ route('user_cart_add') }}'
-		};
+		window.urlBag.addToCart = '{{ route('user_cart_add') }}';
 	</script>
 @endsection
 

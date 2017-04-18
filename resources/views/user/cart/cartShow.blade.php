@@ -139,11 +139,9 @@
 
     </div>
     <script>
-        window.urlBag = {
-            removeFromCart: '{{ route('user_cart_remove') }}',
-            addToCart: '{{ route('user_cart_add') }}',
-            removeAllByProduct: '{{ route('user_cart_remove_allByProduct') }}',
-            cartClear: '{{ route('user_cart_clear') }}'
-        };
+        window.urlBag.removeFromCart = '{{ route('user_cart_remove') }}';
+        window.urlBag.addToCart = '{{ route('user_cart_add') }}';
+        window.urlBag.removeAllByProduct = '{{ route('user_cart_remove_allByProduct') }}';
+        window.urlBag.cartClear = '{{ route('user_cart_clear') }}';
     </script>
 @endsection

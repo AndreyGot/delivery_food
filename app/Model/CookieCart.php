@@ -17,11 +17,15 @@ class CookieCart
 {
     private $cart = [];
     private $cartSummary = [];
+    private $orderList = [];
+
     const CART_LIFETIME = 365 * 24 * 60;
 
     public function __construct()
     {
         $this->cart = Cookie::get('cart');
+        $this->orderList = Cookie::get('orders');
+
 
         if (!empty($this->cart)) {
 
@@ -59,23 +63,6 @@ class CookieCart
     public function isEmpty()
     {
         return empty($this->cart);
-    }
-    
-    private function buildCartSummary(array $cartData)
-    {
-        $foodList = $this->buildFoodList($cartData);
-        /* @var Food $food */
-        $summaryData = [
-            'totalCount' => 0,
-            'totalCost' => 0,
-        ];
-        foreach ($foodList as $food) {
-            $foodPrice = (double)$food->price;
-            $summaryData['totalCost'] += (int)$cartData[$food->id]['quantity'] * $foodPrice;
-            $summaryData['totalCount'] += (int)$cartData[$food->id]['quantity'];
-        }
-
-        return $summaryData;
     }
 
     /**
@@ -135,6 +122,28 @@ class CookieCart
         return $this->generateCartCookie();
     }
 
+    public function convertCartToOrder($orderNumber)
+    {
+        return $this->generateOrderCookie($orderNumber);
+    }
+
+    private function buildCartSummary(array $cartData)
+    {
+        $foodList = $this->buildFoodList($cartData);
+        /* @var Food $food */
+        $summaryData = [
+            'totalCount' => 0,
+            'totalCost' => 0,
+        ];
+        foreach ($foodList as $food) {
+            $foodPrice = (double)$food->price;
+            $summaryData['totalCost'] += (int)$cartData[$food->id]['quantity'] * $foodPrice;
+            $summaryData['totalCount'] += (int)$cartData[$food->id]['quantity'];
+        }
+
+        return $summaryData;
+    }
+
     private function buildFoodList($cartData)
     {
         $foodIdList = array_keys($cartData);
@@ -149,5 +158,13 @@ class CookieCart
         $this->cartSummary = $this->buildCartSummary($cartCookie->getValue());
 
         return $cartCookie;
+    }
+
+    private function generateOrderCookie($orderNumber)
+    {
+
+        $this->orderList[$orderNumber] = $this->getCart();
+
+        return cookie('orders', $this->orderList, self::CART_LIFETIME);
     }
 }
