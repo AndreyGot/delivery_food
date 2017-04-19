@@ -14,11 +14,15 @@ use App\Model\CookieCart;
 use App\Model\FastOrder;
 use App\Model\OrderStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     public function makeFastOrder(Request $request)
     {
+        if (Auth::check()) {
+            return redirect()->route('user_order_userOrder_make');
+        }
         $orderStatus = OrderStatus::where(['name' => 'Новый'])->first();
         if (empty($orderStatus)) {
             $orderStatus = UserStatus::create(['name' => 'Новый']);
@@ -42,5 +46,10 @@ class OrderController extends Controller
         }
 
         return redirect()->route('main_index')->cookie($cart->convertCartToOrder($fastOrder->number))->cookie($cart->clearCart());
+    }
+
+    public function makeUserOrder()
+    {
+        return response(__METHOD__);
     }
 }
