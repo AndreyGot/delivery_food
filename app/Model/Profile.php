@@ -36,7 +36,6 @@ class Profile extends Model
     protected $table = 'profile';
     public $timestamps = false;
     protected $fillable = [
-        'id', 
         'first_name', 
         'second_name', 
         'birth_date', 
