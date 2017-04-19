@@ -155,7 +155,7 @@ Route::group(['namespace' => 'User'], function () {
         'namespace' => 'Order'
     ], function () {
         Route::post('fastorder', 'OrderController@makeFastOrder')->name('user_order_fastOrder_make');
-        Route::post('order', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
+        Route::post('make', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
     });
 });
 

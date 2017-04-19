@@ -5,6 +5,7 @@ jQuery(document).ready(function ($) {
     $('.zz-btn_plus_product').bind('click', plusProduct);
     $('.zz-removeAllByProduct').bind('click', removeAllByProduct);
     $('#zz-btn_cart_clear').bind('click', cartClear);
+
     var searchField = $('#zz-searchByRestaurants');
     searchField.bind('input', searchByRestaurants);
     searchField.bind('blur', function (event) {

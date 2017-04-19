@@ -46,7 +46,7 @@ class ShopUserController extends Controller
 
     $data = $request->all();
     $profile = $profile->fill($data);
-    $profile->registration_date = date("Y-m-d H:i:s");
+//    $profile->registration_date = date("Y-m-d H:i:s");
     $profile->image = 'img';// это нужно будет убрать после настройки логики под картинки
     $profile->save();
 

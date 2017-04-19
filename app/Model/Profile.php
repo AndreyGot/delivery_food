@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $phone_1
  * @property string $phone_2
  * @property integer $bonus_score
+ * @property string $image
  * @property integer $user_status_id
  *
  */
@@ -33,8 +34,7 @@ class Profile extends Model
     protected $table = 'profile';
     public $timestamps = false;
     protected $fillable = [
-        'id', 
-        'first_name', 
+        'first_name',
         'second_name', 
         'birth_date', 
         'registration_date', 
@@ -68,4 +68,16 @@ class Profile extends Model
     {
         return $this->hasOne('App\Model\User');
     }
+
+    public function save(array $options = [])
+    {
+        if (empty($this->registration_date)) {
+            //        date_default_timezone_set('Europe/Kiev');
+            $this->registration_date = date("Y-m-d H:i:s");
+        }
+
+        return parent::save($options);
+    }
+
+
 }
