@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $flat
  * @property string $description
  * @property string $profile_id
+ * @property Profile $profile
  */
 class UserAddress extends Model
 {
@@ -37,8 +38,13 @@ class UserAddress extends Model
 				'profile_id'
     ];
 
-    public function user()
+    public function profile()
     {
         return $this->belongsTo('App\Model\Profile');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Model\Order');
     }
 }

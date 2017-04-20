@@ -3,7 +3,7 @@
         <div class="row main-footer_top">
             <div class="col-md-8 col-sm-8">
                 <figure class="main-footer_logo">
-                    <a href="#"><img src="{{ asset('img/logo.png') }}" style="width: 100%;"
+                    <a href="#"><img src="{{ asset('img/logo.jpg') }}" style="width: 100%;"
                                               alt="ресторанов много, сайт – один"></a>
                 </figure>
                 <p>© 2013-2017 Сочи. <strong>Ресторанов много, сайт – один.</strong></p>
@@ -18,7 +18,7 @@
             </div>
             <!--/noindex-->
         </div>
-        <div class="row main-footer_top">
+        <div class="row main-footer_top main-footer_bot">
             <div class="col-md-6 col-sm-6">
                 <ul class="main-footer_nav">
                     <!--noindex-->
@@ -30,18 +30,9 @@
 
                     <li><a href="#">Бонусные баллы</a></li>
                 </ul>
-                <ul class="main-footer_nav main-footer_nav--mod">
-                    <li><a href="#">Доставка пиццы</a></li>
-                    <li><a href="#">Доставка суши</a></li>
-                    <li><a href="#">Доставка еды</a></li>
-                    <li><a href="#">Доставка продуктов</a></li>
-                </ul>
-
             </div>
             <div class="col-md-6 col-sm-6 text-right">
-
                 <a rel="nofollow" href="#" class="main-footer_ico-link icon-gift">Подарки от F1 </a>
-
                 <a href="#" class="btn btn--grey btn--footer" data-toggle="modal" data-target="#myModal"><i
                             class="ico-convert"></i>Написать нам</a>
             </div>

@@ -50,6 +50,7 @@ class CartController extends Controller
         return view( $view, [
             'cartFoodList' => $cartFoodList,
             'cartSummary' => $cart->getCartSummary(),
+            'action' => Auth::check() ? route('user_order_userOrder_make') : route('user_order_fastOrder_make'),
         ]);
     }
 

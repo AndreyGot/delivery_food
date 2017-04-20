@@ -10,6 +10,9 @@
     <div class="row">
       <div class="col-xs-2">
         <p>Номер: {{ $order->number }}</p>
+      </div>       
+
+      <div class="col-xs-2">
         <p>Статус: {{ $order->order_status_id }}</p>
       </div> 
 
