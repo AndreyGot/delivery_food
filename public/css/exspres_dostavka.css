@@ -2811,7 +2811,7 @@ fieldset {
 
 .main-footer_logo img {
     display: block;
-    width: 47px;
+    width: 47px !important;
     height: 50px
 }
 
