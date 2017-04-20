@@ -6,7 +6,8 @@
 
     <div class="row">
       <div class="col-xs-3">
-        <p>Здесь foto</p>
+
+        <img src="{{ asset($profile->image) }}" height="160" width="160">
       </div>
       <div class="col-xs-2">
         <p>{{ $profile->first_name }}</p>
