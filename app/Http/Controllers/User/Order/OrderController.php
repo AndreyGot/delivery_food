@@ -117,7 +117,8 @@ class OrderController extends Controller
             Auth::user()->save();
 
         }
-        if (empty(Auth::user()->profile->userAdresses)) {
+//        dd(Auth::user()->profile->userAddresses);
+        if (Auth::user()->profile->userAddresses->isEmpty()) {
             $userAddress = new UserAddress();
             $userAddress->fill($data);
             $userAddress->profile()->associate(Auth::user()->profile);
