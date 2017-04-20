@@ -146,8 +146,12 @@ class CookieCart
 
     private function buildFoodList($cartData)
     {
-        $foodIdList = array_keys($cartData);
-        $foodList = Food::find($foodIdList);
+        $foodList = [];
+        if (!empty($cartData)) {
+            $foodIdList = array_keys($cartData);
+            $foodList = Food::find($foodIdList);
+        }
+
 
         return $foodList;
     }

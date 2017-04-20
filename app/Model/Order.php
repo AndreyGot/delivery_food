@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $creation_date
  * @property string $delivery_date
  * @property string $description
+ * @property Profile $profile
  * @property integer $user_id
  * @property integer $order_status_id
  */
@@ -26,6 +27,7 @@ class Order extends Model
 {
     protected $table = 'order';
     public $timestamps = false;
+    protected $fillable = ['description'];
 
     public function orderStatus()
     {
@@ -57,4 +59,22 @@ class Order extends Model
 
         return $totalPrice;
     }
+
+    public function userAddress()
+    {
+        return $this->belongsTo('App\Model\UserAddress');
+    }
+
+    public function save(array $options = [])
+    {
+//        date_default_timezone_set('Europe/Kiev');
+        $date = new \DateTime();
+
+        $formattedDate = $date->format('Y-m-d H:i:s');
+        $this->creation_date = $formattedDate;
+        $this->delivery_date = $formattedDate;
+
+        return parent::save($options);
+    }
+
 }
