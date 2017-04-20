@@ -33,7 +33,7 @@ class ShopUserController extends Controller
     }
 
     $profile = $user->profile;
-    // dd($profile->image);
+
     return view('shop.user.mediumProfileUser', ['profile'=>$profile, 'user'=>$user, ]);
   }
 
@@ -48,7 +48,7 @@ class ShopUserController extends Controller
 
     $data = $request->all();
     $imageObj = $request->file('image_field');
-    // dd($data);
+
     $profile->fill($data);
     $profile->setUploadImage($imageObj); 
     $profile->registration_date = date("Y-m-d H:i:s");
@@ -60,10 +60,10 @@ class ShopUserController extends Controller
     return redirect(route('shop_profile_user'));
   }
 
-
   public function setingsProfileUser()
   {
     $user = Auth::user();
+
 
     if (empty ($user->profile_id)) {
       $message = 'Пожалуйста введите свои данные';

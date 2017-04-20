@@ -26,8 +26,9 @@ use Illuminate\Support\Facades\Auth;
  * @property string $phone_1
  * @property string $phone_2
  * @property integer $bonus_score
- * @property integer $user_status_id
  * @property string $image
+ * @property integer $user_status_id
+ *
  */
 
 class Profile extends Model
@@ -36,8 +37,7 @@ class Profile extends Model
     protected $table = 'profile';
     public $timestamps = false;
     protected $fillable = [
-        'id', 
-        'first_name', 
+        'first_name',
         'second_name', 
         'birth_date', 
         'registration_date', 
@@ -75,7 +75,6 @@ class Profile extends Model
 
     public function save(array $options = [])
     {
-//        dd($this->uploadImage->getClientOriginalExtension());
         /* @var User $user*/
         $user = Auth::user();
 
@@ -88,6 +87,11 @@ class Profile extends Model
                 $originalExtension = 'jpg';
             }
             $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $originalExtension);
+        }
+
+        if (empty($this->registration_date)) {
+            //        date_default_timezone_set('Europe/Kiev');
+            $this->registration_date = date("Y-m-d H:i:s");
         }
 
         if ($saved = parent::save($options)) {
