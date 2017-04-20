@@ -35,7 +35,7 @@ class Order extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function profile()
     {
         return $this->belongsTo('App\Model\Profile');
     }
@@ -43,5 +43,18 @@ class Order extends Model
     public function foods()
     {
         return $this->belongsToMany('App\Model\Food', 'order_has_food')->withPivot('actual_price', 'quantity');
+    }
+
+    public function getTotal()
+    {
+        $totalPrice = 0;
+        $foods = $this->foods;
+        foreach ($foods as $food) {
+            $foodPrice = (double)$food->pivot->actual_price;
+            $quantity = (int)$food->pivot->quantity;
+            $totalPrice += (int)$quantity * $foodPrice;
+        }
+
+        return $totalPrice;
     }
 }

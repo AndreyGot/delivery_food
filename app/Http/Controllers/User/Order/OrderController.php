@@ -10,12 +10,14 @@ namespace App\Http\Controllers\User\Order;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Model\CookieCart;
 use App\Model\FastOrder;
 use App\Model\OrderStatus;
 use App\Model\Order;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Model\User;
 
 class OrderController extends Controller
 {
@@ -56,8 +58,9 @@ class OrderController extends Controller
         /* @var $order Order*/
         $user = Auth::user();
         $profile = $user->profile;
-        $orders = Order::where('profile_id', $profile->id)->get();
-//        dd($orders);
+        $orders = $profile->orders;
+       // dd($orders);
+        // $orders = Order::where('profile_id', $profile->id)->get();
         foreach ($orders as $order) {
             $order->order_status_id = $order->orderStatus->name;
 //            dd($order->order_status_id );
@@ -68,10 +71,18 @@ class OrderController extends Controller
 
     public function OrderDetails(Order $order)
     {
+        $order->order_status_id = $order->orderStatus->name;
+        $foods = $order->foods;
+        $profile = $order->profile;
 
-        // dd($order->foods[0]->pivot->actual_price);
-        // dd($order->foods[0]->pivot->quantity);
-        dd($order->foods);
+        $totalPrice = $order->getTotal();
+        // dd($totalPrice);
+        return view('user.order.orderDetails', [
+            'profile'=>$profile, 
+            'order'=>$order, 
+            'foods'=>$foods,
+            'totalPrice'=>$totalPrice
+        ]);
     }
 
     public function makeUserOrder()
