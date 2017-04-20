@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Food;
 use App\Model\Category;
+use App\Model\Restaurant;
 
 class ShopFoodController extends Controller
 {
-    public function filterByCategory(Category $category)
+    public function filterByCategory(Restaurant $restaurant, Category $category)
     {
         $foods = Food::where('category_id', $category->id)->get();
         $restaurant = $category->restaurant;

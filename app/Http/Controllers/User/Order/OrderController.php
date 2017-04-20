@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Model\CookieCart;
 use App\Model\FastOrder;
 use App\Model\OrderStatus;
+use App\Model\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +46,32 @@ class OrderController extends Controller
             ]);
         }
 
-        return redirect()->route('main_index')->cookie($cart->convertCartToOrder($fastOrder->number))->cookie($cart->clearCart());
+        return redirect()->route('main_index')
+                         ->cookie($cart->convertCartToOrder($fastOrder->number))
+                         ->cookie($cart->clearCart());
+    }
+
+    public function getUserOrders()
+    {
+        /* @var $order Order*/
+        $user = Auth::user();
+        $profile = $user->profile;
+        $orders = Order::where('profile_id', $profile->id)->get();
+//        dd($orders);
+        foreach ($orders as $order) {
+            $order->order_status_id = $order->orderStatus->name;
+//            dd($order->order_status_id );
+        }
+        $status = 'order_status_id';
+        return view('user.order.orderList', ['profile'=>$profile, 'user'=>$user, 'orders'=>$orders ]);
+    }
+
+    public function OrderDetails(Order $order)
+    {
+
+        // dd($order->foods[0]->pivot->actual_price);
+        // dd($order->foods[0]->pivot->quantity);
+        dd($order->foods);
     }
 
     public function makeUserOrder()

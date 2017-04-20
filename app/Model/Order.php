@@ -42,6 +42,6 @@ class Order extends Model
 
     public function foods()
     {
-        return $this->belongsToMany('App\Model\Food', 'oder_has_food')->withPivot('actual_price', 'quantity');
+        return $this->belongsToMany('App\Model\Food', 'order_has_food')->withPivot('actual_price', 'quantity');
     }
 }

@@ -88,11 +88,20 @@ class ShopUserController extends Controller
 
   public function editProfileUser(Profile $profile, UserRequest $request)
   {
+    $real_path = dirname(__FILE__);
+    $path_to_root =  stristr($real_path, 'app', true);
+    $path_to_image = 'public'.$profile->image;
+    $full_path = $path_to_root.$path_to_image;
+    // dd($full_path);
+
     $data = $request->all();
-    // dd($data);
     $imageObj = $request->file('image_field');
+
     if (!is_null($imageObj)) {
-        $profile->setUploadImage($imageObj);
+      if (file_exists($full_path)) {
+        unlink($full_path);
+      }
+      $profile->setUploadImage($imageObj);
     }
     $profile->fill($data);
     $profile->save();
