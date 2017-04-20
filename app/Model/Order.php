@@ -47,6 +47,11 @@ class Order extends Model
         return $this->belongsToMany('App\Model\Food', 'order_has_food')->withPivot('actual_price', 'quantity');
     }
 
+    public function userAddress()
+    {
+        return $this->belongsTo('App\Model\UserAddress');
+    }
+
     public function save(array $options = [])
     {
 //        date_default_timezone_set('Europe/Kiev');

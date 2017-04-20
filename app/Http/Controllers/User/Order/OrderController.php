@@ -15,6 +15,7 @@ use App\Model\FastOrder;
 use App\Model\Order;
 use App\Model\OrderStatus;
 use App\Model\Profile;
+use App\Model\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,7 +71,6 @@ class OrderController extends Controller
             $profile->fill($data);
             $profile->first_name = $data['customer_name'];
             $profile->phone_1 = $data['phone'];
-            $profile->image = 'img';
 
 
             $profile->user()->save(Auth::user());
@@ -80,15 +80,19 @@ class OrderController extends Controller
 
             Auth::user()->save();
 
-//            dd($profile, Auth::user());
-
-//            Auth::user()->profile()->associate($profile);
-//            dd($profile, $data);
+        }
+        if (empty(Auth::user()->profile->userAdresses)) {
+            $userAddress = new UserAddress();
+            $userAddress->fill($data);
+            $userAddress->profile()->associate(Auth::user()->profile);
+            $userAddress->save();
+        } else {
+            $userAddress = UserAddress::find($data['user_address_id']);
         }
 
         $order->profile()->associate(Auth::user()->profile);
+        $order->userAddress()->associate($userAddress);
         $order->save();
-
         foreach ($cartFoodList as $cartFood) {
             $order->foods()->save($cartFood['food'], [
                 'quantity' => $cartFood['quantity'],
