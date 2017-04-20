@@ -21,6 +21,9 @@ class OrderController extends Controller
 {
     public function makeFastOrder(Request $request)
     {
+        if (Auth::check()) {
+            return redirect()->route('user_order_userOrder_make');
+        }
         $orderStatus = OrderStatus::where(['name' => 'Новый'])->first();
         if (empty($orderStatus)) {
             $orderStatus = UserStatus::create(['name' => 'Новый']);
@@ -69,5 +72,10 @@ class OrderController extends Controller
         // dd($order->foods[0]->pivot->actual_price);
         // dd($order->foods[0]->pivot->quantity);
         dd($order->foods);
+    }
+
+    public function makeUserOrder()
+    {
+        return response(__METHOD__);
     }
 }

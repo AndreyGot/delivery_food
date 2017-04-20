@@ -23,8 +23,8 @@
     <script>
         window.Laravel = '<?php echo json_encode([
                 'csrfToken' => csrf_token(),
-        ]); ?>'
-
+        ]); ?>';
+        window.urlBag = {};
     </script>
 </head>
 <body>
@@ -129,7 +129,6 @@
     jQuery(function ($) {
         $("#phone").mask("+7(999) 999-99-99", {placeholder: " "});
     });
-    window.urlBag = {};
     window.urlBag.searchByRestaurants = '{{ route('shop_search_byRestaurants') }}'
 </script>
 <script src="{{ asset('js/slick/slick.js') }}"></script>
