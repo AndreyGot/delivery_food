@@ -48,12 +48,9 @@ class ShopUserController extends Controller
 
     $data = $request->all();
     $imageObj = $request->file('image_field');
-    // dd($data);
     $profile->fill($data);
-    $profile->setUploadImage($imageObj);
+    $profile->setUploadImage($imageObj); 
     $profile->registration_date = date("Y-m-d H:i:s");
-
-//    $profile->registration_date = date("Y-m-d H:i:s");
     $profile->save();
 
     $user->profile_id = $profile->id;
@@ -62,18 +59,20 @@ class ShopUserController extends Controller
     return redirect(route('shop_profile_user'));
   }
 
+
   public function setingsProfileUser()
   {
     $user = Auth::user();
-    // dd($user->nickname);
 
     if (empty ($user->profile_id)) {
       $message = 'Пожалуйста введите свои данные';
       $profile = new Profile;
       // dd($profile);
       $profile->first_name = $user->nickname;
-      return view('shop.user.mediumProfileForm', ['profile'=>$profile,
-        'userEmail'=>$user->email, 'message' => $message,  
+      return view('shop.user.mediumProfileForm', [
+        'profile'=>$profile,
+        'userEmail'=>$user->email,
+        'message' => $message,
         'action' => route('shop_profile_edd')
       ]);
     }
@@ -81,7 +80,8 @@ class ShopUserController extends Controller
     $profile = $user->profile;
     $message = null;
 
-    return view('shop.user.mediumProfileForm', ['profile'=>$profile,
+    return view('shop.user.mediumProfileForm', [
+      'profile'=>$profile,
       'userEmail'=>$user->email,
       'message' => $message,
       'action' => route('shop_profile_edit', [$profile])
@@ -90,11 +90,30 @@ class ShopUserController extends Controller
 
   public function editProfileUser(Profile $profile, UserRequest $request)
   {
+    // dd($profile);
+    if ($profile->image == null) {
+      $data = $request->all();
+      $imageObj = $request->file('image_field');
+      $profile->fill($data);
+      $profile->setUploadImage($imageObj);
+      $profile->save();
+
+      return redirect(route('shop_profile_user'));
+    }
+
+    $real_path = dirname(__FILE__);
+    $path_to_root =  stristr($real_path, 'app', true);
+    $path_to_image = 'public'.$profile->image;
+    $full_path = $path_to_root.$path_to_image;
+
     $data = $request->all();
-    // dd($data);
     $imageObj = $request->file('image_field');
+
     if (!is_null($imageObj)) {
-        $profile->setUploadImage($imageObj);
+      if (file_exists($full_path)) {
+        unlink($full_path);
+      }
+      $profile->setUploadImage($imageObj);
     }
     $profile->fill($data);
     $profile->save();
@@ -144,14 +163,14 @@ class ShopUserController extends Controller
   {
     $userAddress->delete();
     return redirect(route('shop_address_user'));
-    // dd($userAddress);
+
   }
 
   public function getEditFormUserAddress(UserAddress $userAddress)
   {
     $user = Auth::user();
     $profile = $user->profile;
-    // dd($userAddress);
+
     return view('shop.user.mediumAddressForm', ['profile'=>$profile,
       'userAddress'=>$userAddress,
       'action' => route('shop_edit_user_address', [$userAddress])
@@ -163,7 +182,7 @@ class ShopUserController extends Controller
     $user = Auth::user();
     $data = $request->all();
     $userAddress->fill($data);
-    // dd($userAddress);
+
     $userAddress->profile_id = $user->profile->id;
     $userAddress->save();
     return redirect(route('shop_address_user'));

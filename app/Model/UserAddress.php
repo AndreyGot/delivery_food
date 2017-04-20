@@ -28,7 +28,15 @@ class UserAddress extends Model
 {
     protected $table = 'user_address';
     public $timestamps = false;
-    protected $fillable = ['id', 'region', 'city', 'street', 'house', 'flat', 'description', 'profile_id'];
+    protected $fillable =[
+    		'region', 
+				'city',
+				'street',
+				'house',
+				'flat',
+				'description',
+				'profile_id'
+    ];
 
     public function profile()
     {

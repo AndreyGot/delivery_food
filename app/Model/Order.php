@@ -47,6 +47,19 @@ class Order extends Model
         return $this->belongsToMany('App\Model\Food', 'order_has_food')->withPivot('actual_price', 'quantity');
     }
 
+    public function getTotal()
+    {
+        $totalPrice = 0;
+        $foods = $this->foods;
+        foreach ($foods as $food) {
+            $foodPrice = (double)$food->pivot->actual_price;
+            $quantity = (int)$food->pivot->quantity;
+            $totalPrice += (int)$quantity * $foodPrice;
+        }
+
+        return $totalPrice;
+    }
+
     public function userAddress()
     {
         return $this->belongsTo('App\Model\UserAddress');

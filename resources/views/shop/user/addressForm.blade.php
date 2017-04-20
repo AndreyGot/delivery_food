@@ -2,11 +2,6 @@
     <form method="POST" action="{{ $action }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
-        <div>
-            <input id="id" type="hidden" class="form-control" name="id"
-                       value="{{ $userAddress->id }}">
-        </div>
-
         <div class="form-group">
             <label for="region" class="col-md-4 control-label">region</label>
             <div class="col-md-6">
