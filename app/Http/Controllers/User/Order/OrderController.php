@@ -27,7 +27,7 @@ class OrderController extends Controller
     {
         $orderStatus = OrderStatus::where(['name' => 'Новый'])->first();
         if (empty($orderStatus)) {
-            $orderStatus = UserStatus::create(['name' => 'Новый']);
+            $orderStatus = OrderStatus::create(['name' => 'Новый']);
         }
 
         $cart = new CookieCart();
