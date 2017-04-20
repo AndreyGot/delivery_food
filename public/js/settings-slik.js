@@ -12,7 +12,7 @@ $('.slider-slick').slick({
             }
         },
         {
-            breakpoint: 550,
+            breakpoint: 600,
             settings: {
                 slidesToShow: 1
             }

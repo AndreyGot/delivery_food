@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-2">
                 <figure class="logo" style="position:relative;">
-                    <a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}"
+                    <a href="{{ url('/') }}"><img src="{{ asset('img/logo.jpg') }}"
                                                   alt="бесплатный сервис по заказу еды"></a>
                 </figure>
             </div>
@@ -92,22 +92,8 @@
     <div class="main-header_bottom">
         <div class="container">
             <div class="header_text">
-                Куда доставить еду?
+                Самая быстрая доставка еды в городе Сочи!
             </div>
-            <form class="header_box">
-                <div class="header_city tooltip">
-                    <a href="#" class="tooltip_title js-toggle-tooltip" id="current-city">Сочи</a>
-
-                </div>
-                <div class="header_street">
-                    <input name="street" tabindex="1" placeholder="Укажите улицу" data-value="" value=""
-                           type="text">
-                </div>
-                <div class="header_house">
-                    <input name="house" tabindex="2" placeholder="Дом" data-value="" value="" type="text">
-                </div>
-                <button type="submit" class="header_button btn">Найти рестораны</button>
-            </form>
         </div>
     </div>
 </header>
