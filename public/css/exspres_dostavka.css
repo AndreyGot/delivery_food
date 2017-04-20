@@ -9321,5 +9321,24 @@ a.restoran-item:hover .restoran-item_title {
         top: 12px;
     }
 }
-.main-footer_logo img
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #d94032;
+    border-color: #d94032;
+}
+.btn-primary{
+    color: #fff;
+    background-color: #d94032;
+    border-color: #d94032;
+}
+.btn-primary:hover{
+    background: #484747;
+}
+.btn-link{color:#484747;}
+.btn-link:hover{
+    color:#d94032;
+}
+input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
+    color: #d94032;
+}
 
