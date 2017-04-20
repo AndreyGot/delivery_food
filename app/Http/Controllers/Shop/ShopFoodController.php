@@ -12,14 +12,12 @@ class ShopFoodController extends Controller
 {
     public function filterByCategory(Restaurant $restaurant, Category $category)
     {
-        $restaurant = $category->restaurant;
         $category = Category::where([
             'restaurant_id' => $restaurant->id,
             'alias' => $category->alias
         ])->first();
 
         $foods = Food::where(['category_id' => $category->id])->get();
-
         
         return view('shop.food.listFood',[
             'foods' => $foods,
