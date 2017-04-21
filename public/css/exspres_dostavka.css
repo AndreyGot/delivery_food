@@ -220,10 +220,10 @@ th {
     display: none
 }
 
-.sprite {
-    background: url(../img/context/sprite.png) no-repeat;
-    display: block
-}
+/*.sprite {*/
+/*background: url(../img/context/sprite.png) no-repeat;*/
+/*display: block*/
+/*}*/
 
 .sprite.sprite-catalog {
     background-position: -753px -447px;
@@ -8998,18 +8998,6 @@ a.restoran-item:hover .restoran-item_title {
     background-position: -330px -346px;
 }
 
-.sprite.sprite-ico-rocket-w {
-    background-position: -10px -146px;
-}
-
-.sprite.sprite-ico-timer-2 {
-    background-position: -519px -266px;
-}
-
-.sprite.sprite-ico-viza {
-    background-position: -776px -266px;
-}
-
 .js-tab-control:hover {
     background: #d94032 !important;
     border: 1px solid white;
@@ -9048,8 +9036,12 @@ a.restoran-item:hover .restoran-item_title {
     background-position: -516px -861px;
 }
 
-.sprite.sprite-instr {
-    background-position: -308px -514px;
+.new-header--mod .sprite-fire {
+    background: url(../img/context/sprite.png) no-repeat;
+}
+
+.new-header-3 .sprite-heart {
+    background: url(../img/context/sprite.png) no-repeat;
 }
 
 .sprite.sprite-fire {
@@ -9137,8 +9129,9 @@ a.restoran-item:hover .restoran-item_title {
 
 /*END slik*/
 /*bloc 3*/
-.sprite.sprite-burder {
-    background-position: 0 -547px;
+.sprite .sprite-burde {
+    background: url(../img/context/sprite.png) no-repeat;
+    display: block;
 }
 
 .sprite.sprite-mobile {
@@ -9410,19 +9403,22 @@ input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
 .restoran-item--promo:hover .restoran-item--box {
     display: block;
 }
+
 .product-item_title2 {
     height: auto;
 }
-@media all and (max-width: 768px){
-.product-item {
-    margin: 15px 0;
-}
+
+@media all and (max-width: 768px) {
+    .product-item {
+        margin: 15px 0;
+    }
+
     .restoran-item--promo:hover .restoran-item--box {
         display: none;
     }
 }
 
-.btn-info3{
+.btn-info3 {
     color: white;
     text-decoration: none;
     display: block;
@@ -9432,30 +9428,155 @@ input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
     background: #d94032;
     border-radius: 12px;
 }
+
 .btn-info3:hover,
 .btn-info3:active,
-.btn-info3:focus{
+.btn-info3:focus {
     color: white;
     text-decoration: none;
-    background:#484747;
+    background: #484747;
     transition: .4s;
 }
-input[type="radio"]:checked + label::after, input[type="checkbox"]:checked + label::after{
+
+input[type="radio"]:checked + label::after, input[type="checkbox"]:checked + label::after {
     background: url(../img/context/sprite.png) no-repeat -377px 0;
 }
 
-
-.sort-block--interactive .sort-block_header::after{
+.sort-block--interactive .sort-block_header::after {
     background: url(../img/context/sprite2.png) no-repeat -684px -156px;
 }
+
 input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
     color: #d94032;
 }
-@media all and (max-width: 992px){
+
+@media all and (max-width: 992px) {
     .sort-block_header,
-    .sort-block_header{text-align: center;}
-    .restoran-item_image img{
+    .sort-block_header {
+        text-align: center;
+    }
+
+    .restoran-item_image img {
         float: none;
         width: 40%;
     }
+
+    .itool22 {
+        width: 30% !important;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .itool22 {
+        margin: 20px auto 20px;
+        width: 50% !important;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .itool22 {
+        width: 80% !important;
+    }
+}
+
+/*page bludo*/
+.itool2-bludo {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+}
+
+.product-item_title_wrapper--nameBludo {
+    height: 90px;
+}
+
+.sprite {
+    background: url(../img/context/sprite.png) no-repeat;
+}
+
+.itool2-bludo--hover {
+    position: absolute;
+    min-height: 345px;
+    bottom: -21px;
+    left: -3px;
+    z-index: 9;
+    border: 1px solid #d94032;
+    display: none;
+    background: #fff;
+    box-shadow: 0 0 3px #bbb;
+    width: 102%;
+    transition: all .4s;
+}
+
+.itool2-bludo:hover .itool2-bludo--hover {
+    display: block;
+}
+
+@media all and (max-width: 992px) {
+    .itool2-bludo {
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .itool2-bludo {
+        width: 310px;
+    }
+
+    .itool2-bludo:hover .itool2-bludo--hover {
+        display: none;
+    }
+}
+
+@media all and (max-width: 380px) {
+    .itool2-bludo {
+        width: 280px;
+    }
+}
+
+/*.need_minimum_summa .sprite-ico-timer-2,*/
+/*.restoran-item_big .sprite-ico-timer-2{*/
+/*background-position: -71px -530px;*/
+/*}*/
+/*.restoran-item_big .sprite-ico-rocket-w{*/
+/*background-position: -23px -529px;*/
+/*}*/
+/*.restoran-item_big .sprite-ico-viza{*/
+/*background-position: -48px -530px;*/
+/*}*/
+.new-header .sprite-catalog {
+    background: url(../img/context/sprite.png) no-repeat;
+    background-position: -753px -437px;
+}
+
+.sprite.sprite-burder {
+    background-position: 0 -548px;
+    width: 71px;
+    height: 78px;
+    display: block;
+}
+
+.sprite.sprite-ico-rocket-w {
+    background-position: -10px -145px;
+}
+
+.sprite.sprite-ico-timer-2 {
+    background-position: -519px -266px;
+}
+
+.sprite.sprite-ico-viza {
+    background-position: -776px -266px;
+}
+
+.sprite.sprite-instr {
+    background-position: -308px -515px;
+}
+
+.sprite.sprite-burder, .sprite.sprite-mobile, .sprite.sprite-ok {
+    display: block;
+}
+.sprite.sprite-ok{background-position: -159px -548px;}
+.sprite .sprite-ico-stack{
+    background-position: -771px -146px;
 }

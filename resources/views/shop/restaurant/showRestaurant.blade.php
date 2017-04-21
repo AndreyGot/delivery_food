@@ -91,7 +91,7 @@
         <div class="row">
             <div class="wrap">
                 @foreach ($categories as $category)
-                    <div class=" col-md-2 itool22 itool2 product-item product-item--button">
+                    <div class=" col-md-2 col-sm-4 itool22 itool2 product-item product-item--button">
                         <div class="product-item_image">
                             <div class="product-item_image_wrapper">
                                 <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
@@ -102,7 +102,6 @@
                     </div>
                 @endforeach
             </div>
-
         </div>
     </div>
 

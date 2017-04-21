@@ -11,8 +11,7 @@
 				<div class="row">
 					<div class="col-md-7 breadcrumbs-org--align2">
 						<a href="#">F1</a> &nbsp;/&nbsp;
-						<a href="#">Доставка еды</a> &nbsp;/&nbsp;
-						<a href="#" class="breadcrumbs-cuisine">Суши</a> &nbsp;/&nbsp;
+						<a href="#" class="breadcrumbs-cuisine">Доставка еды</a> &nbsp;/&nbsp;
 						<span>Меню заведения {{ $restaurant->name }}</span>
 					</div>
 					<div class="col-md-5 text-right before-closing"></div>
@@ -92,28 +91,51 @@
 	    <div class="catalog_container">
 			<div class="row">
 				@foreach ($foods as $food)
-					<div class="itool2 itool2--mod product-item product-item--button">
-						<div class="product-item_image">
-							<div class="product-item_image_wrapper">
-								<img src="{{ asset($food->image) }}" style="width: 80%;">
+					<div class="col-md-4 col-sm-6">
+						<div class="itool2 itool2-bludo itool2--mod product-item product-item--button">
+							<div class="product-item_image">
+								<div class="product-item_image_wrapper">
+									<img src="{{ asset($food->image) }}" style="width: 80%;">
+								</div>
 							</div>
-						</div>
-						<div class="product-item_title">
-							<div class="product-item_title_wrapper ">
-								<h3>{{ $food->name }}</h3>
+							<div class="product-item_title">
+								<div class="product-item_title_wrapper  product-item_title_wrapper--nameBludo">
+									<h3>{{ $food->name }}</h3>
+								</div>
 							</div>
-						</div>
-						<div class="product-item_title">
-							<div class="product-item_title_wrapper ">
-								<p>описание: {{ $food->description }}</p>
+
+							<div class="product-item_row clearfix">
+								<p class="product-item_bonus">
+									<i class="sprite sprite-ico-stack"></i>
+									<span>цена: {{ $food->price }}</span> P
+								</p>
+								<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}">Заказать</button>
 							</div>
-						</div>
-						<div class="product-item_row clearfix">
-							<p class="product-item_bonus">
-								<i class="sprite sprite-ico-stack"></i>
-								<span>цена: {{ $food->price }}</span> P
-							</p>
-							<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}">Заказать</button>
+							{{--hover cart--}}
+							<div class="itool2 itool2-bludo itool2-bludo--hover itool2--mod product-item product-item--button">
+								<div class="product-item_image">
+									<div class="product-item_image_wrapper">
+										<img src="{{ asset($food->image) }}" style="width: 80%;">
+									</div>
+								</div>
+								<div class="product-item_title">
+									<div class="product-item_title_wrapper ">
+										<h3>{{ $food->name }}</h3>
+									</div>
+								</div>
+								<div class="product-item_title">
+									<div class="product-item_title_wrapper ">
+										<p>описание: {{ $food->description }}</p>
+									</div>
+								</div>
+								<div class="product-item_row clearfix">
+									<p class="product-item_bonus">
+										<i class="sprite sprite-ico-stack"></i>
+										<span>цена: {{ $food->price }}</span> P
+									</p>
+									<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}">Заказать</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				@endforeach
