@@ -8,8 +8,7 @@
                 <div class="row">
                     <div class="col-md-7 breadcrumbs-org--align">
                         <a href="#">F1</a> &nbsp;/&nbsp;
-                        <a href="#">Доставка еды</a> &nbsp;/&nbsp;
-                        <a href="#" class="breadcrumbs-cuisine">Суши</a> &nbsp;/&nbsp;
+                        <a href="#" class="breadcrumbs-cuisine">Доставка еды</a> &nbsp;/&nbsp;
                         <span>Меню заведения {{ $restaurant->name }}</span>
                     </div>
                     <div class="col-md-5 text-right before-closing"></div>
@@ -98,7 +97,7 @@
                                 <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
                             </div>
                         </div>
-                        <a class="btn btn-info" href="{{route('food_by_category_id',[$category])}}"
+                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
                            role="button">{{ $category->name }}</a>
                     </div>
                 @endforeach

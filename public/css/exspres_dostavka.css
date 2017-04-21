@@ -2797,7 +2797,7 @@ fieldset {
 
 .main-footer_logo img {
     display: block;
-    width: 50px!important;
+    width: 50px !important;
     height: 50px
 }
 
@@ -3139,8 +3139,7 @@ p.main-footer_founders {
 }
 
 .product-item_title_wrapper p {
-    max-height: 70px;
-    overflow: hidden;
+
     padding: 0 10px
 }
 
@@ -9321,24 +9320,121 @@ a.restoran-item:hover .restoran-item_title {
         top: 12px;
     }
 }
+
 .btn-primary.focus, .btn-primary:focus {
     color: #fff;
     background-color: #d94032;
     border-color: #d94032;
 }
-.btn-primary{
+
+.btn-primary {
     color: #fff;
     background-color: #d94032;
     border-color: #d94032;
 }
-.btn-primary:hover{
+
+.btn-primary:hover {
     background: #484747;
 }
-.btn-link{color:#484747;}
-.btn-link:hover{
-    color:#d94032;
+
+.btn-link {
+    color: #484747;
 }
+
+.btn-link:hover {
+    color: #d94032;
+}
+
 input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
     color: #d94032;
+}
+
+.restoran-item_tabs a {
+    background: #d94032;
+    color: white;
+}
+
+.restoran-item_tabs a:hover {
+    color: white;
+    text-decoration: none;
+    background: #484747;
+    transition: .3s;
+}
+
+@media all and (max-width: 540px) {
+    .restoran-item_tabs a {
+        border: 1px solid #ededed;
+    }
+}
+
+/*page restoran mod*/
+.restoran-item--promo {
+    position: relative;
+    width: 100%;
+}
+
+.restoran-item--promo .product-item_title {
+    display: inline-block;
+}
+
+.btn-info-action {
+    max-width: 240px;
+}
+
+.btn-info3 {
+    max-width: 150px;
+}
+
+.product-item_title_wrapper {
+    display: inline-block;
+
+}
+
+.restoran-item--box {
+    position: absolute;
+    min-height: 348px;
+    bottom: -16px;
+    left: -5px;
+    z-index: 9;
+    border: 1px solid #d94032;
+    display: none;
+    background: #fff;
+    box-shadow: 0 0 3px #bbb;
+    width: 103%;
+    transition: all .4s;
+}
+
+.restoran-item--promo:hover .restoran-item--box {
+    display: block;
+}
+.product-item_title2 {
+    height: auto;
+}
+@media all and (max-width: 768px){
+.product-item {
+    margin: 15px 0;
+}
+    .restoran-item--promo:hover .restoran-item--box {
+        display: none;
+    }
+}
+
+.btn-info3{
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    padding: 5px;
+    margin: 0 auto 10px;
+    background: #d94032;
+    border-radius: 12px;
+}
+.btn-info3:hover,
+.btn-info3:active,
+.btn-info3:focus{
+    color: white;
+    text-decoration: none;
+    background:#484747;
+    transition: .4s;
 }
 
