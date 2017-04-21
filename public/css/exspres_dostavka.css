@@ -9441,10 +9441,21 @@ input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
     transition: .4s;
 }
 input[type="radio"]:checked + label::after, input[type="checkbox"]:checked + label::after{
-    background: url(../img/context/sprite.png) no-repeat -377px 0px;
+    background: url(../img/context/sprite.png) no-repeat -377px 0;
 }
 
 
 .sort-block--interactive .sort-block_header::after{
     background: url(../img/context/sprite2.png) no-repeat -684px -156px;
+}
+input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
+    color: #d94032;
+}
+@media all and (max-width: 992px){
+    .sort-block_header,
+    .sort-block_header{text-align: center;}
+    .restoran-item_image img{
+        float: none;
+        width: 40%;
+    }
 }
