@@ -3556,7 +3556,10 @@ a.restoran-item:hover .restoran-item_title {
 
 .restoran-item_image img {
     display: block;
-    margin: 0 auto;
+    float: right;
+    width: 80%;
+    text-align: right;
+    margin-top: 15px;
     max-width: 100%;
     height: auto
 }
@@ -9437,4 +9440,11 @@ input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
     background:#484747;
     transition: .4s;
 }
+input[type="radio"]:checked + label::after, input[type="checkbox"]:checked + label::after{
+    background: url(../img/context/sprite.png) no-repeat -377px 0px;
+}
 
+
+.sort-block--interactive .sort-block_header::after{
+    background: url(../img/context/sprite2.png) no-repeat -684px -156px;
+}
