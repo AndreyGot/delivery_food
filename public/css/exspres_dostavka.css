@@ -703,20 +703,6 @@ th {
     vertical-align: middle
 }
 
-@font-face {
-    font-family: "proxima";
-    src: url("../font/ProximaNova-Regular.eot@") format("embedded-opentype"), url("../font/ProximaNova-Regular.otf") format("opentype"), url("../font/ProximaNova-Regular.woff") format("woff"), url("../font/ProximaNova-Regular.ttf") format("truetype"), url("../font/ProximaNova-Regular.svg") format("svg");
-    font-weight: normal;
-    font-style: normal
-}
-
-@font-face {
-    font-family: "proxima-light";
-    src: url("../font/ProximaNova-Light.eot@") format("embedded-opentype"), url("../font/ProximaNova-Light.otf") format("opentype"), url("../font/ProximaNova-Light.woff") format("woff"), url("../font/ProximaNova-Light.ttf") format("truetype"), url("../font/ProximaNova-Light.svg") format("svg");
-    font-weight: normal;
-    font-style: normal
-}
-
 body {
     font-family: "Open Sans", "Arial", sans-serif
 }
@@ -2811,7 +2797,7 @@ fieldset {
 
 .main-footer_logo img {
     display: block;
-    width: 47px !important;
+    width: 50px !important;
     height: 50px
 }
 
@@ -3153,8 +3139,7 @@ p.main-footer_founders {
 }
 
 .product-item_title_wrapper p {
-    max-height: 70px;
-    overflow: hidden;
+
     padding: 0 10px
 }
 
@@ -3311,7 +3296,7 @@ p.main-footer_founders {
     position: absolute;
     left: 10px;
     bottom: -20px;
-    background: url(../img/zakamen.png) no-repeat
+
 }
 
 .advantages {
@@ -3571,7 +3556,10 @@ a.restoran-item:hover .restoran-item_title {
 
 .restoran-item_image img {
     display: block;
-    margin: 0 auto;
+    float: right;
+    width: 80%;
+    text-align: right;
+    margin-top: 15px;
     max-width: 100%;
     height: auto
 }
@@ -4780,7 +4768,7 @@ a.restoran-item:hover .restoran-item_title {
 
 .b-tooltip:before {
     content: '';
-    background: url(../img/angle.png) no-repeat 0 -23px;
+
     width: 50px;
     height: 23px;
     display: inline-block;
@@ -4792,7 +4780,7 @@ a.restoran-item:hover .restoran-item_title {
 
 .b-tooltip.tg:before {
     content: '';
-    background: url(../img/angle.png) no-repeat 23px -10px;
+
     width: 42px;
     height: 25px;
     display: inline-block;
@@ -4809,7 +4797,7 @@ a.restoran-item:hover .restoran-item_title {
 }
 
 .b-empty {
-    background: url(../img/no-image.png) no-repeat center 58px;
+
     max-width: 430px;
     padding: 264px 0 200px 0;
     text-align: center;
@@ -6014,7 +6002,7 @@ a.restoran-item:hover .restoran-item_title {
 
 .ingredients-box .box:before {
     content: '';
-    background: url(../img/angle.png) no-repeat 0 4px;
+
     width: 50px;
     height: 23px;
     display: inline-block;
@@ -6140,7 +6128,7 @@ a.restoran-item:hover .restoran-item_title {
 
 .private-tooltip:before {
     content: '';
-    background: url(../img/angle.png) no-repeat 23px -10px;
+
     width: 42px;
     height: 25px;
     display: inline-block;
@@ -7389,7 +7377,7 @@ a.restoran-item:hover .restoran-item_title {
     content: '';
     display: block;
     position: absolute;
-    background: url('../img/sprite-online.png') no-repeat left center;
+
     height: 37px;
     width: 29px;
     margin-left: -40px
@@ -7411,7 +7399,7 @@ a.restoran-item:hover .restoran-item_title {
     width: 651px;
     height: 293px;
     margin: 0 auto;
-    background: url('../img/card-online.png') no-repeat center top;
+
     position: relative;
     color: #fff;
     font-size: 14px
@@ -7519,7 +7507,7 @@ a.restoran-item:hover .restoran-item_title {
     display: inline-block;
     width: 29px;
     height: 17px;
-    background: url('../img/sprite-online.png') no-repeat -35px 0;
+
     float: left;
     margin: 1px 10px 0 0
 }
@@ -7528,7 +7516,7 @@ a.restoran-item:hover .restoran-item_title {
     display: inline-block;
     width: 29px;
     height: 17px;
-    background: url('../img/sprite-online.png') no-repeat -35px -20px;
+
     float: left;
     margin: 1px 10px 0 0
 }
@@ -7541,7 +7529,7 @@ a.restoran-item:hover .restoran-item_title {
     display: inline-block;
     width: 24px;
     height: 24px;
-    background: url('../img/sprite-online.png') no-repeat -103px -7px;
+
     float: left;
     margin: 0 10px 0 0
 }
@@ -9270,53 +9258,193 @@ a.restoran-item:hover .restoran-item_title {
     .main-footer {
         padding: 20px 0 70px;
     }
+
     .main-footer_top {
         margin-bottom: 20px;
     }
+
     .main-footer_nav {
         width: 100%;
         margin: 0 auto;
         display: block;
         text-align: center;
     }
-    .main-footer_ico-link{
+
+    .main-footer_ico-link {
         display: block;
         width: 145px;
         margin: 10px auto 0;
     }
-    .main-footer_ico-link{
+
+    .main-footer_ico-link {
         float: none;
         text-align: center;
     }
-    .main-footer_bot{
+
+    .main-footer_bot {
         margin-bottom: 80px;
     }
-    .btn--footer{float: none;}
-    .btn--orange{
+
+    .btn--footer {
+        float: none;
+    }
+
+    .btn--orange {
         float: none;
         margin: 15px auto;
         display: block;
         width: 200px;
     }
 }
+
 /**/
-.navbar-right {top: 11px;}
-.navbar-right > li > a{
-   color:#484747;
+.navbar-right {
+    top: 11px;
+}
+
+.navbar-right > li > a {
+    color: #484747;
     border-color: #d94032;
 }
+
 .navbar-right > li > a:hover {
     color: #d94032;
     background: none;
     transition: .3s;
 }
+
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
     background-color: white;
     border-color: #d94032;
 }
-@media all and (max-width: 992px){
-    .dropdown{
+
+@media all and (max-width: 992px) {
+    .dropdown {
         top: 12px;
     }
 }
 
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #d94032;
+    border-color: #d94032;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #d94032;
+    border-color: #d94032;
+}
+
+.btn-primary:hover {
+    background: #484747;
+}
+
+.btn-link {
+    color: #484747;
+}
+
+.btn-link:hover {
+    color: #d94032;
+}
+
+input[type="radio"] + label:hover, input[type="checkbox"] + label:hover {
+    color: #d94032;
+}
+
+.restoran-item_tabs a {
+    background: #d94032;
+    color: white;
+}
+
+.restoran-item_tabs a:hover {
+    color: white;
+    text-decoration: none;
+    background: #484747;
+    transition: .3s;
+}
+
+@media all and (max-width: 540px) {
+    .restoran-item_tabs a {
+        border: 1px solid #ededed;
+    }
+}
+
+/*page restoran mod*/
+.restoran-item--promo {
+    position: relative;
+    width: 100%;
+}
+
+.restoran-item--promo .product-item_title {
+    display: inline-block;
+}
+
+.btn-info-action {
+    max-width: 240px;
+}
+
+.btn-info3 {
+    max-width: 150px;
+}
+
+.product-item_title_wrapper {
+    display: inline-block;
+
+}
+
+.restoran-item--box {
+    position: absolute;
+    min-height: 348px;
+    bottom: -16px;
+    left: -5px;
+    z-index: 9;
+    border: 1px solid #d94032;
+    display: none;
+    background: #fff;
+    box-shadow: 0 0 3px #bbb;
+    width: 103%;
+    transition: all .4s;
+}
+
+.restoran-item--promo:hover .restoran-item--box {
+    display: block;
+}
+.product-item_title2 {
+    height: auto;
+}
+@media all and (max-width: 768px){
+.product-item {
+    margin: 15px 0;
+}
+    .restoran-item--promo:hover .restoran-item--box {
+        display: none;
+    }
+}
+
+.btn-info3{
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    padding: 5px;
+    margin: 0 auto 10px;
+    background: #d94032;
+    border-radius: 12px;
+}
+.btn-info3:hover,
+.btn-info3:active,
+.btn-info3:focus{
+    color: white;
+    text-decoration: none;
+    background:#484747;
+    transition: .4s;
+}
+input[type="radio"]:checked + label::after, input[type="checkbox"]:checked + label::after{
+    background: url(../img/context/sprite.png) no-repeat -377px 0px;
+}
+
+
+.sort-block--interactive .sort-block_header::after{
+    background: url(../img/context/sprite2.png) no-repeat -684px -156px;
+}
