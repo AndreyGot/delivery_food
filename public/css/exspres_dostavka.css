@@ -9535,16 +9535,6 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
     }
 }
 
-/*.need_minimum_summa .sprite-ico-timer-2,*/
-/*.restoran-item_big .sprite-ico-timer-2{*/
-/*background-position: -71px -530px;*/
-/*}*/
-/*.restoran-item_big .sprite-ico-rocket-w{*/
-/*background-position: -23px -529px;*/
-/*}*/
-/*.restoran-item_big .sprite-ico-viza{*/
-/*background-position: -48px -530px;*/
-/*}*/
 .new-header .sprite-catalog {
     background: url(../img/context/sprite.png) no-repeat;
     background-position: -753px -437px;
@@ -9579,4 +9569,76 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
 .sprite.sprite-ok{background-position: -159px -548px;}
 .sprite .sprite-ico-stack{
     background-position: -771px -146px;
+}
+/*page korz*/
+.btn--delete{
+    background: transparent url(../img/context/sprite2.png) no-repeat -476px -7px;
+    position: relative;
+    top:-3px;
+}
+.btn--plus{
+    background: transparent url(../img/context/sprite2.png) no-repeat -681px -79px;
+}
+.btn--minus{
+    background: transparent url(../img/context/sprite2.png) no-repeat -217px -76px;
+}
+.sprite.sprite-ico-stack {
+    background-position: -771px -146px;
+    width: 14px;
+    height: 16px;
+}
+.cart-switch input:checked + label::after{
+    top: 2px;
+    left: 3px;
+}
+
+/*korzina*/
+.nameCart{
+    color:#d94032!important;
+}
+.nameCart:hover{
+    text-decoration: none;
+}
+.btn--Product{
+    float: left;
+}
+.btn--grey{
+    background: #d94032;
+    color: white;
+    margin-left: 12px;
+}
+.btn--grey:hover{
+    background: #484747;
+    color: white;
+    transition: .3s;
+}
+@media all and (max-width: 768px){
+    .product-cart_image{
+        float: none;
+        width: 90px;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+    }
+    .product-cart_title {
+        width: 100%;
+        text-align: center;
+    }
+    .product-cart_price{
+        padding-left: 25px;
+    }
+    .product-cart_image:hover .product-cart_tooltip{display: none;}
+}
+@media all and (max-width: 480px){
+    .product-cart_price {
+        padding-left: 0;
+    }
+}
+@media all and (max-width: 355px){
+    .priseProduct--mod{
+        width: 45%;
+    }
+    .btn--grey{
+        padding: 5px 10px;
+    }
 }

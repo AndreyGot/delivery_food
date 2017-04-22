@@ -114,6 +114,7 @@
 <script>
     jQuery(function ($) {
         $("#phone").mask("+7(999) 999-99-99", {placeholder: " "});
+        $("#phone-cart").mask("+7(999) 999 99 99",{placeholder: " "});
     });
     window.urlBag.searchByRestaurants = '{{ route('shop_search_byRestaurants') }}'
 </script>
