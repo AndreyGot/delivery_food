@@ -9728,3 +9728,95 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
 .userInfo-margin{
     margin-top: 30px;
 }
+.control-label{
+    text-align: right;
+}
+input[type="text"], input[type="tel"], input[type="email"], textarea, select, input[type="password"]{
+    margin-bottom: 10px;
+    padding: 8px 15px;
+}
+.btn-primary{
+    margin-top: 10px;
+}
+@media all and (max-width:992px){
+    .blocUser__name{
+        text-align: center;
+        display: block;
+        padding: 0 0 10px 0;
+
+    }
+    .blocUser__info{
+        text-align: center;
+    }
+    .btn-info__user{
+        text-align: center;
+        margin: 10px auto;
+    }
+    .control-label--foto{
+        text-align: left;
+        width: 15%;
+    }
+    .wr-cart-pane__logo {
+        margin-top: 0;
+    }
+}
+@media all and (max-width:768px){
+    .blocUser--pad{
+        border: none;
+        border-bottom: 1px solid grey;
+    }
+    .margi{margin: 0;}
+    .btn-primary{
+        text-align: center;
+        display: block;
+        width: 200px;
+        margin: 10px auto;
+    }
+}
+
+/*adress*/
+.blocAdress p:first-child{
+    margin-top: 5px;
+}
+.btn-danger{
+    margin-bottom: 20px;
+}
+.blocAdress{
+    border: 1px solid grey;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin-top: 20px;
+}
+.blocAdress p{
+    text-align: center;
+    word-wrap: break-word;
+}
+.blocAdress .btn{
+    margin: 0 auto 10px;
+    display: block;
+    width: 200px;
+}
+
+.blocAdress--hover{
+    position: absolute;
+    bottom: 0;
+    left: -2px;
+    z-index: 9;
+    border: 1px solid #d94032;
+    display: none;
+    background: #fff;
+    box-shadow: 0 0 3px #bbb;
+    width: 102%;
+    transition: height .8s;
+}
+.blocAdress:hover .blocAdress--hover{
+    display: block;
+    height:auto;
+    transition: height .8s;
+}
+@media all and (max-width: 768px){
+    .blocAdress:hover .blocAdress--hover{
+        display: none;
+    }
+}

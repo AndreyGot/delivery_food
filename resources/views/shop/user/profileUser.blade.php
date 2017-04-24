@@ -1,9 +1,9 @@
 
 <div class="container ">
     <div class="content">
-        <div class="row">
+        <div class="row margi">
             <div class="blocUser blocUser--pad">
-                <div class="row">
+                <div class="row margi">
                     <div class="col-md-3">
                         <img class="blocUser__photo" src="{{ asset($profile->image) }}" height="160" width="160">
                     </div>
@@ -14,7 +14,7 @@
                                 <p class="blocUser__name">{{ $profile->second_name }}</p>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row margi">
                             <div class="col-md-4">
                                 <p class="blocUser__info">Дата регистрации: <span>{{ $profile->registration_date }}</span></p>
                             </div>
@@ -30,7 +30,7 @@
             </div>
 
 
-            <div class="row">
+            <div class="row margi">
                 <div class="col-md-3 userInfo-margin">
                     <a class="btn btn-info btn-info__user" href="{{route('main_index')}}" role="button">Вернутся на главную</a>
                     <a class="btn btn-info btn-info__user" href="{{route('shop_profile_user')}}" role="button">Профиль пользователя</a>
