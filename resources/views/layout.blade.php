@@ -35,13 +35,18 @@
 <header class="main-header">
     <div class=" container main-header_top">
         <div class="row">
-            <div class="col-md-4 col-sm-2">
+            <div class="col-md-4 col-sm-3">
                 <figure class="logo" style="position:relative;">
                     <a href="{{ url('/') }}"><img src="{{ asset('img/logo.jpg') }}"
                                                   alt="бесплатный сервис по заказу еды"></a>
                 </figure>
+                <div class="bloc-call bloc-call--mod">
+                        <a href="tel:+89882366676" class="bloc-call__phone-call"><i class="bloc-call__icon-call"></i>89882366676</a>
+
+                        <a href="tel:2912910" class="bloc-call__phone-call"><i class="bloc-call__icon-call"></i>2912910</a>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-7">
+            <div class="col-md-4 col-sm-6">
                 <form class="main-header_form live-search-box" action="#">
                     <input  id="zz-searchByRestaurants" type="text" name="text" class="search live-search" autocomplete="off"
                            placeholder="Поиск">

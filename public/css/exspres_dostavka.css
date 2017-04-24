@@ -4352,7 +4352,7 @@ a.restoran-item:hover .restoran-item_title {
 
 .cart-form {
     padding: 30px;
-    border: 1px solid #eee;
+    border: 1px solid gray;
     margin-top: 75px;
     background: #fff
 }
@@ -4400,12 +4400,14 @@ a.restoran-item:hover .restoran-item_title {
 }
 
 .cart-form input {
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    border:1px solid gray;
 }
 
 .cart-form textarea {
     height: 80px;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    border:1px solid gray;
 }
 
 .cart-form .btn {
@@ -8875,6 +8877,29 @@ a.restoran-item:hover .restoran-item_title {
 /*END login*/
 
 /*dop style top header*/
+.bloc-call__icon-call{
+    background: url(../img/context/phone-call.png)no-repeat;
+    width: 24px;
+    height:24px;
+    display:inline-block;
+    position: relative;
+    top: 9px;
+}
+.bloc-call__phone-call{
+    font-size: 18px;
+    color: #d80027;
+    margin-left: 10px;
+}
+.bloc-call--mod{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 16px;
+}
+.bloc-call__phone-call:hover,
+.bloc-call__phone-call:active,
+.bloc-call__phone-call:focus{
+    color: #d80027;
+}
 .setip {
     height: auto;
     width: 100%;
@@ -8919,8 +8944,17 @@ a.restoran-item:hover .restoran-item_title {
 .main-header_bottom {
     background: #484747;
 }
-
+@media all and (max-width: 1200px){
+    .bloc-call__phone-call {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+}
 @media all and (max-width: 992px) {
+    .bloc-call__phone-call {
+        margin-left: 0;
+        display: block;
+    }
     .btn--enter, .btn--reg {
         margin-top: 5px;
         margin-bottom: 5px;
@@ -8936,6 +8970,15 @@ a.restoran-item:hover .restoran-item_title {
 }
 
 @media all and (max-width: 768px) {
+    .bloc-call__phone-call{
+        text-align: left;
+        font-size: 18px;
+    }
+    .bloc-call--mod{
+        display: block;
+        width: 137px;
+        margin: 0 auto;
+    }
     .logo {
         display: block;
     }
@@ -9641,4 +9684,28 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
     .btn--grey{
         padding: 5px 10px;
     }
+}
+/*User profil*/
+.blocUser--pad{
+    background: white;
+    border:1px solid grey;
+    border-top:none;
+}
+.blocUser__photo{
+    margin: 30px;
+}
+.textAlLeft{
+    text-align: left;
+    border-bottom: 1px solid grey;
+}
+.blocUser__name{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 0 30px 0;
+    margin: 0;
+    display: inline-block;
+}
+.blocUser__info{
+    text-align: left;
+    padding-left: 15px;
 }
