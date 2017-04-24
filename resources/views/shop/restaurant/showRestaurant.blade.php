@@ -100,60 +100,6 @@
                         <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
                            role="button">{{ $category->name }}</a>
                     </div>
-                    <div class=" col-md-3 col-sm-4 itool22 itool2 product-item product-item--button">
-                        <div class="product-item_image">
-                            <div class="product-item_image_wrapper">
-                                <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
-                            </div>
-                        </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
-                           role="button">{{ $category->name }}</a>
-                    </div>
-                    <div class=" col-md-3 col-sm-4 itool22 itool2 product-item product-item--button">
-                        <div class="product-item_image">
-                            <div class="product-item_image_wrapper">
-                                <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
-                            </div>
-                        </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
-                           role="button">{{ $category->name }}</a>
-                    </div>
-                    <div class=" col-md-3 col-sm-4 itool22 itool2 product-item product-item--button">
-                        <div class="product-item_image">
-                            <div class="product-item_image_wrapper">
-                                <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
-                            </div>
-                        </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
-                           role="button">{{ $category->name }}</a>
-                    </div>
-                    <div class=" col-md-3 col-sm-4 itool22 itool2 product-item product-item--button">
-                        <div class="product-item_image">
-                            <div class="product-item_image_wrapper">
-                                <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
-                            </div>
-                        </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
-                           role="button">{{ $category->name }}</a>
-                    </div>
-                    <div class=" col-md-3 col-sm-4 itool22 itool2 product-item product-item--button">
-                        <div class="product-item_image">
-                            <div class="product-item_image_wrapper">
-                                <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
-                            </div>
-                        </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
-                           role="button">{{ $category->name }}</a>
-                    </div>
-                    <div class=" col-md-3 col-sm-4 itool22 itool2 product-item product-item--button">
-                        <div class="product-item_image">
-                            <div class="product-item_image_wrapper">
-                                <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
-                            </div>
-                        </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
-                           role="button">{{ $category->name }}</a>
-                    </div>
                 @endforeach
             </div>
         </div>
