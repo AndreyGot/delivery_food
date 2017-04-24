@@ -8772,7 +8772,7 @@ a.restoran-item:hover .restoran-item_title {
 }
 
 .itool22 {
-    width: 16.6666666667% !important;
+    width: 21.7% !important;
     height: auto;
     margin: 15px 1.6%;
 }
@@ -8790,6 +8790,9 @@ a.restoran-item:hover .restoran-item_title {
     .itool2--mod {
         width: 22%;
     }
+    .itool22{
+        width: 30% !important;
+    }
 }
 
 @media all and (max-width: 992px) {
@@ -8802,7 +8805,7 @@ a.restoran-item:hover .restoran-item_title {
     }
 
     .itool22 {
-        width: 21.4% !important;
+        width: 46.5% !important;
     }
 
     .breadcrumbs-org--align2 {
@@ -9254,6 +9257,9 @@ a.restoran-item:hover .restoran-item_title {
 }
 
 /*cart panel*/
+.wr-cart-pane__logo{
+    margin-top: 8px;
+}
 .cart-pane__logo:hover,
 .cart-pane__logo:active,
 .cart-pane__logo:focus {
@@ -9287,6 +9293,7 @@ a.restoran-item:hover .restoran-item_title {
 @media all and (max-width: 992px) {
     .wr-cart-pane__logo {
         padding-top: 7px;
+
     }
 }
 
@@ -9504,9 +9511,7 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
         width: 40%;
     }
 
-    .itool22 {
-        width: 30% !important;
-    }
+    
 }
 
 @media all and (max-width: 768px) {
@@ -9708,4 +9713,18 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
 .blocUser__info{
     text-align: left;
     padding-left: 15px;
+    font-size: 12px;
+    padding-top: 10px;
+}
+.blocUser__info span{
+    display: block;
+    font-size: 18px;
+    color: black;
+}
+.btn-info__user{
+    display: block;
+    max-width: 200px;
+}
+.userInfo-margin{
+    margin-top: 30px;
 }

@@ -5,7 +5,7 @@
         </h2>
     @endif
 </div>
-<div class="col-xs-10">
+<div class="col-md-9">
     <form method="POST" action="{{ $action }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
