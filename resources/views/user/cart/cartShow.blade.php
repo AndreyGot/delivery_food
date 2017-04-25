@@ -85,7 +85,7 @@
                             {{--</div>--}}
                             {{--<div class="col s-2"></div>--}}
                             {{--<div class="col s-3 product-cart_top text-right">--}}
-                            {{--<p class="product-cart_price">Бесплатно</p>--}}
+                                {{--<p class="product-cart_price">Бесплатно</p>--}}
                             {{--</div>--}}
                             {{--<div class="col s-1"></div>--}}
                             {{--</div>--}}
@@ -109,22 +109,40 @@
                             <div class="cart-form_title">Оформление</div>
                             <form action="{{ route('user_order_fastOrder_make') }}" id="cart_form" method="post">
                                 {{ csrf_field() }}
-                                <input type="text" name="customer_name" placeholder="Имя" required>
-                                <input type="tel" id="phone-cart" name="phone" value="" placeholder="Телефон" required autocomplete="off">
-                                <input type="hidden" name="city" value="Сочи">
-                                <div class="address-form__input-wrapper">
-                                    <input type="text" name="street" data-value="" value="" placeholder="Улица" required>
-                                    <div class="address-live-box scroll"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s-4">
-                                        <input type="text" name="house" data-value="" value="" placeholder="Дом" required>
+                                @if(!Auth::check() || (empty(Auth::user()->profile) || Auth::user()->profile->userAddresses->isEmpty()))
+                                    <input type="text" name="customer_name" placeholder="Имя" required>
+                                    <input type="tel" id="phone-cart" name="phone" value="" placeholder="Телефон" required autocomplete="off">
+                                    <input type="hidden" name="city" value="Сочи">
+                                    <div class="address-form__input-wrapper">
+                                        <input type="text" name="street" data-value="" value="" placeholder="Улица" required>
+                                        <div class="address-live-box scroll"></div>
                                     </div>
-                                    <div class="col s-4">
-                                        <input type="text" name="flat" value="" placeholder="Кварт.">
+                                    <div class="row">
+                                        <div class="col s-4">
+                                            <input type="text" name="house" data-value="" value="" placeholder="Дом" required>
+                                        </div>
+                                        <div class="col s-4">
+                                            <input type="text" name="flat" value="" placeholder="Кварт.">
+                                        </div>
                                     </div>
-                                </div>
-                                <textarea name="description" value="" placeholder="Комментарий"></textarea>
+                                    <textarea name="description" value="" placeholder="Комментарий"></textarea>
+                                @else
+                                    <?php /* @var \App\Model\UserAddress $userAddress*/
+                                    /* @var  \App\Model\Profile $profile*/
+                                    $profile = Auth::user()->profile;
+                                    ?>
+                                    <p>Имя: {{ $profile->first_name }}</p>
+                                    <p>Телефон: {{ $profile->phone_1 }}</p>
+                                    @foreach(Auth::user()->profile->userAddresses as $userAddress)
+                                        <input type="radio" id="address_{{ $userAddress->id }}"  name="user_address_id" value="{{ $userAddress->id }}"
+                                                {{ $loop->first ? 'checked' : '' }}>
+                                        <label for="address_{{ $userAddress->id }}">
+                                            ул. {{ $userAddress->street }}, дом {{ $userAddress->house }}{{ !empty($userAddress->flat) ? '/' . $userAddress->flat : ''}}
+                                        </label>
+                                    @endforeach
+                                @endif
+
+
                                 <ul class="cart-switch">
                                     <li>
                                         <input id="cart-switch1" name="payment_method_id" value="1" type="radio" checked="checked">

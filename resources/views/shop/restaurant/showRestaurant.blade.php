@@ -97,7 +97,9 @@
                                 <img src="{{ asset($category->image) }}" alt="{{$category->alias}}" style="width: 70%;">
                             </div>
                         </div>
-                        <a class=" btn-info3" href="{{route('food_by_category_id',[$category])}}"
+
+                        <a class="btn-info3" href="{{route('food_by_category_id',[$restaurant,$category])}}"
+
                            role="button">{{ $category->name }}</a>
                     </div>
                 @endforeach

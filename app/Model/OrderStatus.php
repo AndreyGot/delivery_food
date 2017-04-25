@@ -23,6 +23,7 @@ class OrderStatus extends Model
 {
     protected $table = 'order_status';
     public $timestamps = false;
+    protected $fillable = ['name'];
 
     public function orders()
     {

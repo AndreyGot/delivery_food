@@ -45,4 +45,14 @@
         </div>
     </div>
 
+    <div class="row">
+    	<a class="btn btn-info" href="{{route('shop_profile_user')}}" role="button">Профиль пользователя</a>
+    	<a class="btn btn-info"
+    			href="{{route('shop_setting_profile_user')}}"
+    			role="button">Настройки профиля</a>
+    	<a class="btn btn-info" href="{{route('shop_address_user')}}" role="button">Мои адреса</a>
+    	<a class="btn btn-info" href="{{route('get_user_orders')}}" role="button">История заказов</a>
+    </div>
+
+  </div>
 </div>

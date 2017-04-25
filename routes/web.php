@@ -18,8 +18,10 @@ Route::get('/', 'Shop\IndexController@index')->name('main_index');
 
 Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
 Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
+
+Route::get('/foods/{restaurant}/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+
 Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
-Route::get('/foods/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
 Route::post('/search/byrestaurant', 'Shop\ShopRestaurantController@searchByRestaurants')->name('shop_search_byRestaurants');
 
 
@@ -36,12 +38,17 @@ Route::group([
     Route::post('editProfile/{profile}', 'Shop\ShopUserController@editProfileUser')->name('shop_profile_edit');
     Route::get('addressUser', 'Shop\ShopUserController@addressUser')->name('shop_address_user');
     Route::post('saveAddressUser', 'Shop\ShopUserController@saveUserAddress')->name('shop_add_user_address');
+    Route::get('editFormAddressUser/{userAddress}', 'Shop\ShopUserController@getEditFormUserAddress')
+        ->name('shop_getForm_user_address');
+    Route::post('editAddressUser/{userAddress}', 'Shop\ShopUserController@editUserAddress')
+        ->name('shop_edit_user_address');
+    Route::get('deleteUserAddress/{userAddress}', 'Shop\ShopUserController@deleteUserAddress')
+        ->name('shop_delete_user_address');
 
-    Route::get('editFormAddressUser/{userAddress}', 
-        'Shop\ShopUserController@getEditFormUserAddress')->name('shop_getForm_user_address');
-    Route::post('editAddressUser/{userAddress}', 'Shop\ShopUserController@editUserAddress')->name('shop_edit_user_address');
-
-    Route::get('deleteUserAddress/{userAddress}', 'Shop\ShopUserController@deleteUserAddress')->name('shop_delete_user_address');
+    Route::get('getUserOrders', 'User\Order\OrderController@getUserOrders')
+        ->name('get_user_orders');
+    Route::get('order_details/{order}', 'User\Order\OrderController@OrderDetails')
+        ->name('order_details');
 });
 
 Route::group([
@@ -155,7 +162,7 @@ Route::group(['namespace' => 'User'], function () {
         'namespace' => 'Order'
     ], function () {
         Route::post('fastorder', 'OrderController@makeFastOrder')->name('user_order_fastOrder_make');
-        Route::post('order', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
+        Route::post('make', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
     });
 });
 
