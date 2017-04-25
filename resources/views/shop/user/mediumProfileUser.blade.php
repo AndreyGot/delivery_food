@@ -7,6 +7,6 @@
 		@include('shop.user.profileUser')
 	</div>
 	
-	@yield('profile')
+
 
 @endsection

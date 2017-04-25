@@ -9752,9 +9752,10 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
         text-align: center;
         margin: 10px auto;
     }
-    .control-label--foto{
+    .control-label--foto,
+    .control-label{
         text-align: left;
-        width: 15%;
+        width: 100%;
     }
     .wr-cart-pane__logo {
         margin-top: 0;
@@ -9818,5 +9819,43 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
 @media all and (max-width: 768px){
     .blocAdress:hover .blocAdress--hover{
         display: none;
+    }
+}
+
+.catalog .new-header {
+    padding: 30px 0 30px 0;
+}
+.btn-info--detalis{
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 5px 60px;
+}
+.orders span{
+    display: block;
+    font-weight: 700;
+}
+.restoran-item{
+    border: 1px solid white;
+}
+.btn-info--naz{
+    margin: 30px auto;
+}
+.wrap-order{
+    border-bottom: 1px solid darkgray;
+    margin: 20px auto 30px;
+}
+.orders-zak{
+    margin-bottom: 0;
+    padding-top: 40px;
+}
+.img-orders{
+    margin: 10px 0;
+}
+.wrap-res-orders{
+    margin-top: 50px;
+}
+@media all and (max-width:992px){
+    .orders-zak:last-child{
+        padding-bottom: 10px;
     }
 }
