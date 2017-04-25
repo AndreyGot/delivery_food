@@ -107,7 +107,7 @@
                     <div class="col-md-4">
                         <div class="cart-form" data-city="Москва">
                             <div class="cart-form_title">Оформление</div>
-                            <form action="{{ route('user_order_fastOrder_make') }}" id="cart_form" method="post">
+                            <form action="{{ $action }}" id="cart_form" method="post">
                                 {{ csrf_field() }}
                                 @if(!Auth::check() || (empty(Auth::user()->profile) || Auth::user()->profile->userAddresses->isEmpty()))
                                     <input type="text" name="customer_name" placeholder="Имя" required>
