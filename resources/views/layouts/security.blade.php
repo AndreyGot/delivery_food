@@ -17,45 +17,44 @@
     <script src="{{ asset('js/admin/admin.js') }}"></script>
     <link href="{{ asset('css/laravel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/admin/stylesheets.css')}}" rel="stylesheet" type="text/css">
     @section('styles')
 
     @show
 
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-static-top" id="main_menu">
+<nav>
     <div class="container">
-        <div class="navbar-header">
-            <a href="{{ route('adminPanel') }}" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
-            <a href="{{ route('main_index') }}" class="navbar-brand">Перейти к магазину</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <div class="row">
+            <div class="wrap-nav">
+                <div class="col-md-4 col-sm-4 text-center">
+                    <a href="{{ route('adminPanel') }}" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <a href="{{ route('main_index') }}" class="navbar-brand">Перейти к магазину</a>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <a href="{{ route('admin_logout') }}" class="navbar-brand" >Выйти</a>
+                </div>
+            </div>
         </div>
-        <div class="collapse navbar-collapse" id="main-menu">
-            <ul class="nav navbar-nav">
-                <li><a class="" href="{{ route('admin_logout') }}">Выйти</a></li>
-            </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <aside class="admin-panel">
+                @section('sideBar')
+                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_listRestaurant') }}" role="button">Список ресторанов</a>
+                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_order_list') }}" role="button">Список заказов</a>
+                    {{--<a class="btn btn-success" href="{{ route('admin_addRestaurantForm') }}" role="button">Добавить ресторан</a>--}}
+                @show
+            </aside>
         </div>
-    </div>
-</div>
-<div class="content">
-    <div class="col-xs-2">
-        @section('sideBar')
-            <a class="btn btn-success" href="{{ route('admin_listRestaurant') }}" role="button">Список ресторанов</a>
-            <a class="btn btn-success" href="{{ route('admin_order_list') }}" role="button">Список заказов</a>
-            {{--<a class="btn btn-success" href="{{ route('admin_addRestaurantForm') }}" role="button">Добавить ресторан</a>--}}
-        @show
-    </div>
-    <div class="col-xs-8">
-
-        @yield('content')
-
-    </div>
-    <div class="col-xs-2">
-
+        <div class="col-md-9">
+            @yield('content')
+        </div>
     </div>
 </div>
 
