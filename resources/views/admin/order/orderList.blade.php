@@ -43,33 +43,7 @@
                         </tr>
                     @endforeach
                 </table>
-                <div class="infoMobil">
-                    <p class="name">Новые</p>
-                    @foreach($newFastOrders as $order)
-                        <p class="infoMobil__stat">Номер</p>
-                        <div>
-                            {{ $order->number }}
-                        </div>
 
-                        <p class="infoMobil__stat">Имя заказчика</p>
-                        <div>
-                            {{ $order->customer_name }}
-                        </div>
-
-                        <p class="infoMobil__stat">Номер телефона</p>
-                        <div>
-                            {{ $order->phone }}
-                        </div>
-
-                        <p class="infoMobil__stat">Дата и время <br> оформления заказа</p>
-                        <div>{{ $order->creation_date }}</div>
-                        <p class="infoMobil__stat">Действия</p>
-                        <div>
-                            <a class="btn btn-default btn-tabl" href="{{ route('admin_order_fast_show', [$order]) }}">Подробнее</a>
-                        </div>
-
-                    @endforeach
-                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="profile">
                 <table class=" table table-hover">
@@ -136,6 +110,87 @@
 
             </div>
             <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        </div>
+        <div class="infoMobil infoMobil--border">
+            @foreach($newFastOrders as $order)
+                <p class="infoMobil__stat infoMobil__stat--mod">Новые:</p>
+                <p class="infoMobil__stat">Номер</p>
+                <div>
+                    {{ $order->number }}
+                </div>
+
+                <p class="infoMobil__stat">Имя заказчика</p>
+                <div>
+                    {{ $order->customer_name }}
+                </div>
+
+                <p class="infoMobil__stat">Номер телефона</p>
+                <div>
+                    {{ $order->phone }}
+                </div>
+
+                <p class="infoMobil__stat">Дата и время <br> оформления заказа</p>
+                <div>{{ $order->creation_date }}</div>
+                <p class="infoMobil__stat">Действия</p>
+                <div>
+                    <a class="btn btn-default btn-tabl" href="{{ route('admin_order_fast_show', [$order]) }}">Подробнее</a>
+                </div>
+
+            @endforeach
+        </div>
+        <div class="infoMobil infoMobil--border">
+            @foreach($handledFastOrders as $order)
+                <p class="infoMobil__stat infoMobil__stat--mod">Обработанные:</p>
+                <p class="infoMobil__stat">Номер</p>
+                <div>
+                    {{ $order->number }}
+                </div>
+
+                <p class="infoMobil__stat">Имя заказчика</p>
+                <div>
+                    {{ $order->customer_name }}
+                </div>
+
+                <p class="infoMobil__stat">Номер телефона</p>
+                <div>
+                    {{ $order->phone }}
+                </div>
+
+                <p class="infoMobil__stat">Дата и время <br> оформления заказа</p>
+                <div>{{ $order->creation_date }}</div>
+                <p class="infoMobil__stat">Действия</p>
+                <div>
+                    <a class="btn btn-default btn-tabl" href="{{ route('admin_order_fast_show', [$order]) }}">Подробнее</a>
+                </div>
+
+            @endforeach
+        </div>
+        <div class="infoMobil infoMobil--border">
+            @foreach($archivedFastOrders as $order)
+                <p class="infoMobil__stat infoMobil__stat--mod">В архиве:</p>
+                <p class="infoMobil__stat">Номер</p>
+                <div>
+                    {{ $order->number }}
+                </div>
+
+                <p class="infoMobil__stat">Имя заказчика</p>
+                <div>
+                    {{ $order->customer_name }}
+                </div>
+
+                <p class="infoMobil__stat">Номер телефона</p>
+                <div>
+                    {{ $order->phone }}
+                </div>
+
+                <p class="infoMobil__stat">Дата и время <br> оформления заказа</p>
+                <div>{{ $order->creation_date }}</div>
+                <p class="infoMobil__stat">Действия</p>
+                <div>
+                    <a class="btn btn-default btn-tabl" href="{{ route('admin_order_fast_show', [$order]) }}">Подробнее</a>
+                </div>
+
+            @endforeach
         </div>
 
     </div>

@@ -3594,7 +3594,8 @@ a.restoran-item:hover .restoran-item_title {
     font-size: 13px;
     line-height: 20px;
     color: #333;
-    font-weight: 400
+    font-weight: 400;
+    word-wrap: break-word!important;
 }
 
 .restoran-item_description span {
@@ -9854,9 +9855,20 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
 .wrap-res-orders{
     margin-top: 50px;
 }
+.float-r{
+    float: right;
+}
 @media all and (max-width:992px){
     .orders-zak:last-child{
         padding-bottom: 10px;
     }
+    .float-r {
+        float: none;
+    }
 }
+.product-item_title_wrapper p {
+    word-wrap: unset;
+    word-break: break-all;
+}
+
 

@@ -1,5 +1,7 @@
 /*admin styles*/
-.infoMobil{display: none;}
+.infoMobil,
+.table-mobil2,
+.table-mobil{display: none;}
 nav{
     background:#484747;
 }
@@ -213,4 +215,49 @@ input[type="file"]{
 }
 @media all and (max-width: 460px){
     .nav-tabs{display: none;}
+    .infoMobil--border{
+        border-bottom:1px solid grey;
+        margin-bottom: 30px;
+    }
+    .infoMobil__stat--mod{
+        color:#d94032;
+    }
+}
+
+*{
+    word-wrap: break-word;
+}
+.nav-tabs li a:hover, .nav-tabs li a:active, .nav-tabs li a:focus {
+    border: 1px solid white;
+    color: #d94032;
+    background: none;
+}
+
+/*fast orders*/
+.table--mod{
+    width: 100%;
+}
+@media all and (max-width: 500px) {
+    .table--mod{display: none;}
+    .table-mobil2,
+    .table-mobil{
+        display: block;
+        margin-top: 20px;
+    }
+    .table-mobil p{
+        text-align: center;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .table-mobil p span{
+        font-weight: 400;
+        font-size: 16px;
+    }
+    .table-mobil select{
+        margin: 0 auto;
+        display: block;
+    }
+    .thumbnail--fastOrder{
+        text-align: center;
+    }
 }
