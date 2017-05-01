@@ -40,10 +40,12 @@
                     <a class="btn btn-info btn-info__user" href="{{route('shop_address_user')}}" role="button">Мои адреса</a>
                     <a class="btn btn-info btn-info__user" href="{{route('get_user_orders')}}" role="button">История заказов</a>
                 </div>
+                @yield('profile')
             </div>
+
+
 
         </div>
     </div>
 
-  </div>
 </div>

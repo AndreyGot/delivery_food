@@ -1,3 +1,263 @@
-.zz-tab-label {
+/*admin styles*/
+.infoMobil,
+.table-mobil2,
+.table-mobil{display: none;}
+nav{
+    background:#484747;
+}
+.navbar-brand{
+    color: white;
+    float: none;
+    text-align: center;
+    display: block;
+}
+.navbar-brand:hover{
+    text-decoration: underline;
+    color: white;
+}
+.btn-success--mod{
+    background: #d94032;
+    color: white;
+    border: 1px solid white;
+    margin-top: 20px;
+    width: 80%;
+    transition: background, color,  border .3s;
+}
+.btn-success--mod:hover,
+.btn-success--mod:focus,
+.btn-success--mod:active{
+    background:white;
+    color:#484747;
+    border: 1px solid #d94032;
+}
+.admin-panel{
+    margin-top: 80px;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    text-align: center;
+}
+.table{
+    width: 90%;
+    margin-top: 60px;
+}
+@media all and (max-width: 992px){
+    .btn-success--mod{
+        width: 200px;
+        margin: 20px auto 0;
+        display: block
+    }
+    .admin-panel {
+        margin-top: 30px;
+    }
+    .table{
+        width: 100%;
+    }
+}
+@media all and (max-width: 640px){
+    .btn-tabl{
+        display: block;
+        margin: 10px auto;
+    }
+}
+@media all and (max-width: 460px){
+    .table{
+        display: none;
+    }
+    .infoMobil{
+        display: block;
+    }
+    .infoMobil__stat{
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+    }
+    .infoMobil__stat:first-child{
+        margin-top: 20px;
+    }
+    .infoMobil div{
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+        display: block;
+        margin: 0 auto 20px;
+        width: 100%;
+    }
+    .infoMobil img{
+        display: block;
+        margin: 0 auto 20px;
+    }
+    .infoMobil .btn-tabl{
+        width: 200px;
+    }
+}
 
+/*page add Restoran*/
+.addRestoran{
+    font-weight: 600;
+    font-size: 24px;
+    display: block;
+    text-align: center;
+}
+.form-control{
+    resize: none;
+    margin-top: 20px;
+}
+.control-label,
+.inputImg{
+    margin-top: 20px;
+}
+.btn-addRestar{
+    background: #d94032;
+    border: 1px solid #d94032;
+    width: 200px;
+    display: block;
+    margin: 20px auto;
+    transition:  .3s;
+}
+.btn-addRestar:hover,
+.btn-addRestar:active,
+.btn-addRestar:focus{
+    background: white;
+    color: inherit;
+}
+@media all and (max-width:992px) {
+    .addRestoran{
+        margin-top: 40px;
+    }
+    .form-control{
+        margin-top: 0;
+    }
+}
+/*info restoran*/
+.namaRestaran{
+    display: block;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.thumbnail{
+    max-width: 100%;
+    margin: 0 auto 20px;
+    word-wrap: break-word;
+}
+.aliasRestoran{
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 30px;
+}
+.aliasRestoran span{
+    font-weight: 400;
+}
+.inputNameRestoran{
+    font-weight: 500;
+    font-size: 18px;
+}
+.btn-addRestar--save{
+    display: block;
+    margin: 15px auto;
+    position: relative;
+    left: 37px;
+}
+
+.btn-success--dop{
+    width: 100%;
+}
+@media all and (max-width: 992px) {
+    .btn-success--dop {
+        width: 280px;
+    }
+    .btn-addRestar--save{
+        position: static;
+    }
+
+}
+input[type="file"]{
+    border: none;
+    box-shadow: none;
+    padding: 0 12px;
+}
+
+/*categories show*/
+.categRestoran{
+    font-size: 18px;
+    font-weight: 700;
+}
+.categRestoran span{
+    font-weight: 400;
+    font-size: 16px;
+}
+.addRestoran--pad{
+    margin-bottom: 50px;
+}
+/*order list*/
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus,
+.nav-tabs{
+    border: none;
+    background: none;
+    color: #d94032;
+}
+.nav-tabs{
+    margin: 20px auto;
+}
+.nav-tabs li a{
+    font-size: 18px;
+    font-weight: 600;
+    color: #484747;
+}
+.nav-tabs li a:hover,
+.nav-tabs li a:active,
+.nav-tabs li a:focus{
+    border: none;
+    color: #d94032;
+    background: none;
+}
+@media all and (max-width: 510px){
+    .nav-tabs li a{font-size: 14px;}
+}
+@media all and (max-width: 460px){
+    .nav-tabs{display: none;}
+    .infoMobil--border{
+        border-bottom:1px solid grey;
+        margin-bottom: 30px;
+    }
+    .infoMobil__stat--mod{
+        color:#d94032;
+    }
+}
+
+*{
+    word-wrap: break-word;
+}
+.nav-tabs li a:hover, .nav-tabs li a:active, .nav-tabs li a:focus {
+    border: 1px solid white;
+    color: #d94032;
+    background: none;
+}
+
+/*fast orders*/
+.table--mod{
+    width: 100%;
+}
+@media all and (max-width: 500px) {
+    .table--mod{display: none;}
+    .table-mobil2,
+    .table-mobil{
+        display: block;
+        margin-top: 20px;
+    }
+    .table-mobil p{
+        text-align: center;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .table-mobil p span{
+        font-weight: 400;
+        font-size: 16px;
+    }
+    .table-mobil select{
+        margin: 0 auto;
+        display: block;
+    }
+    .thumbnail--fastOrder{
+        text-align: center;
+    }
 }

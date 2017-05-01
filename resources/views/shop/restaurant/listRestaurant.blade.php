@@ -65,7 +65,7 @@
             </aside>
         </div>
         @foreach ($restaurants as $restaurant)
-            <div class="col-md-9">
+            <div class="col-md-9 float-r">
                 <a href="{{route('shop_restaurant_show',[$restaurant])}}"
                    class="restoran-item  restoran-item--food-best h-tooltip">
                     @if ( !$restaurant->specials->isEmpty())
@@ -120,7 +120,6 @@
                     </div>
                 </a>
             </div>
-
         @endforeach
     </div>
 
