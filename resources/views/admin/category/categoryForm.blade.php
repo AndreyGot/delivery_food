@@ -27,7 +27,10 @@
             <div class="form-group">
                 <label for="name" class="col-xs-4 control-label">Название категории</label>
                 <div class="col-xs-6">
-                    <input id="name" type="text" class="form-control" name="name" value="{{ isset($category) ? $category->name : old('name') }}"  autofocus>
+                    <input id="name"
+                           type="text"
+                           class="form-control"
+                           name="name" value="{{ isset($category) ? $category->name : old('name') }}"  autofocus>
                     @if(count($errors) && !empty($nameErrors = $errors->get('name')))
                         <div class="alert alert-danger">
                             @foreach($nameErrors as $error)
@@ -38,10 +41,51 @@
                 </div>
             </div>
 
+            <div id="associationContainer" class="form-group" style="display: block;">
+                <div>
+                    <label for="association" class="col-xs-4 control-label">Создать новую Ассоциацию</label>
+                    <div class="col-xs-6">
+                        <input  type="text" 
+                                class="form-control"
+                                name="association[]" 
+                                value=""
+                                id="showHideCheckBox">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+            <div id="checkBoxContainer" class="showHideInput">
+                <label for="association" class="col-xs-4 control-label">Выбрать из созданных Ассоциаций</label>
+                <div class="col-xs-6">
+                    <p>
+                    @foreach ($associations as $association)
+                            <input  type="checkbox"
+                                    name="association[]"
+                                    value="{{$association->id}}"
+                                    data-fieldid="associationContainer"
+                                    class="check_status"
+                                    @foreach ($checkAssociations as $checkAssociation)
+                                        @if($association->id == $checkAssociation->id)
+                                        checked="checked"
+                                        @endif
+                                    @endforeach
+                            >{{$association->name}}
+                    @endforeach
+                    </p><Br>
+                </div>
+            </div>
+            </div>
+
             <div class="form-group">
                 <label for="description" class="col-xs-4 control-label">Описание</label>
                 <div class="col-xs-6">
-                    <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ isset($category) ? $category->description : old('description') }}</textarea>
+                    <textarea class="form-control"
+                              name="description"
+                              id="description"
+                              cols="30"
+                              rows="10">{{ isset($category) ? $category->description : old('description') }}
+                    </textarea>
                     @if(count($errors) && !empty($descriptionErrors = $errors->get('description')))
                         <div class="alert alert-danger">
                             @foreach($descriptionErrors as $error)

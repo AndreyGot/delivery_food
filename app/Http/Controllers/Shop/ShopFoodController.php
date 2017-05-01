@@ -18,8 +18,8 @@ class ShopFoodController extends Controller
         ])->first();
 
         $foods = Food::where(['category_id' => $category->id])->get();
-        
-        return view('shop.food.listFood',[
+
+        return view('shop.food.listFood', [
             'foods' => $foods,
             'restaurant' => $restaurant,
         ]);

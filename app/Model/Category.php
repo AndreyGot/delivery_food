@@ -49,7 +49,11 @@ class Category extends Model
     public function specials()
     {
         return $this->belongsToMany('App\Model\Special', 'special_has_category');
+    }
 
+    public function associations()
+    {
+        return $this->belongsToMany('App\Model\Association', 'category_has_association');
     }
 
     public function save(array $options = [])

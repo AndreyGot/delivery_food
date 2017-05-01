@@ -126,6 +126,16 @@ Route::group([
                     Route::post('changestatus/{fastOrder}', 'FastOrderController@changeOrderStatus')->name('admin_order_fast_changeStatus');
                 });
             });
+
+            Route::group(['prefix' => 'association'], function () {
+                Route::get('list', 'AssociationController@AssociationsList')->name('admin_associations_list');
+                Route::get('addForm', 'AssociationController@addFormAssociation')->name('admin_addForm_association');
+                Route::post('add', 'AssociationController@addAssociation')->name('admin_add_association');
+                Route::get('editFom/{association}', 'AssociationController@editFormAssociation')->name('admin_editForm_association');
+                Route::post('edit/{association}', 'AssociationController@editAssociation')->name('admin_edit_association');
+                Route::get('delete/{association}', 'AssociationController@deleteAssociation')->name('admin_delete_association');
+
+            });
         });
 
         Route::get('login', 'SecurityController@showLoginForm')->name('admin_login_form');

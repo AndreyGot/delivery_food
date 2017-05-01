@@ -8,17 +8,14 @@
 
 namespace App\Model;
 
-
 use App\Model\Helper\CyrToLatConverter;
 use App\Model\Helper\ImageSaver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-
 /**
  * Class Food
  * @package App\Model
- *
  * @property string $name
  * @property string $image
  * @property string $description
@@ -38,9 +35,7 @@ class Food extends Model
 
     public function category()
     {
-
         return $this->belongsTo('App\Model\Category');
-
     }
 
     public function cart()
@@ -65,8 +60,6 @@ class Food extends Model
 
     public function save(array $options = [])
     {
-
-
         if ($isFileUploaded = $this->uploadImage != null) {
             $newImageName = Auth::user()->id . '_' . time();
             $imagePath = config('custom.imageDirectories.food') . $this->convertCyrToLat($this->name) . '/';
