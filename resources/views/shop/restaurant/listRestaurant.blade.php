@@ -23,18 +23,29 @@
                 <div class="sort-block">
                     <div class="sort-block_header">Кухня</div>
                     <div class="sort-block_content">
-                        <input type="checkbox" name="cuisines" value="all" data-id="0" id="ch0" checked>
-                        <label for="ch0">Все рестораны</label>
-                        <input type="checkbox" name="cuisine" value="sushi" data-id="669" id="ch669">
-                        <label for="ch669">Суши</label>
-                        <input type="checkbox" name="cuisine" value="pizza" data-id="665" id="ch665">
-                        <label for="ch665">Пицца</label>
-                        <input type="checkbox" name="cuisine" value="shashlik" data-id="666" id="ch666">
-                        <label for="ch666">Шашлыки</label>
-                        <input type="checkbox" name="cuisine" value="desert" data-id="668" id="ch668">
-                        <label for="ch668">Пироги</label>
-                        <input type="checkbox" name="cuisine" value="burger" data-id="667" id="ch667">
-                        <label for="ch667">Бургеры</label>
+                        <form  method="POST" action="{{route('filtreByAssociation')}}" enctype="multipart/form-data">
+                            <input type="checkbox" name="cuisines" value="all" data-id="0" id="ch0" checked>
+                            <label for="ch0">Все рестораны</label>
+                            @foreach($associations as $association)
+                                <input type="checkbox"
+                                       name="association"
+                                       value="{{$association->name}}"
+                                       id="{{$association->id}}"
+                                       class="check_association"
+                                >
+                                <label for="{{$association->id}}">{{$association->name}}</label>
+                            @endforeach
+                        </form>
+                        {{--<input type="checkbox" name="cuisine" value="sushi" data-id="669" id="ch669">--}}
+                        {{--<label for="ch669">Суши</label>--}}
+                        {{--<input type="checkbox" name="cuisine" value="pizza" data-id="665" id="ch665">--}}
+                        {{--<label for="ch665">Пицца</label>--}}
+                        {{--<input type="checkbox" name="cuisine" value="shashlik" data-id="666" id="ch666">--}}
+                        {{--<label for="ch666">Шашлыки</label>--}}
+                        {{--<input type="checkbox" name="cuisine" value="desert" data-id="668" id="ch668">--}}
+                        {{--<label for="ch668">Пироги</label>--}}
+                        {{--<input type="checkbox" name="cuisine" value="burger" data-id="667" id="ch667">--}}
+                        {{--<label for="ch667">Бургеры</label>--}}
                     </div>
                 </div>
                 <div class="sort-block sort-block--interactive">

@@ -5,6 +5,13 @@ jQuery(document).ready(function ($) {
     $('.zz-btn_plus_product').bind('click', plusProduct);
     $('.zz-removeAllByProduct').bind('click', removeAllByProduct);
     $('#zz-btn_cart_clear').bind('click', cartClear);
+    //////////
+    $('.check_association').bind('change', filterByAssociation);
+    function filterByAssociation(event) {
+
+        console.log('filtreByAssociation');
+    }
+    //////////
 
     var searchField = $('#zz-searchByRestaurants');
     searchField.bind('input', searchByRestaurants);
@@ -171,6 +178,7 @@ jQuery(document).ready(function ($) {
         } else {
             resultContainer.remove();
         }
-;
     }
+
+    
 });

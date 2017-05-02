@@ -175,5 +175,12 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('make', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
     });
 });
+//////
+Route::group(['namespace' => 'Shop'], function () {
+
+    Route::get('filtreByAssociation', 'FilterController@filtreByAssociation')->name('filtreByAssociation');
+//    Route::post('register', 'RegisterController@register');
+
+});
 
 
