@@ -102,9 +102,9 @@ class ShopUserController extends Controller
     }
 
     $real_path = dirname(__FILE__);
-    $path_to_root =  stristr($real_path, 'app', true);
+    $path_to_project =  stristr($real_path, 'app', true);
     $path_to_image = 'public'.$profile->image;
-    $full_path = $path_to_root.$path_to_image;
+    $full_path = $path_to_project.$path_to_image;
 
     $data = $request->all();
     $imageObj = $request->file('image_field');

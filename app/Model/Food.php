@@ -63,7 +63,12 @@ class Food extends Model
         if ($isFileUploaded = $this->uploadImage != null) {
             $newImageName = Auth::user()->id . '_' . time();
             $imagePath = config('custom.imageDirectories.food') . $this->convertCyrToLat($this->name) . '/';
-            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $this->uploadImage->getClientOriginalExtension());
+
+            $originalExtension = $this->uploadImage->getClientOriginalExtension();
+            if ($originalExtension == 'jpeg') {
+                $originalExtension = 'jpg';
+            }
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $originalExtension);
         }
 
         if ($saved = parent::save($options)) {

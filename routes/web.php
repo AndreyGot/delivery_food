@@ -98,7 +98,7 @@ Route::group([
             });
             Route::group(['prefix' => 'category'], function () {
                 Route::get('add', 'CategoryController@getForm')->name('admin_category_add_form');
-//                Route::post('add', 'CategoryController@addCategory')->name('admin_category_add');
+                Route::post('add', 'CategoryController@addCategory')->name('admin_category_add');
                 Route::get('add/{restaurant}', 'CategoryController@getFormByRestaurant')->name('admin_category_add_form_byRestaurant');
                 Route::post('add/{restaurant}', 'CategoryController@addCategoryByRestaurant')->name('admin_category_add_category_byRestaurant');
                 Route::get('list/{restaurant}', 'CategoryController@categoryListByRestaurant')->name('admin_category_list_byRestaurant');
