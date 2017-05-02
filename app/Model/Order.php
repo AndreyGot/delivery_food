@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property Profile $profile
  * @property integer $user_id
  * @property integer $order_status_id
+ * @property integer $payment_method_id
+ * @property PaymentMethod $paymentMethod
  */
 class Order extends Model
 {
@@ -75,6 +77,11 @@ class Order extends Model
         $this->delivery_date = $formattedDate;
 
         return parent::save($options);
+    }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo('App\Model\PaymentMethod');
     }
 
 }
