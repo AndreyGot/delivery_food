@@ -20,7 +20,7 @@ nav{
     color: white;
     border: 1px solid white;
     margin-top: 20px;
-    width: 80%;
+    width: 100%;
     transition: background, color,  border .3s;
 }
 .btn-success--mod:hover,
@@ -42,7 +42,7 @@ nav{
 }
 @media all and (max-width: 992px){
     .btn-success--mod{
-        width: 200px;
+        width: 300px;
         margin: 20px auto 0;
         display: block
     }
@@ -104,7 +104,7 @@ nav{
 }
 .control-label,
 .inputImg{
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .btn-addRestar{
     background: #d94032;
@@ -259,5 +259,50 @@ input[type="file"]{
     }
     .thumbnail--fastOrder{
         text-align: center;
+    }
+}
+.form-group--mod{
+    text-align: center;
+}
+.form-group--mod button{
+    float: right;
+    margin-top: 30px;
+    background:#d94032;
+    border: none;
+    transition:background .3s;
+}
+.form-group--mod button:hover{
+    background: #484747;
+}
+.formAssociation{
+    margin-top: 82px;
+}
+@media all and (max-width: 992px){
+    .form-group--mod button{
+        float: none;
+    }
+}
+.table--associative{
+    margin-top: 100px;
+}
+
+.checAssociate{
+    margin-bottom: 0;
+    margin-top: 21px;
+}
+.nameChec{
+    padding-left: 5px;
+    padding-right: 15px;
+}
+.checAssociate input{
+    position: relative;
+    top: 2px;
+}
+.dop-btn-save{
+    float: right;
+}
+@media all and (max-width: 992px){
+    .dop-btn-save{
+        float: none;
     }
 }

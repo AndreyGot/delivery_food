@@ -48,7 +48,7 @@
                 @section('sideBar')
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_listRestaurant') }}" role="button">Список ресторанов</a>
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_order_list') }}" role="button">Список заказов</a>
-                    <a class="btn btn-success" href="{{ route('admin_associations_list')}}" role="button">Список Асоциации-Категорий</a>
+                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_associations_list')}}" role="button">Список Асоциации-Категорий</a>
                     {{--<a class="btn btn-success" href="{{ route('admin_addRestaurantForm') }}" role="button">Добавить ресторан</a>--}}
                 @show
             </aside>

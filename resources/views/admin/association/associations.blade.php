@@ -1,13 +1,13 @@
 @extends('admin.mainTemplates.association')
 
 @section('sideBar')
-	<a class="btn btn-success" href="{{ route('adminPanel') }}" role="button">Вернутся к панели</a>
-    <a class="btn btn-success" href="{{ route('admin_associations_list') }}" role="button">Список Асоциаций->Категорий</a>
-    <a class="btn btn-success" href="{{ route('admin_addForm_association') }}" role="button">Добавить новую Асоциацию</a>
+	<a class="btn btn-success btn-success--mod" href="{{ route('adminPanel') }}" role="button">Вернутся к панели</a>
+    <a class="btn btn-success btn-success--mod" href="{{ route('admin_associations_list') }}" role="button">Список Асоциаций-Категорий</a>
+    <a class="btn btn-success btn-success--mod" href="{{ route('admin_addForm_association') }}" role="button">Добавить новую Асоциацию</a>
 @endsection
 
 @section('content')
-    <table class=" table table-hover">
+    <table class=" table table--associative table-hover">
         <tr>
             <th>Имя_ассоциации</th>
             <th>Действия</th>
