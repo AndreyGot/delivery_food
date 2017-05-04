@@ -104,10 +104,8 @@
 </header>
 {{--END block top header--}}
 
-        @yield('content') 
-        {{--
-        @include('shop.tamplates.howto')
-        --}}
+        @yield('content')
+
         @include('shop.tamplates.footer')
         @include('shop.tamplates.cart_panel')
 

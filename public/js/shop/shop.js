@@ -8,8 +8,23 @@ jQuery(document).ready(function ($) {
     //////////
     $('.check_association').bind('change', filterByAssociation);
     function filterByAssociation(event) {
+        var changeCheckBox = $(event.target);
+        var formCheckBox = changeCheckBox.parent();
+        var url = 'filtreByAssociation';
 
-        console.log('filtreByAssociation');
+        $.ajax({
+            url: url,
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                associationArray: formCheckBox.serializeArray()
+            },
+            success: function (response) {
+                $('#restaurantListContainer').html(response);
+            }
+        });
     }
     //////////
 
@@ -106,7 +121,6 @@ jQuery(document).ready(function ($) {
                     location.href = response.redirectURL
                 }
 
-
                 console.log(cartSummary);
             }
         });
@@ -179,6 +193,5 @@ jQuery(document).ready(function ($) {
             resultContainer.remove();
         }
     }
-
     
 });

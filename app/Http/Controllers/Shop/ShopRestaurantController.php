@@ -5,17 +5,21 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Model\Association;
 use App\Model\Restaurant;
 use App\Model\Category;
-use App\Model\Profile;
 
 class ShopRestaurantController extends Controller
 {
     public function listRestaurant()
     {
         $restaurants = Restaurant::all();
+        $associations = Association::all();
 
-        return view('shop.restaurant.mediumListRestaurant', ['restaurants' => $restaurants]);
+        return view('shop.restaurant.mediumListRestaurant', [
+            'restaurants' => $restaurants,
+            'associations'=> $associations,
+        ]);
     }
 
     public function showRestaurant(Restaurant $restaurant)
@@ -23,7 +27,10 @@ class ShopRestaurantController extends Controller
         $specials = $restaurant->specials;
         $categories = Category::where('restaurant_id', $restaurant->id)->get();
 
-        return view('shop.restaurant.showRestaurant')->with(['restaurant' => $restaurant, 'categories' => $categories, 'specials' => $specials]
+        return view('shop.restaurant.showRestaurant')->with([
+                'restaurant' => $restaurant,
+                'categories' => $categories,
+                'specials' => $specials]
         );
     }
 
@@ -36,5 +43,4 @@ class ShopRestaurantController extends Controller
             'restaurants' => $restaurants
         ]);
     }
-
 }

@@ -178,7 +178,7 @@ Route::group(['namespace' => 'User'], function () {
 //////
 Route::group(['namespace' => 'Shop'], function () {
 
-    Route::get('filtreByAssociation', 'FilterController@filtreByAssociation')->name('filtreByAssociation');
+    Route::post('filtreByAssociation', 'FilterController@filtreByAssociation')->name('filtreByAssociation');
 //    Route::post('register', 'RegisterController@register');
 
 });
