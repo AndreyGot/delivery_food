@@ -41,11 +41,9 @@ class AssociationController extends Controller
 
     public function deleteAssociation(Association $association)
     {
-        try {
-            $association->delete();
-        } catch (Exception $e) {
-            $message = 'cant delete assotiation';
-        }
+        $association->categories()->detach();
+        $association->delete();
+
         return redirect(route('admin_associations_list'));
     }
 
