@@ -16,14 +16,14 @@ class IndexController extends Controller
 	{
 		$restaurants = Restaurant::all();
 		$specials = Special::where('status', true)->get();
-//		dd($specials);
+//		dd($restaurants[0]->paymentMethods);
 		$associations = Association::all();
 		
 		/* @var Restaurant $restaurant */
 		return view('index')->with([
-			'restaurants'=>$restaurants,
-			'specials'=>$specials,
-			'associations'=>$associations,
+			'restaurants'	=>$restaurants,
+			'specials'		=>$specials,
+			'associations'	=>$associations,
 		]);
 	}
 }

@@ -53,7 +53,7 @@ class Restaurant extends Model
 
     public function paymentMethods()
     {
-        return $this->belongsToMany('App\Model\PaymentMethod', 'restaurant_has_paymentMethod');
+        return $this->belongsToMany('App\Model\PaymentMethod', 'restaurant_has_payment');
     }
 
     public function save(array $options = [])
