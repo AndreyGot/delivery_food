@@ -19,6 +19,7 @@ class CreateRestaurantHasPaymentMethod extends Migration
 
             $table->foreign('restaurant_id')->references('id')->on('restaurant');
             $table->foreign('payment_method_id')->references('id')->on('payment_method');
+
             $table->primary(['restaurant_id', 'payment_method_id']);
         });
     }
