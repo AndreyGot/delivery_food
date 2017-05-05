@@ -18,7 +18,7 @@ class CreateRestaurantHasPaymentMethod extends Migration
             $table->integer('payment_id', false, true);
 
             $table->foreign('restaurant_id')->references('id')->on('restaurant');
-            $table->foreign('payment_id')->references('id')->on('payment_method');
+            $table->foreign('payment_method_id')->references('id')->on('payment_method');
             $table->primary(['restaurant_id', 'payment_id']);
         });
     }
@@ -30,7 +30,7 @@ class CreateRestaurantHasPaymentMethod extends Migration
      */
     public function down()
     {
-        Schema::table('restaurant_has_paymentMethod', function (Blueprint $table)
+        Schema::table('restaurant_has_payment', function (Blueprint $table)
         {
             $table->drop();
         });

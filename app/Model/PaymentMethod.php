@@ -34,6 +34,6 @@ class PaymentMethod extends Model
 
     public function restaurants()
     {
-        return $this->belongsToMany('App\Model\Restaurant', 'restaurant_has_paymentMethod');
+        return $this->belongsToMany('App\Model\Restaurant', 'restaurant_has_payment');
     }
 }
