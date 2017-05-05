@@ -6,13 +6,13 @@
                     <div class="sort-block_header">Показать только</div>
                     <div class="sort-block_content">
                         {{--<form method="POST" action="{{route('filtreByAssociation')}}" enctype="multipart/form-data">--}}
-<input type="checkbox" name="special" value="on" id="p1" class="checkFiltre">  <label for="1">С акциями</label>
-{{--<input type="checkbox" name="delivery" value="free" id="p2" class="checkFiltre"><label for="2">Бесплатная доставка</label>--}}
-<input type="checkbox" name="online" value="on" id="p3" class="checkFiltre"> <label for="3">Оплата картой онлайн</label>
-<input type="checkbox" name="cart" value="on" id="p4" class="checkFiltre">   <label for="4">Оплата картой курьеру</label>
-<input type="checkbox" name="bonus" value="on" id="p5" class="checkFiltre">  <label for="5">Еда за баллы</label>
-{{--<input type="checkbox" name="work" value="on" id="p6" class="checkFiltre">   <label for="6">Работает сейчас</label>--}}
-{{--<input type="checkbox" name="is24" value="on" id="p7" class="checkFiltre">   <label for="7">Работает круглосуточно</label>--}}
+<input type="checkbox" name="special" value="on" id="p1" class="checkFiltre">  <label for="p1">С акциями</label>
+{{--<input type="checkbox" name="delivery" value="free" id="p2" class="checkFiltre"><label for="p2">Бесплатная доставка</label>--}}
+<input type="checkbox" name="online" value="on" id="p3" class="checkFiltre"> <label for="p3">Оплата картой онлайн</label>
+<input type="checkbox" name="cart" value="on" id="p4" class="checkFiltre">   <label for="p4">Оплата картой курьеру</label>
+<input type="checkbox" name="bonus" value="on" id="p5" class="checkFiltre">  <label for="p5">Еда за баллы</label>
+{{--<input type="checkbox" name="work" value="on" id="p6" class="checkFiltre">   <label for="p6">Работает сейчас</label>--}}
+{{--<input type="checkbox" name="is24" value="on" id="p7" class="checkFiltre">   <label for="p7">Работает круглосуточно</label>--}}
                         {{--</form>--}}
                     </div>
                 </div>
