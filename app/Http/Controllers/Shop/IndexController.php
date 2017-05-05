@@ -15,7 +15,8 @@ class IndexController extends Controller
 	public function index()
 	{
 		$restaurants = Restaurant::all();
-		$specials = Special::all();
+		$specials = Special::where('status', true)->get();
+//		dd($specials);
 		$associations = Association::all();
 		
 		/* @var Restaurant $restaurant */

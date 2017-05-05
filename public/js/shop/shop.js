@@ -26,6 +26,28 @@ jQuery(document).ready(function ($) {
             }
         });
     }
+    
+    $('.checkFiltre').bind('change', filtreByParameter);
+    function filtreByParameter(event) {
+        var changeCheckBox = $(event.target);
+        var formCheckBox = changeCheckBox.parent();
+        var url = 'filtreCtrl';
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                requestData: formCheckBox.serializeArray()
+            },
+            success: function (response) {
+                $('#restaurantListContainer').html(response);
+            }
+        });
+        console.log(changeCheckBox);
+    }
     //////////
 
     var searchField = $('#zz-searchByRestaurants');

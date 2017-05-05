@@ -5,17 +5,15 @@
                 <div class="sort-block">
                     <div class="sort-block_header">Показать только</div>
                     <div class="sort-block_content">
-                        <input type="checkbox" name="promo" value="on" id="ch1"><label for="ch1">С акциями</label>
-                        <input type="checkbox" name="delivery" value="free" id="ch2"><label for="ch2">Бесплатная
-                            доставка</label>
-                        <input type="checkbox" name="online" value="on" id="ch6"><label for="ch6">Оплата картой
-                            онлайн</label>
-                        <input type="checkbox" name="cart" value="on" id="ch3"><label for="ch3">Оплата картой
-                            курьеру</label>
-                        <input type="checkbox" name="bonus" value="on" id="ch4"><label for="ch4">Еда за баллы</label>
-                        <input type="checkbox" name="work" value="on" id="ch5"><label for="ch5">Работает сейчас</label>
-                        <input type="checkbox" name="is24" value="on" id="ch7"><label for="ch7">Работает
-                            круглосуточно</label>
+                        <form method="POST" action="{{route('filtreByAssociation')}}" enctype="multipart/form-data">
+<input type="checkbox" name="special" value="on" id="1" class="checkFiltre">  <label for="1">С акциями</label>
+{{--<input type="checkbox" name="delivery" value="free" id="2" class="checkFiltre"><label for="2">Бесплатная доставка</label>--}}
+<input type="checkbox" name="online" value="on" id="3" class="checkFiltre"> <label for="3">Оплата картой онлайн</label>
+<input type="checkbox" name="cart" value="on" id="4" class="checkFiltre">   <label for="4">Оплата картой курьеру</label>
+<input type="checkbox" name="bonus" value="on" id="5" class="checkFiltre">  <label for="5">Еда за баллы</label>
+{{--<input type="checkbox" name="work" value="on" id="6" class="checkFiltre">   <label for="6">Работает сейчас</label>--}}
+{{--<input type="checkbox" name="is24" value="on" id="7" class="checkFiltre">   <label for="7">Работает круглосуточно</label>--}}
+                        </form>
                     </div>
                 </div>
                 <div class="sort-block">
