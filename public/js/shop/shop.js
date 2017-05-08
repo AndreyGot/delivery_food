@@ -6,11 +6,13 @@ jQuery(document).ready(function ($) {
     $('.zz-removeAllByProduct').bind('click', removeAllByProduct);
     $('#zz-btn_cart_clear').bind('click', cartClear);
     //////////
-    $('.check_association').bind('change', filterByAssociation);
-    function filterByAssociation(event) {
-        var changeCheckBox = $(event.target);
-        var formCheckBox = changeCheckBox.parent();
-        var url = 'filtreByAssociation';
+    $('.check_association, .checkFilter').bind('change', filterByOptions);
+    function filterByOptions() {
+
+        var selectedCheckBox = $("input:checked");
+        console.log(selectedCheckBox);
+
+        var url = 'filterCtrl';
 
         $.ajax({
             url: url,
@@ -19,7 +21,7 @@ jQuery(document).ready(function ($) {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             data: {
-                associationArray: formCheckBox.serializeArray()
+                checkBoxArray: selectedCheckBox.serializeArray()
             },
             success: function (response) {
                 $('#restaurantListContainer').html(response);
@@ -27,8 +29,8 @@ jQuery(document).ready(function ($) {
         });
     }
     
-    // $('.checkFiltre').bind('change', filtreByParameter);
-    // function filtreByParameter(event) {
+    // $('.checkfilter').bind('change', filterByParameter);
+    // function filterByParameter(event) {
     //     var changeCheckBox = $(event.target);
     //     var formCheckBox = changeCheckBox.parent();
     //     var url = 'filtreCtrl';
