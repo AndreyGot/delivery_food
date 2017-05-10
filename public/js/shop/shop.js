@@ -7,6 +7,30 @@ jQuery(document).ready(function ($) {
     $('#zz-btn_cart_clear').bind('click', cartClear);
     $('#zz-bonus-payment').bind('input', validateBonusField);
 
+    //////////
+    $('.check_association, .checkFilter').bind('change', filterByOptions);
+    function filterByOptions() {
+
+        var selectedCheckBox = $("input:checked");
+        console.log(selectedCheckBox);
+
+        var url = 'filterCtrl';
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                checkBoxArray: selectedCheckBox.serializeArray()
+            },
+            success: function (response) {
+                $('#restaurantListContainer').html(response);
+            }
+        });
+    }
+    //////////
     var searchField = $('#zz-searchByRestaurants');
     searchField.bind('input', searchByRestaurants);
     searchField.bind('blur', function (event) {
@@ -139,7 +163,6 @@ jQuery(document).ready(function ($) {
                     location.href = response.redirectURL
                 }
 
-
                 console.log(cartSummary);
             }
         });
@@ -211,6 +234,5 @@ jQuery(document).ready(function ($) {
         } else {
             resultContainer.remove();
         }
-;
     }
 });

@@ -104,10 +104,8 @@
 </header>
 {{--END block top header--}}
 
-        @yield('content') 
-        {{--
-        @include('shop.tamplates.howto')
-        --}}
+        @yield('content')
+
         @include('shop.tamplates.footer')
         @include('shop.tamplates.cart_panel')
 
@@ -122,6 +120,8 @@
         $("#phone-cart").mask("+7(999) 999 99 99",{placeholder: " "});
         $("#phone_1").mask("+7(999) 999 99 99",{placeholder: " "});
     });
+</script>
+<script>
     window.urlBag.searchByRestaurants = '{{ route('shop_search_byRestaurants') }}'
 </script>
 <script src="{{ asset('js/slick/slick.js') }}"></script>
