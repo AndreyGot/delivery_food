@@ -4,7 +4,8 @@
 
 	<div>
 		@include('shop.tamplates.slider')
-		@include('shop.restaurant.listRestaurant')
+		@include('shop.tamplates.filter_block')
+{{--			@include('shop.restaurant.listRestaurant')--}}
 		@include('shop.tamplates.howto')
 		@include('shop.special.listSpecial')
 		@include('shop.tamplates.reasonsLoveUs')

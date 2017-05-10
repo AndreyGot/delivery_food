@@ -1,10 +1,10 @@
 
-<div class="catalog container">
+<div class="catalog col-md-9">
     <div class="new-header">Адреса</div>
         <div class="row">
             @foreach ($userAddresses as $userAddress)
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6">
                     <div class="blocAdress">
                         <p>Регион: {{ $userAddress->region }}</p>
                         <p>Город: {{ $userAddress->city }}</p>
@@ -35,9 +35,7 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
-
             @endforeach
         </div>
 </div>

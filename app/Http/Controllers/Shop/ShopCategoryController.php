@@ -23,5 +23,5 @@ class ShopCategoryController extends Controller
   //   // dd($restaurant);
   //   return view('shop.restaurant.showRestaurant')->with(['restaurant'=>$restaurant]
   //   );
-  }
+//  }
 }

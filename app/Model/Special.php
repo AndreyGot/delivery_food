@@ -10,6 +10,9 @@ namespace App\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Helper\CyrToLatConverter;
+use App\Model\Helper\ImageSaver;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class Special
@@ -26,8 +29,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Special extends Model
 {
+    use ImageSaver, CyrToLatConverter;
+
     protected $table = 'special';
     public $timestamps = false;
+    protected $fillable = ['name', 'description', 'start_date', 'end_date', 'image', 'status', 'bonus_rate'];
 
     public function restaurants()
     {
@@ -42,5 +48,35 @@ class Special extends Model
     public function foods()
     {
         return $this->belongsToMany('App\Model\Food', 'special_has_food');
+    }
+
+    public function save(array $options = [])
+    {
+        /* @var User $user*/
+        $user = Auth::user();
+        
+        $newImageName = $user->id .'_'. time();
+        $imagePath = config('custom.imageDirectories.special');
+
+        if ($isFileUploaded = $this->uploadImage != null) {
+            // dd('here');
+            $originalExtension = $this->uploadImage->getClientOriginalExtension();
+            if ($originalExtension == 'jpeg') {
+                $originalExtension = 'jpg';
+            }
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $originalExtension);
+        }
+
+        if ($saved = parent::save($options)) {
+            if ($isFileUploaded) {
+                $this->saveImage($this->uploadImage->getRealPath(),
+                    $newImageName,
+                    $imagePath,
+                    config('custom.imageSize.special')
+                );
+            }
+        }
+
+        return $saved;
     }
 }

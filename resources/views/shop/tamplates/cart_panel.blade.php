@@ -1,6 +1,6 @@
 <?php $cartSummary = (new \App\Model\CookieCart())->getCartSummary() ?>
 
-<div class="cart-pane " data-score="">
+<div class="cart-pane " data-score="" id="cart-pane">
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-2 wr-cart-pane__logo">
@@ -40,3 +40,12 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-2.0.3.js"></script>
+<script>
+    if($("#zz-cartTotalCount").html() == 0){
+        setTimeout($("#cart-pane").hide("slow"),5000);
+    }else{
+        setTimeout($("#cart-pane").fadeTo("slow",1),6000);
+
+    }
+</script>

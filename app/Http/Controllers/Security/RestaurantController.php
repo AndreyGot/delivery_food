@@ -92,9 +92,21 @@ class RestaurantController extends Controller
 
     public function editRestaurant(Restaurant $restaurant, RestaurantRequest $request)
     {
+        $real_path = dirname(__FILE__);
+        $path_to_project =  stristr($real_path, 'app', true);
+        $path_to_image = 'public'.$restaurant->image;
+        $full_path = $path_to_project.$path_to_image;
+
         $data = $request->all();
-        $restaurant->fill($data);
         $imageObj = $request->file('image_field');
+
+        if (!is_null($imageObj)) {
+            if (file_exists($full_path)) {
+                unlink($full_path);
+            }
+            $restaurant->setUploadImage($imageObj);
+        }
+
         if (!is_null($imageObj)) {
             $restaurant->setUploadImage($imageObj);
         }

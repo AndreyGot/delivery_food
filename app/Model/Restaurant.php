@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Auth;
  * @property string $working_hours
  * @property float $rating
  * @property [] $categories
+ * @property [] specials
+ * @property [] paymentMethods
  * @property RestaurantContacts $restaurantContact
  */
 class Restaurant extends Model
@@ -47,7 +49,11 @@ class Restaurant extends Model
     public function specials()
     {
         return $this->belongsToMany('App\Model\Special', 'special_has_restaurant');
+    }
 
+    public function paymentMethods()
+    {
+        return $this->belongsToMany('App\Model\PaymentMethod', 'restaurant_has_payment');
     }
 
     public function save(array $options = [])
@@ -57,7 +63,12 @@ class Restaurant extends Model
 
 
         if ($isFileUploaded = $this->uploadImage != null) {
-            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $this->uploadImage->getClientOriginalExtension());
+
+            $originalExtension = $this->uploadImage->getClientOriginalExtension();
+            if ($originalExtension == 'jpeg') {
+                $originalExtension = 'jpg';
+            }
+            $this->image = str_replace('/public', '', $imagePath . $newImageName . '.' . $originalExtension);
         }
 
         if ($saved = parent::save($options)) {

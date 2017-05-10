@@ -8,24 +8,25 @@
     @foreach ($orders as $order)
 
     <div class="row">
-      <div class="col-xs-2">
-        <p>Номер: {{ $order->number }}</p>
+      <div class="col-md-3">
+        <p class="orders">Номер: <span>{{ $order->number }}</span></p>
       </div>       
 
-      <div class="col-xs-2">
-        <p>Статус: {{ $order->order_status_id }}</p>
+      <div class="col-md-3">
+        <p class="orders">Статус: <span>{{ $order->order_status_id }}</span></p>
       </div> 
 
-      <div class="col-xs-2">
-        <p>Время оформления: {{ $order->creation_date }}</p>
+      <div class="col-md-3">
+        <p class="orders">Время оформления: <span>{{ $order->creation_date }}</span></p>
       </div> 
 
-      <div class="col-xs-2">
-        <p>Описание: {{ $order->description }}</p>
+      <div class="col-md-3">
+        <p class="orders">Описание: <span> {{ $order->description }}</span></p>
       </div> 
          
       <div class="col-xs-2">
-        <a href="{{ route('order_details', [$order]) }}" class="btn btn-info">
+        <a href="{{ route('order_details', [$order]) }}#zz-order-container" class="btn btn-info">
+            {{--<a href="{{ route('order_details', [$order]) }}" class="btn btn-info btn-info--detalis">--}}
             Детали
         </a>
       </div>

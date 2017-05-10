@@ -9,13 +9,15 @@
 namespace App\Model;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PaymentMethod
  * @package App\Model
  *
- *
+ * @property string $name
+ * @property Collection $orders
  */
 class PaymentMethod extends Model
 {
@@ -30,5 +32,10 @@ class PaymentMethod extends Model
     public function orders()
     {
         return $this->hasMany('App\Model\Order');
+    }
+
+    public function restaurants()
+    {
+        return $this->belongsToMany('App\Model\Restaurant', 'restaurant_has_payment');
     }
 }

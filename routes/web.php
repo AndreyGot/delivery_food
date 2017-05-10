@@ -98,7 +98,7 @@ Route::group([
             });
             Route::group(['prefix' => 'category'], function () {
                 Route::get('add', 'CategoryController@getForm')->name('admin_category_add_form');
-//                Route::post('add', 'CategoryController@addCategory')->name('admin_category_add');
+                Route::post('add', 'CategoryController@addCategory')->name('admin_category_add');
                 Route::get('add/{restaurant}', 'CategoryController@getFormByRestaurant')->name('admin_category_add_form_byRestaurant');
                 Route::post('add/{restaurant}', 'CategoryController@addCategoryByRestaurant')->name('admin_category_add_category_byRestaurant');
                 Route::get('list/{restaurant}', 'CategoryController@categoryListByRestaurant')->name('admin_category_list_byRestaurant');
@@ -126,6 +126,26 @@ Route::group([
                     Route::post('changestatus/{fastOrder}', 'FastOrderController@changeOrderStatus')->name('admin_order_fast_changeStatus');
                 });
             });
+
+            Route::group(['prefix' => 'association'], function () {
+                Route::get('list', 'AssociationController@AssociationsList')->name('admin_associations_list');
+                Route::get('addForm', 'AssociationController@addFormAssociation')->name('admin_addForm_association');
+                Route::post('add', 'AssociationController@addAssociation')->name('admin_add_association');
+                Route::get('editFom/{association}', 'AssociationController@editFormAssociation')->name('admin_editForm_association');
+                Route::post('edit/{association}', 'AssociationController@editAssociation')->name('admin_edit_association');
+                Route::get('delete/{association}', 'AssociationController@deleteAssociation')->name('admin_delete_association');
+
+            });
+////////
+            Route::group(['prefix' => 'special'], function () {
+                Route::get('list', 'SpecialController@specialList')->name('admin_special_list');
+                Route::get('addForm', 'SpecialController@getSpecialForm')->name('admin_special_addForm');
+                Route::post('add', 'SpecialController@addSpecial')->name('admin_add_special');
+                Route::get('editFom/{special}', 'SpecialController@editFormSpecial')->name('admin_editForm_special');
+                Route::post('edit/{special}', 'SpecialController@editSpecial')->name('admin_edit_special');
+                Route::get('delete/{special}', 'SpecialController@deleteSpecial')->name('admin_delete_special');
+            });
+////////
         });
 
         Route::get('login', 'SecurityController@showLoginForm')->name('admin_login_form');
@@ -163,7 +183,15 @@ Route::group(['namespace' => 'User'], function () {
     ], function () {
         Route::post('fastorder', 'OrderController@makeFastOrder')->name('user_order_fastOrder_make');
         Route::post('make', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
+        Route::get('checkout', 'OrderController@getCheckoutForm')->name('user_order_checkout');
     });
+});
+//////
+Route::group(['namespace' => 'Shop'], function () {
+
+    Route::post('filterCtrl', 'FilterController@filterCtrl')->name('filterCtrl');
+
+
 });
 
 

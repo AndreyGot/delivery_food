@@ -13,13 +13,15 @@ return[
         'restaurant' => IMAGES_PATH . 'restaurants/',
         'category' => IMAGES_PATH . 'categories/',
         'food' => IMAGES_PATH . 'food/',
-        'user' => IMAGES_PATH . 'user/'
+        'user' => IMAGES_PATH . 'user/',
+        'special' => IMAGES_PATH . 'special/'
     ],
 
     'imageSize' => [
         'restaurant' => 500,
         'category' => 500,
         'food' => 500,
-        'user' => 500
+        'user' => 500,
+        'special' => 500
     ],
 ];
