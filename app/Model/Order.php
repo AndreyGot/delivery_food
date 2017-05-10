@@ -29,7 +29,7 @@ class Order extends Model
 {
     protected $table = 'order';
     public $timestamps = false;
-    protected $fillable = ['description'];
+    protected $fillable = ['description', 'payment_method_id'];
 
     public function orderStatus()
     {

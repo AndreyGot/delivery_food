@@ -128,7 +128,7 @@
                                     <textarea name="description" value="" placeholder="Комментарий"></textarea>
                                 @else
                                     <?php /* @var \App\Model\UserAddress $userAddress*/
-                                    /* @var  \App\Model\Profile $profile*/
+                                          /* @var  \App\Model\Profile $profile*/
                                     $profile = Auth::user()->profile;
                                     ?>
                                     <p>Имя: {{ $profile->first_name }}</p>
@@ -142,12 +142,22 @@
                                     @endforeach
                                 @endif
 
-
+                                <p>способ оплаты</p>
                                 <ul class="cart-switch">
-                                    <li>
-                                        <input id="cart-switch1" name="payment_method_id" value="1" type="radio" checked="checked">
-                                        <label for="cart-switch1">Наличными</label>
-                                    </li>
+
+                                    @foreach($paymentMethods as $paymentMethod)
+                                        <li>
+                                            <input id="{{$paymentMethod->id}}"
+                                                   type="radio"
+                                                   name="payment_method_id"
+                                                   value="{{$paymentMethod->id}}"
+                                                    @if($paymentMethod->alias == 'cash')
+                                                        checked
+                                                    @endif
+                                            >
+                                            <label for="{{$paymentMethod->id}}">{{$paymentMethod->name}}</label>
+                                        </li>
+                                    @endforeach
                                     {{--<li>
                                         <input id="cart-switch2" name="payment_type" value="2" type="radio">
                                         <label for="cart-switch2">Картой онлайн</label>

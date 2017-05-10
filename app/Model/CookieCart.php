@@ -24,6 +24,7 @@ class CookieCart
     public function __construct()
     {
         $this->cart = Cookie::get('cart');
+//        dd(Cookie::get('cart'));
         $this->orderList = Cookie::get('orders');
 
 

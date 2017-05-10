@@ -10,6 +10,7 @@ namespace App\Http\Controllers\User\Order;
 
 
 use App\Http\Controllers\Controller;
+use App\Model\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,19 @@ use App\Model\User;
 
 class OrderController extends Controller
 {
+    public function ordersList(){
+        $newOrders = Order::where(['order_status_id' => 1])->get();
+        dd('here');
+        dd($newOrders);
+
+
+        return view('admin.order.orderList', [
+            'newFastOrders' => FastOrder::where(['order_status_id' => 1])->get(),
+            'handledFastOrders' => FastOrder::where(['order_status_id' => 2])->get(),
+            'archivedFastOrders' => FastOrder::where(['order_status_id' => 3])->get(),
+        ]);
+    }
+
     public function makeFastOrder(Request $request)
     {
         $orderStatus = OrderStatus::where(['name' => 'Новый'])->first();
@@ -98,8 +112,11 @@ class OrderController extends Controller
         $cartFoodList = $cart->getCartFoodList();
 
         $data = $request->all();
+
         $order = new Order();
         $order->fill($data);
+//        dd($order->paymentMethod);
+
         $order->number = Auth::user()->id . '_' . time();
         $order->orderStatus()->associate($orderStatus);
         if (empty($profile = Auth::user()->profile)) {
@@ -107,15 +124,12 @@ class OrderController extends Controller
             $profile->fill($data);
             $profile->first_name = $data['customer_name'];
             $profile->phone_1 = $data['phone'];
-
-
             $profile->user()->save(Auth::user());
             $profile->save();
 
             Auth::user()->profile()->associate($profile);
 
             Auth::user()->save();
-
         }
 //        dd(Auth::user()->profile->userAddresses);
         if (Auth::user()->profile->userAddresses->isEmpty()) {
@@ -129,6 +143,7 @@ class OrderController extends Controller
 
         $order->profile()->associate(Auth::user()->profile);
         $order->userAddress()->associate($userAddress);
+//        dd($order);
         $order->save();
         foreach ($cartFoodList as $cartFood) {
             $order->foods()->save($cartFood['food'], [
@@ -137,6 +152,6 @@ class OrderController extends Controller
             ]);
         }
 
-        return redirect()->route('main_index')->cookie($cart->convertCartToOrder($order->number))->cookie($cart->clearCart());
+        return redirect()->route('get_user_orders')->cookie($cart->convertCartToOrder($order->number))->cookie($cart->clearCart());
     }
 }

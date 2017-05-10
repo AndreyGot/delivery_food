@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Security;
 
 use App\Http\Controllers\Controller;
 use App\Model\FastOrder;
+use App\Model\Order;
 use App\Model\OrderStatus;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,11 @@ class FastOrderController extends Controller
 {
     public function ordersList()
     {
+        $newOrders = Order::where(['order_status_id' => 1])->get();
+//        dd($newOrders->array[] );
+        $newFastOrders = FastOrder::where(['order_status_id' => 1])->get();
+//        $result = array_merge ($newOrders, $newFastOrders);
+//        dd($result);
         return view('admin.order.orderList', [
             'newFastOrders' => FastOrder::where(['order_status_id' => 1])->get(),
             'handledFastOrders' => FastOrder::where(['order_status_id' => 2])->get(),
