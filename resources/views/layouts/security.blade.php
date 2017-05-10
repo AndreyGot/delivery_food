@@ -18,6 +18,14 @@
     <link href="{{ asset('css/laravel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/admin/stylesheets.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{ asset('js/jquery.maskedinput.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(function($){
+            $("#start_date").mask("9999-99-99");
+            $("#end_date").mask("9999-99-99");
+        });
+    </script>
+
     @section('styles')
 
     @show
@@ -49,6 +57,7 @@
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_listRestaurant') }}" role="button">Список ресторанов</a>
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_order_list') }}" role="button">Список заказов</a>
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_associations_list')}}" role="button">Список Асоциации-Категорий</a>
+                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_special_list')}}" role="button">Список акций</a>
                     {{--<a class="btn btn-success" href="{{ route('admin_addRestaurantForm') }}" role="button">Добавить ресторан</a>--}}
                 @show
             </aside>

@@ -52,7 +52,8 @@
                                     class="form-control"
                                     name="association[]"
                                     value=""
-                                    id="showHideCheckBox">
+                                    id="showHideCheckBox"
+                            >
                         </div>
                     </div>
                 </div>
@@ -65,16 +66,17 @@
                                 <p class="checAssociate">
                                 @foreach ($associations as $association)
 
-                                    <div class="col-md-3 col-sm-4"><input  type="checkbox"
-                                                                  id="asociate"
-                                                                  name="association[]"
-                                                                  value="{{$association->id}}"
-                                                                  data-fieldid="associationContainer"
-                                                                  class="check_status check_status2"
-                                                                  @foreach ($checkAssociations as $checkAssociation)
-                                                                  @if($association->id == $checkAssociation->id)
-                                                                  checked="checked"
-                                                @endif
+                                    <div class="col-md-3 col-sm-4">
+                                        <input  type="checkbox"
+                                                id="asociate"
+                                                name="association[]"
+                                                value="{{$association->id}}"
+                                                data-fieldid="associationContainer"
+                                                class="check_status check_status2"
+                                                @foreach ($checkAssociations as $checkAssociation)
+                                                    @if($association->id == $checkAssociation->id)
+                                                        checked="checked"
+                                                    @endif
                                                 @endforeach
                                         ><span class="nameChec">{{$association->name}}</span></div>
                                     @endforeach

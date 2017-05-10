@@ -136,6 +136,16 @@ Route::group([
                 Route::get('delete/{association}', 'AssociationController@deleteAssociation')->name('admin_delete_association');
 
             });
+////////
+            Route::group(['prefix' => 'special'], function () {
+                Route::get('list', 'SpecialController@specialList')->name('admin_special_list');
+                Route::get('addForm', 'SpecialController@getSpecialForm')->name('admin_special_addForm');
+                Route::post('add', 'SpecialController@addSpecial')->name('admin_add_special');
+                Route::get('editFom/{special}', 'SpecialController@editFormSpecial')->name('admin_editForm_special');
+                Route::post('edit/{special}', 'SpecialController@editSpecial')->name('admin_edit_special');
+                Route::get('delete/{special}', 'SpecialController@deleteSpecial')->name('admin_delete_special');
+            });
+////////
         });
 
         Route::get('login', 'SecurityController@showLoginForm')->name('admin_login_form');
