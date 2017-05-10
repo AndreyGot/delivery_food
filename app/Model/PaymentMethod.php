@@ -9,13 +9,15 @@
 namespace App\Model;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PaymentMethod
  * @package App\Model
  *
- *
+ * @property string $name
+ * @property Collection $orders
  */
 class PaymentMethod extends Model
 {

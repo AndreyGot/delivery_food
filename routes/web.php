@@ -163,6 +163,7 @@ Route::group(['namespace' => 'User'], function () {
     ], function () {
         Route::post('fastorder', 'OrderController@makeFastOrder')->name('user_order_fastOrder_make');
         Route::post('make', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
+        Route::get('checkout', 'OrderController@getCheckoutForm')->name('user_order_checkout');
     });
 });
 

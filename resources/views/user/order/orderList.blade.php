@@ -25,7 +25,7 @@
       </div> 
          
       <div class="col-xs-2">
-        <a href="{{ route('order_details', [$order]) }}" class="btn btn-info">
+        <a href="{{ route('order_details', [$order]) }}#zz-order-container" class="btn btn-info">
             Детали
         </a>
       </div>

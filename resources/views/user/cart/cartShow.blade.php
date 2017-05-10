@@ -111,7 +111,7 @@
                                 {{ csrf_field() }}
                                 @if(!Auth::check() || (empty(Auth::user()->profile) || Auth::user()->profile->userAddresses->isEmpty()))
                                     <input type="text" name="customer_name" placeholder="Имя" required>
-                                    <input type="tel" id="phone-cart" name="phone" value="" placeholder="Телефон" required autocomplete="off">
+                                    <input type="tel" id="phone-cart" name="phone" value="" placeholder="Телефон" required >
                                     <input type="hidden" name="city" value="Сочи">
                                     <div class="address-form__input-wrapper">
                                         <input type="text" name="street" data-value="" value="" placeholder="Улица" required>
@@ -142,11 +142,23 @@
                                     @endforeach
                                 @endif
 
+                                @if(Auth::check() && !empty(Auth::user()->profile))
+                                    <label for="zz-bonus-payment">У вас на счету {{ Auth::user()->profile->bonus_score }} бонусов</label>
+                                    {{--<input id="zz-bonus-payment" type="text" placeholder="Оплатить бонусами" data-bonus-score="{{ Auth::user()->profile->bonus_score }}">--}}
+                                @endif
 
                                 <ul class="cart-switch">
                                     <li>
                                         <input id="cart-switch1" name="payment_method_id" value="1" type="radio" checked="checked">
                                         <label for="cart-switch1">Наличными</label>
+                                        <input id="cart-switch2" name="payment_method_id" value="2" type="radio">
+                                        <label for="cart-switch2">Visa/Mastercard</label>
+                                        @if(Auth::check() && (!empty(Auth::user()->profile) && Auth::user()->profile->bonus_score >= $cartSummary['totalCost']) )
+                                            <input id="cart-switch3" name="payment_method_id" value="3" type="radio">
+                                            <label for="cart-switch3">Оплата за бонусы ({{ $cartSummary['totalCost'] }})</label>
+                                        @elseif (Auth::check())
+                                            <p>У Вас не достаточно бонусов для оплаты бонусами</p>
+                                        @endif
                                     </li>
                                     {{--<li>
                                         <input id="cart-switch2" name="payment_type" value="2" type="radio">

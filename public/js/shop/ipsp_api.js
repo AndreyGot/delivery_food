@@ -129,6 +129,7 @@
 }).call(window || {});
 
 (function () {
+    console.log(window == this);
     this.prepareFormData = function (url, data, target) {
         var elem;
         var form = document.createElement('form');
@@ -850,7 +851,6 @@
     this.__DEFAULTCALLBACK__ = Callback;
     this.Checkout = Checkout;
 
-
     this.$ipsp.add('checkout', Checkout);
 }).call(window || {}, location || {});
 (function () {
@@ -938,6 +938,7 @@
                 currency: null,
                 fields: [],
                 params: {}
+
             };
         },
 

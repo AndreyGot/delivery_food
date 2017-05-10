@@ -2,7 +2,7 @@
 
 @section('profile')
 
-    <div class="restoran-item restoran-item--big " id="restoran-page">
+    <div class="restoran-item restoran-item--big " id="zz-order-container">
         <div class="row">             
             <div class="col-xs-2">
                 <p>Номер заказа : {{ $order->number }}</p>

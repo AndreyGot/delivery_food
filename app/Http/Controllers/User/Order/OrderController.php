@@ -8,8 +8,8 @@
 
 namespace App\Http\Controllers\User\Order;
 
-
 use App\Http\Controllers\Controller;
+use App\Model\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +19,16 @@ use App\Model\Order;
 use App\Model\OrderStatus;
 use App\Model\Profile;
 use App\Model\UserAddress;
-use App\Model\User;
 
 class OrderController extends Controller
 {
     public function makeFastOrder(Request $request)
     {
+        $data = $request->all();
+        if ($data['payment_method_id'] == 2) {
+            return redirect()->route('user_order_checkout');
+        }
+//        dd(__METHOD__);
         $orderStatus = OrderStatus::where(['name' => 'Новый'])->first();
         if (empty($orderStatus)) {
             $orderStatus = OrderStatus::create(['name' => 'Новый']);
@@ -33,7 +37,6 @@ class OrderController extends Controller
         $cart = new CookieCart();
         $cartFoodList = $cart->getCartFoodList();
 
-        $data = $request->all();
         $fastOrder = new FastOrder();
         $fastOrder->fill($data);
         $fastOrder->number = 'fo' . time();
@@ -102,6 +105,7 @@ class OrderController extends Controller
         $order->fill($data);
         $order->number = Auth::user()->id . '_' . time();
         $order->orderStatus()->associate($orderStatus);
+
         if (empty($profile = Auth::user()->profile)) {
             $profile = new Profile();
             $profile->fill($data);
@@ -117,6 +121,17 @@ class OrderController extends Controller
             Auth::user()->save();
 
         }
+
+        $order->paymentMethod()->associate(PaymentMethod::find($data['payment_method_id']));
+
+        if ($data['payment_method_id'] == 3 && !(Auth::user()->profile->bonus_score  >= $cart->getCartSummary()['totalCost'])) {
+            dd('success');
+        } elseif ($data['payment_method_id'] == 3) {
+//            dump( Auth::user()->profile->bonus_score);
+            Auth::user()->profile->bonus_score -= $cart->getCartSummary()['totalCost'];
+//            dd(Auth::user()->profile->bonus_score);
+        }
+
 //        dd(Auth::user()->profile->userAddresses);
         if (Auth::user()->profile->userAddresses->isEmpty()) {
             $userAddress = new UserAddress();
@@ -136,7 +151,21 @@ class OrderController extends Controller
                 'actual_price' => $cartFood['food']->price
             ]);
         }
-
-        return redirect()->route('main_index')->cookie($cart->convertCartToOrder($order->number))->cookie($cart->clearCart());
+        Auth::user()->profile->bonus_score += round($cart->getCartSummary()['totalCost'] * 0.05);
+        Auth::user()->profile->save();
+        return redirect()->route('get_user_orders')->cookie($cart->convertCartToOrder($order->number))->cookie($cart->clearCart());
     }
+
+    public function getCheckoutForm()
+    {
+        $cookieCart = new CookieCart();
+        return view('user.checkout.showCheckout', [
+            'cookieCart' => $cookieCart
+        ]);
+    }
+
+//    private function calculate()
+//    {
+//
+//    }
 }
