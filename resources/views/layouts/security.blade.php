@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+    <script>
+        window.urlBag = {};
+    </script>
     <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/admin/admin.js') }}"></script>
@@ -55,7 +58,8 @@
             <aside class="admin-panel">
                 @section('sideBar')
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_listRestaurant') }}" role="button">Список ресторанов</a>
-                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_order_list') }}" role="button">Список заказов</a>
+                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_fast_order_list') }}" role="button">Список заказов без регистрации</a>
+                    <a class="btn btn-success btn-success--mod" href="{{ route('admin_user_order_list') }}" role="button">Список заказов Пользователей</a>
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_associations_list')}}" role="button">Список Асоциации-Категорий</a>
                     <a class="btn btn-success btn-success--mod" href="{{ route('admin_special_list')}}" role="button">Список акций</a>
                     {{--<a class="btn btn-success" href="{{ route('admin_addRestaurantForm') }}" role="button">Добавить ресторан</a>--}}
@@ -69,7 +73,5 @@
 </div>
 
 </body>
-<script>
-    window.urlBag = {};
-</script>
+
 </html>

@@ -71,6 +71,17 @@ Route::group([
 //    'namespace' => 'Security',
 //    'middleware' => 'auth'
 ], function () {
+    /////
+    Route::group([
+        'prefix' => 'userOrder',
+        'namespace' => 'User\Order'
+    ], function () {
+        Route::get('list', 'OrderController@userOrderList')->name('admin_user_order_list');
+        Route::get('show/{order}', 'OrderController@showOrder')->name('admin_order_user_show');
+        Route::post('changeStatus/{order}', 'OrderController@changeOrderStatus')->name('admin_order_user_changeStatus');
+    });
+    /////
+    
     Route::group(['namespace' => 'Security'], function () {
         Route::group(['middleware' => 'isAdmin'], function () {
             Route::get('/', 'AdminController@index')->name('adminPanel');
@@ -120,11 +131,12 @@ Route::group([
 
             });
             Route::group(['prefix' => 'order'], function () {
-                Route::get('list', 'FastOrderController@ordersList')->name('admin_order_list');
+                Route::get('list', 'FastOrderController@ordersList')->name('admin_fast_order_list');
                 Route::group(['prefix' => 'fastorder'], function () {
                     Route::get('show/{fastOrder}', 'FastOrderController@showOrder')->name('admin_order_fast_show');
                     Route::post('changestatus/{fastOrder}', 'FastOrderController@changeOrderStatus')->name('admin_order_fast_changeStatus');
                 });
+
             });
 
             Route::group(['prefix' => 'association'], function () {
@@ -185,6 +197,7 @@ Route::group(['namespace' => 'User'], function () {
         Route::post('make', 'OrderController@makeUserOrder')->name('user_order_userOrder_make');
         Route::get('checkout', 'OrderController@getCheckoutForm')->name('user_order_checkout');
     });
+
 });
 //////
 Route::group(['namespace' => 'Shop'], function () {

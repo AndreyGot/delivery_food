@@ -4,12 +4,34 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
     $('#order_status').bind('change', changeFastOrderStatus);
-    
+
+    $('#user_order_status').bind('change', changeUserOrderStatus);
+
     function changeFastOrderStatus(event) {
         var order_status_id = $(event.target).val();
 
         $.ajax({
             url: urlBag.changeFastOrderStatus,
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                order_status_id: order_status_id
+            },
+            success: function (response) {
+                // console.log(response);
+                window.location.href = response.redirectURL;
+            }
+        });
+    }
+
+
+    function changeUserOrderStatus(event) {
+        var order_status_id = $(event.target).val();
+
+        $.ajax({
+            url: urlBag.changeUserOrderStatus,
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -35,7 +57,6 @@ jQuery(document).ready(function ($) {
 //             checkBoxContainer.css('display', 'block');
 //         }
 //     }
-//
 //     $('.showHideInput').bind('click', showHideInput);
 //     function showHideInput (event)
 //     {

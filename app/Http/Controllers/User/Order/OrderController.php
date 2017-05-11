@@ -22,6 +22,16 @@ use App\Model\UserAddress;
 
 class OrderController extends Controller
 {
+    public function userOrderList(){
+        /* @var Order $order */
+
+        return view('admin.order.orderUserList', [
+            'newUserOrders' => Order::where(['order_status_id' => 1])->get(),
+            'handledUserOrders' => Order::where(['order_status_id' => 2])->get(),
+            'archivedUserOrders' => Order::where(['order_status_id' => 3])->get(),
+        ]);
+    }
+    
     public function makeFastOrder(Request $request)
     {
         $data = $request->all();
@@ -67,7 +77,7 @@ class OrderController extends Controller
             $order->order_status_id = $order->orderStatus->name;
 //            dd($order->order_status_id );
         }
-        $status = 'order_status_id';
+//        $status = 'order_status_id';
         return view('user.order.orderList', ['profile'=>$profile, 'user'=>$user, 'orders'=>$orders ]);
     }
 
@@ -125,12 +135,10 @@ class OrderController extends Controller
         if ($data['payment_method_id'] == 3 && !(Auth::user()->profile->bonus_score  >= $cart->getCartSummary()['totalCost'])) {
             dd('success');
         } elseif ($data['payment_method_id'] == 3) {
-//            dump( Auth::user()->profile->bonus_score);
             Auth::user()->profile->bonus_score -= $cart->getCartSummary()['totalCost'];
 //            dd(Auth::user()->profile->bonus_score);
         }
 
-//        dd(Auth::user()->profile->userAddresses);
         if (Auth::user()->profile->userAddresses->isEmpty()) {
             $userAddress = new UserAddress();
             $userAddress->fill($data);
@@ -162,8 +170,26 @@ class OrderController extends Controller
         ]);
     }
 
-//    private function calculate()
-//    {
-//
-//    }
+    public function showOrder(Order $order)
+    {
+        $userAddress = $order->userAddress;
+
+        return view('admin.order.showUserOrder', [
+            'order' => $order,
+            'userAddress' => $userAddress,
+            'orderSummary' => $order->getSummaryOrderData(),
+            'orderStatuses' => OrderStatus::orderBy('id')->get(),
+        ]);
+    }
+
+    public function changeOrderStatus(Request $request, Order $order){
+
+        $order->orderStatus()->associate(OrderStatus::find($request->order_status_id));
+        $order->save();
+
+        return response()->json([
+            'redirectURL' => route('admin_user_order_list'),
+            'order_status_id' => $request->order_status_id,
+        ]);
+    }
 }

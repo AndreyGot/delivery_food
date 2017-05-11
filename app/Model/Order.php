@@ -62,6 +62,25 @@ class Order extends Model
         return $totalPrice;
     }
 
+    public function getSummaryOrderData()
+    {
+        $summaryData = [
+            'totalCount' => 0,
+            'totalCost' => 0,
+        ];
+
+        $foodList = $this->foods;
+
+        foreach ($foodList as $food) {
+            $foodPrice = (double)$food->pivot->actual_price;
+            $quantity = (int)$food->pivot->quantity;
+            $summaryData['totalCost'] += (int)$quantity * $foodPrice;
+            $summaryData['totalCount'] += $quantity;
+        }
+
+        return $summaryData;
+    }
+
     public function userAddress()
     {
         return $this->belongsTo('App\Model\UserAddress');
