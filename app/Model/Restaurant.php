@@ -10,6 +10,7 @@ namespace App\Model;
 
 use App\Model\Helper\CyrToLatConverter;
 use App\Model\Helper\ImageSaver;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Auth;
  * @property [] specials
  * @property [] paymentMethods
  * @property RestaurantContacts $restaurantContact
+ * @property Collection $comments
  */
 class Restaurant extends Model
 {
@@ -94,5 +96,10 @@ class Restaurant extends Model
     public function setAlias($cyrilicAlias)
     {
         return $this->alias = strtolower($this->convertCyrToLat($cyrilicAlias));
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
