@@ -1,6 +1,4 @@
-
-
-<div class="catalog col-md-9" id="restaurantListContainer">
+<div class="catalog container">
 
     <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
 <div class="row">
@@ -69,4 +67,3 @@
         <a href="#" class="js-tab-control" data-tab="js-tab-product">Продукты на дом</a>
     </div>
 </div>
-

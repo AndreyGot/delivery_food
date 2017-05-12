@@ -130,6 +130,11 @@
 <script src="{{ asset('js/shop/ipsp_api.js') }}"></script>
 <script src="{{ asset('js/shop/shop.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
-
+<script>
+    $(".openMobilFilter").click(function (e) {
+        e.preventDefault();
+        $(".hid-mob").slideToggle();
+    });
+</script>
 </body>
 </html>
