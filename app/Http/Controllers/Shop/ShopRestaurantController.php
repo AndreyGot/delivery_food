@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Restaurant;
 use App\Model\Category;
 use App\Model\Profile;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class ShopRestaurantController extends Controller
@@ -46,7 +47,7 @@ class ShopRestaurantController extends Controller
             'restaurant' => $restaurant,
             'specials' => $restaurant->specials,
             'categories' => $restaurant->categories,
-            'comments' => $comments = Comment::where('restaurant_id', $restaurant->id)->orderBy('content', 'desc')->simplePaginate(5),
+            'comments' => Comment::where('restaurant_id', $restaurant->id)->orderBy('content', 'desc')->paginate(5),
         ]);
     }
 
