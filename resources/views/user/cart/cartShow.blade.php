@@ -148,18 +148,40 @@
                                 @endif
 
                                 <ul class="cart-switch">
-                                    <li>
-                                        <input id="cart-switch1" name="payment_method_id" value="1" type="radio" checked="checked">
-                                        <label for="cart-switch1">Наличными</label>
-                                        <input id="cart-switch2" name="payment_method_id" value="2" type="radio">
-                                        <label for="cart-switch2">Visa/Mastercard</label>
-                                        @if(Auth::check() && (!empty(Auth::user()->profile) && Auth::user()->profile->bonus_score >= $cartSummary['totalCost']) )
-                                            <input id="cart-switch3" name="payment_method_id" value="3" type="radio">
-                                            <label for="cart-switch3">Оплата за бонусы ({{ $cartSummary['totalCost'] }})</label>
-                                        @elseif (Auth::check())
-                                            <p>У Вас не достаточно бонусов для оплаты бонусами</p>
+                                    @foreach($paymentMethods as $paymentMethod)
+                                        @if($paymentMethod->alias !== 'bonus')
+                                        <li>
+                                            <input id="{{$paymentMethod->id}}"
+                                                   name="payment_method_id"
+                                                   value="{{$paymentMethod->id}}"
+                                                   type="radio"
+                                                   @if($paymentMethod->alias == 'cash')
+                                                    checked="checked"
+                                                   @endif
+                                            >
+                                            <label for="{{$paymentMethod->id}}">{{$paymentMethod->name}}</label>
+                                        </li>
                                         @endif
-                                    </li>
+                                    @endforeach
+                                    @foreach($paymentMethods as $paymentMethod)
+                                        @if($paymentMethod->alias == 'bonus')
+                                            @if(Auth::check() && (!empty(Auth::user()->profile) && Auth::user()->profile->bonus_score <= $cartSummary['totalCost']) )
+                                                <li>
+                                                    <input id="{{$paymentMethod->id}}"
+                                                           name="payment_method_id"
+                                                           value="{{$paymentMethod->id}}"
+                                                           type="radio">
+                                                    <label for="{{$paymentMethod->id}}">
+                                                        {{$paymentMethod->name}} ({{ $cartSummary['totalCost'] }})
+                                                    </label>
+                                                </li>
+                                            @else
+                                                <p>У Вас не достаточно бонусов для оплаты бонусами</p>
+                                                <p>Бонус счет: {{ $cartSummary['totalCost'] }}</p>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                     {{--<li>
                                         <input id="cart-switch2" name="payment_type" value="2" type="radio">
                                         <label for="cart-switch2">Картой онлайн</label>

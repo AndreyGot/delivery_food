@@ -9927,7 +9927,10 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
 .float-r {
     float: right;
 }
-
+.row--border{
+    border-bottom: 1px solid gray;
+    padding-top: 10px;
+}
 @media all and (max-width: 992px) {
     .orders-zak:last-child {
         padding-bottom: 10px;
