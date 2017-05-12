@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Http\Requests\Shop\CommentRequest;
+use App\Model\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Model\Association;
 use App\Model\Restaurant;
 use App\Model\Category;
+use App\Model\Profile;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
 class ShopRestaurantController extends Controller
 {
@@ -43,4 +48,33 @@ class ShopRestaurantController extends Controller
             'restaurants' => $restaurants
         ]);
     }
+
+    public function getComments(Restaurant $restaurant)
+    {
+        return view('shop.restaurant.comments.commentsList', [
+            'restaurant' => $restaurant,
+            'specials' => $restaurant->specials,
+            'categories' => $restaurant->categories,
+            'comments' => Comment::where('restaurant_id', $restaurant->id)->orderBy('content', 'desc')->paginate(5),
+        ]);
+    }
+
+    public function addComment(Restaurant $restaurant, CommentRequest $request)
+    {
+        /* @var Profile $profile*/
+        $profile = Auth::user()->profile;
+        if ($profile->hasCommentPermission($restaurant)) {
+            $commentData = $request->comment;
+            $comment = new Comment();
+            $comment->fill($commentData);
+            $comment->profile()->associate($profile);
+            $comment->restaurant()->associate($restaurant);
+//        dd($restaurant->hasCast('name'));
+//        dd($comment->getOriginal('content'));
+            $comment->save();
+        }
+
+        return redirect()->route('shop_restaurant_comment_list', [$restaurant]);
+    }
+
 }

@@ -11,6 +11,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+    <script>
+        window.urlBag = {}
+    </script>
     <!-- Styles -->
     <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
@@ -69,7 +72,4 @@
 </div>
 
 </body>
-<script>
-    window.urlBag = {};
-</script>
 </html>

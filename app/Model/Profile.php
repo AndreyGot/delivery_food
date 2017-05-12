@@ -9,12 +9,13 @@
 namespace App\Model;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Helper\ImageSaver;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class User
+ * Class Profile
  * @package App\Model
  *
  * @property string $first_name
@@ -28,6 +29,8 @@ use Illuminate\Support\Facades\Auth;
  * @property integer $bonus_score
  * @property integer $user_status_id
  * @property string $image
+ * @property  Collection $comments
+ * @property  Collection $orders
  */
 
 class Profile extends Model
@@ -106,5 +109,23 @@ class Profile extends Model
         }
 
         return $saved;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function hasCommentPermission(Restaurant $restaurant)
+    {
+        $orders = $this->orders;
+
+        if ($orders->isEmpty()) {
+            return false;
+        } else {
+            $comments = $this->comments;
+
+            return $orders->count() > $comments->count();
+        }
     }
 }

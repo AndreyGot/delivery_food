@@ -16,13 +16,31 @@
 // });
 Route::get('/', 'Shop\IndexController@index')->name('main_index');
 
-Route::get('/restaurants', 'Shop\ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
-Route::get('/restaurant/{restaurant}', 'Shop\ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
+Route::group([
+    'namespace' => 'Shop',
+], function () {
+    Route::group([
+        'prefix' => 'restaurant/{restaurant}',
+    ], function () {
+        Route::get('/', 'ShopRestaurantController@showRestaurant')->name('shop_restaurant_show');
+        Route::group([
+            'prefix' => 'comments'
+        ], function () {
+            Route::get('/', 'ShopRestaurantController@getComments')->name('shop_restaurant_comment_list');
+            Route::post('/add','ShopRestaurantController@addComment')->name('shop_restaurant_comment_add');
+        });
+    });
 
-Route::get('/foods/{restaurant}/{category}', 'Shop\ShopFoodController@filterByCategory')->name('food_by_category_id');
+    Route::get('/restaurants', 'ShopRestaurantController@listRestaurant')->name('shop_restaurant_list');
 
-Route::get('/categories', 'Shop\ShopCategoryController@listCategory')->name('shop_category_list');
-Route::post('/search/byrestaurant', 'Shop\ShopRestaurantController@searchByRestaurants')->name('shop_search_byRestaurants');
+    Route::get('/foods/{restaurant}/{category}', 'ShopFoodController@filterByCategory')->name('food_by_category_id');
+
+    Route::get('/categories', 'ShopCategoryController@listCategory')->name('shop_category_list');
+    Route::post('/search/byrestaurant', 'ShopRestaurantController@searchByRestaurants')->name('shop_search_byRestaurants');
+});
+
+
+
 
 
 
