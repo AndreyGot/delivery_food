@@ -9942,5 +9942,41 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
     word-wrap: unset;
     word-break: break-all;
 }
-
+.blocFilterMob a{
+    display: block;
+    text-align: center;
+    padding: 5px 20px;
+    color: white;
+    background: #d94032;
+    transition: color .3s, background .3s ;
+    width: 200px;
+    margin: 20px auto;
+    border-radius: 40px;
+}
+.blocFilterMob a:hover,
+.blocFilterMob a:focus,
+.blocFilterMob a:active{
+    text-decoration: none;
+    background: #484747;
+    color: white;
+}
+@media all and (max-width: 560px){
+.main-header_bottom,
+.bx-wrapper,
+.hid-mob,
+.howto,
+.bottom-arrow,
+.top-arrow{
+    display: none!important;
+}
+    .slick-slide img {
+        width: 100%;
+        height: 250px;
+        max-width: 250px;
+        margin: 15px auto;
+    }
+    .btn--footer{
+        margin-top: 30px;
+    }
+}
 

@@ -2,7 +2,10 @@
 
     <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="blocFilterMob">
+            <a class="openMobilFilter" href="#">Фильтр</a>
+        </div>
+        <div class="col-md-3 hid-mob">
             <aside class="list-page_sidebar">
                 <div class="sort-block">
                     <div class="sort-block_header">Показать только</div>
@@ -129,3 +132,4 @@
             <a href="#" class="js-tab-control" data-tab="js-tab-product">Продукты на дом</a>
         </div>
 </div>
+
