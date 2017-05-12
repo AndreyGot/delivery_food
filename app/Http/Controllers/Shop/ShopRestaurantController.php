@@ -11,7 +11,6 @@ use App\Model\Association;
 use App\Model\Restaurant;
 use App\Model\Category;
 use App\Model\Profile;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class ShopRestaurantController extends Controller
