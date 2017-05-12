@@ -1,4 +1,4 @@
-<div class="catalog container">
+<div class="catalog col-md-9">
 
     <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
 <div class="row">
