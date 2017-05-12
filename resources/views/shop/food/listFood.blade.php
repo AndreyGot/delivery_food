@@ -109,7 +109,9 @@
 									<i class="sprite sprite-ico-stack"></i>
 									<span>цена: {{ $food->price }}</span> P
 								</p>
-								<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}">Заказать</button>
+								<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}"
+										data-restaurant_id="{{ $food->category->restaurant_id }}"
+										data-to_validate="true">Заказать</button>
 							</div>
 							{{--hover cart--}}
 							<div class="itool2 itool2-bludo itool2-bludo--hover itool2--mod product-item product-item--button">
@@ -133,7 +135,9 @@
 										<i class="sprite sprite-ico-stack"></i>
 										<span>цена: {{ $food->price }}</span> P
 									</p>
-									<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}">Заказать</button>
+									<button class="btn btn--green zz-addToCartButton" data-food_id="{{ $food->id }}"
+											data-restaurant_id="{{ $food->category->restaurant_id }}"
+											data-to_validate="true">Заказать</button>
 								</div>
 							</div>
 						</div>
@@ -142,6 +146,33 @@
 			</div>
 
 	    </div>
+	</div>
+
+	<!-- Button trigger modal -->
+	{{--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#zz-attention-cart-modal">
+		Launch demo modal
+	</button>--}}
+
+	<!-- Modal -->
+	<div class="modal fade" id="zz-attention-cart-modal" tabindex="-1" role="dialog" aria-labelledby="zz-attention-cart-label">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					{{--<h4 class="modal-title" id="zz-attention-cart-label">Modal title</h4>--}}
+				</div>
+				<div class="modal-body">
+					<p>В Вашей корзине уже есть товары с другого ресторана.
+						Если вы добавите этот товар то товары с другого ресторана будут удалены!!</p>
+				</div>
+				<div class="modal-footer">
+					<button id="zz-addToCartButton" type="button" class="btn btn-primary" data-dismiss="modal"
+							data-to_validate="false"
+						>Заказать</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script>
 		window.urlBag.addToCart = '{{ route('user_cart_add') }}';
