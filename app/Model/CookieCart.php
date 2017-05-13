@@ -23,32 +23,26 @@ class CookieCart
 
     public function __construct()
     {
-        $this->cart = Cookie::get('cart');
-//        dd(Cookie::get('cart'));
+        $this->cart = json_decode(Cookie::get('cart'), true);
         $this->orderList = Cookie::get('orders');
 
-
-        if (!empty($this->cart)) {
-
-            $this->cartSummary = $this->buildCartSummary($this->cart);
-        }
+        $this->cartSummary = $this->buildCartSummary($this->getCartFoodIdList());
 
     }
 
 
     public function addProduct(Food $food, $quantity = 1)
     {
-
-        if (empty($this->cart)) {
-            $this->cart = [];
+        if (!$this->isRestaurantValid($food->category->restaurant)) {
+            $this->cart['food'] = [];
         }
+        $this->setRestaurantId($food->category->restaurant_id);
 
-        if (array_key_exists($food->id, $this->cart)) {
-            $this->cart[$food->id]['quantity'] += $quantity;
+        if (array_key_exists($food->id, $this->getCartFoodIdList())) {
+            $this->cart['food'][$food->id]['quantity'] += $quantity;
         } else {
-            $this->cart[$food->id] = $this->buildCartProduct($food, $quantity);
+            $this->cart['food'][$food->id] = $this->buildCartProduct($food, $quantity);
         }
-
 
         return $this->generateCartCookie();
     }
@@ -63,7 +57,7 @@ class CookieCart
 
     public function isEmpty()
     {
-        return empty($this->cart);
+        return empty($this->cart) || empty($this->cart['food']);
     }
 
     /**
@@ -79,7 +73,6 @@ class CookieCart
      */
     public function getCartSummary()
     {
-
         return !empty($this->cartSummary) ? $this->cartSummary : [
             'totalCost' => 0,
             'totalCount' => 0,
@@ -89,12 +82,12 @@ class CookieCart
     public function getCartFoodList()
     {
         $cartFoodList = [];
-        if (!empty($foodList = $this->buildFoodList($this->cart))) {
+        if (!empty($foodList = $this->buildFoodList($this->cart['food']))) {
             /* @var Food $food */
             foreach ($foodList as $food) {
                 $cartFoodList[$food->id] = [
                     'food' => $food,
-                    'quantity' => $this->cart[$food->id]['quantity']
+                    'quantity' => $this->cart['food'][$food->id]['quantity']
                 ];
             }
         }
@@ -110,12 +103,12 @@ class CookieCart
 
     public function removeProduct(Food $food, $removeAll = false)
     {
-        if (key_exists($food->id, $this->cart)) {
+        if (key_exists($food->id, $this->cart['food'])) {
             if ($removeAll) {
-                unset($this->cart[$food->id]);
+                unset($this->cart['food'][$food->id]);
             } else {
-                if (($this->cart[$food->id]['quantity'] -= 1) < 1) {
-                    unset($this->cart[$food->id]);
+                if (($this->cart['food'][$food->id]['quantity'] -= 1) < 1) {
+                    unset($this->cart['food'][$food->id]);
                 }
             }
         }
@@ -126,6 +119,11 @@ class CookieCart
     public function convertCartToOrder($orderNumber)
     {
         return $this->generateOrderCookie($orderNumber);
+    }
+
+    public function isRestaurantValid(Restaurant $restaurant)
+    {
+        return $this->getRestaurantId() == 0 || $this->getRestaurantId() == $restaurant->id;
     }
 
     private function buildCartSummary(array $cartData)
@@ -159,8 +157,8 @@ class CookieCart
 
     private function generateCartCookie()
     {
-        $cartCookie = cookie('cart', $this->cart, self::CART_LIFETIME);
-        $this->cartSummary = $this->buildCartSummary($cartCookie->getValue());
+        $cartCookie = cookie('cart', json_encode($this->cart), self::CART_LIFETIME, $path = null, $domain = null, $secure = false, $httpOnly = false);
+        $this->cartSummary = $this->buildCartSummary($this->getCartFoodIdList());
 
         return $cartCookie;
     }
@@ -170,6 +168,43 @@ class CookieCart
 
         $this->orderList[$orderNumber] = $this->getCart();
 
-        return cookie('orders', $this->orderList, self::CART_LIFETIME);
+        return cookie('orders', $this->orderList, self::CART_LIFETIME, $path = null, $domain = null, $secure = false, $httpOnly = false);
+    }
+
+    private function getCartData()
+    {
+        if (empty($this->cart)) {
+            $this->cart = [
+                'restaurant_id' => 0,
+                'food' => [],
+            ];
+        }
+
+        return $this->cart;
+    }
+
+    private function getCartFoodIdList()
+    {
+        return $this->getCartData()['food'];
+    }
+
+    private function getRestaurantId()
+    {
+        return  $this->getCartData()['restaurant_id'];
+    }
+
+    private function setRestaurantId($restaurantId)
+    {
+//        dump(empty($this->cart) || !isset($this->cart['restaurant_id']));
+        if (empty($this->cart) || !isset($this->cart['restaurant_id'])) {
+            $this->cart = [
+                'restaurant_id' => 0,
+                'food' => [],
+            ];
+        }
+//        dump($this->cart['restaurant_id']);
+        $this->cart['restaurant_id'] = $restaurantId;
+//        dump($this->cart['restaurant_id']);
+
     }
 }

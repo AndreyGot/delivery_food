@@ -82,7 +82,7 @@ class CategoryController extends Controller
             unset($requestData['associations'][0]);
             $associations = Association::find($requestData['association']);
             if ($associations->isEmpty()){
-                return redirect(route('admin_category_add_form'));
+                return redirect(route('admin_category_add_category_byRestaurant', [$restaurant]));
             }
         }
         foreach ($associations as $association) {
@@ -97,7 +97,8 @@ class CategoryController extends Controller
 //                }
             }
         }
-        
+//        dd(route('admin_category_list_byRestaurant', ['restaurant' => $restaurant]));
+
         return redirect(route('admin_category_list_byRestaurant', ['restaurant' => $restaurant]));
     }
 

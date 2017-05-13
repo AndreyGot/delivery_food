@@ -23,17 +23,17 @@ class CartController extends Controller
         $food = Food::find($request->food_id);
 
         if (!is_null($food)) {
-            if (Auth::user()) {
-
-            }
-//            dd($cartSummary);
+//            if (Auth::user()) {
+//            }
             $cart = new CookieCart();
-            $cartCookie = $cart->addProduct($food);
-            $cartSummary = $cart->getCartSummary();
-
-            return response()->json($cartSummary)->cookie($cartCookie);
+//            dd($cart);
+//            if ($cart->isRestaurantValid($food->category->restaurant)) {
+                $cartCookie = $cart->addProduct($food);
+                $cartSummary = $cart->getCartSummary();
+//                dd($cartCookie);
+                return response()->json($cartSummary)->cookie($cartCookie);
+//            }
         }
-//        dd($request->cookie('test')['products']);
         return response('');
     }
 
@@ -41,7 +41,6 @@ class CartController extends Controller
     {
         $cart = new CookieCart();
         $paymentMethods = PaymentMethod::all();
-//        dd($paymentMethods);
         $cartFoodList = $cart->getCartFoodList();
         $view = !$cart->isEmpty() ? 'user.cart.cartShow' : 'user.cart.cartEmpty';
 
@@ -59,8 +58,8 @@ class CartController extends Controller
 
         if (!empty($food)) {
             if (!is_null($food)) {
-                if (Auth::user()) {
-                }
+//                if (Auth::user()) {
+//                }
                 $cart = new CookieCart();
                 $cartCookie = $cart->removeProduct($food);
                 $cartSummary = $cart->getCartSummary();
@@ -78,8 +77,8 @@ class CartController extends Controller
 
         if (!empty($food)) {
             if (!is_null($food)) {
-                if (Auth::user()) {
-                }
+//                if (Auth::user()) {
+//                }
 
                 $cart = new CookieCart();
                 $cartCookie = $cart->removeProduct($food, true);
@@ -98,8 +97,8 @@ class CartController extends Controller
 
     public function clearCart()
     {
-        if (Auth::user()) {
-        }
+//        if (Auth::user()) {
+//        }
 
         $cart = new CookieCart();
 

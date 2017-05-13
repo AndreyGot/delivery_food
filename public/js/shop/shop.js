@@ -1,6 +1,6 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
-    $('.zz-addToCartButton').bind('click', addToCart);
+    $('.zz-addToCartButton, #zz-addToCartButton').bind('click', addToCart);
     $('.zz-btn_minus_product').bind('click', minusProduct);
     $('.zz-btn_plus_product').bind('click', plusProduct);
     $('.zz-removeAllByProduct').bind('click', removeAllByProduct);
@@ -81,20 +81,42 @@ jQuery(document).ready(function ($) {
 
     function addToCart(event) {
         var clickedButton = $(event.target);
-        $.ajax({
-            url: urlBag.addToCart,
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-                food_id: clickedButton.data('food_id')
-            },
-            success: function (cartSummary) {
-                $('#zz-cartTotalCount').text(cartSummary.totalCount);
-                $('#zz-cartTotalCost').text(cartSummary.totalCost);
-            }
-        });
+        var cart = $.parseJSON(getCookie('cart'));
+        var currentRestaurantId = clickedButton.data('restaurant_id');
+        var foodId = clickedButton.data('food_id');
+        var isValidRestaurant = true;
+        if (clickedButton.data('to_validate') == true) {
+            isValidRestaurant = currentRestaurantId == cart.restaurant_id;
+            // console.log(isValidRestaurant);
+        }
+        // console.log(isValidRestaurant);
+        // console.log(typeof clickedButton.data('to_validate'));
+        // console.log(currentRestaurantId == cart.restaurant_id);
+        if (isValidRestaurant) {
+             $.ajax({
+                 url: urlBag.addToCart,
+                 method: 'POST',
+                 headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+                 data: {
+                    food_id: foodId
+             },
+                 success: function (cartSummary) {
+                     $('#zz-cartTotalCount').text(cartSummary.totalCount);
+                     $('#zz-cartTotalCost').text(cartSummary.totalCost);
+                }
+             });
+        } else {
+            var attentionCartModal = $('#zz-attention-cart-modal');
+            var addToCartButton = $('#zz-addToCartButton', attentionCartModal);
+            addToCartButton.data('food_id', foodId);
+            addToCartButton.data('restaurant_id', currentRestaurantId);
+            attentionCartModal.modal('show', true);
+            console.log(addToCartButton.data('food_id'));
+            console.log(addToCartButton.data('restaurant_id'));
+        }
+
     }
 
     function minusProduct(event) {
@@ -234,5 +256,11 @@ jQuery(document).ready(function ($) {
         } else {
             resultContainer.remove();
         }
+    }
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
     }
 });
