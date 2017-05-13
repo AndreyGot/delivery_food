@@ -26,8 +26,7 @@ class FilterController extends Controller
         /** @var Special $special */
         /** @var PaymentMethod $paymentMethod */
         $checkBoxOptions = $request->checkBoxArray;
-//        dd($checkBoxOptions[0]['value']);
-        $associationsId = array();
+
         $sortRestaurants = array();
 
         if (empty($checkBoxOptions)){
@@ -47,7 +46,6 @@ class FilterController extends Controller
                         }
                     }
 //                    dd($restaurants);
-
                 }
                 elseif ($option['name'] == 'online'){
                     $option = $option['value'];
@@ -75,68 +73,12 @@ class FilterController extends Controller
                     foreach ($association->categories as $category) {
                         $sortRestaurants[$category->restaurant->id] = $category->restaurant;
                     }
-//                    dd($sortRestaurants);
                 }
             }
-//                    $associationsId[] = $option['value'];
-//            $associations = Association::find($associationsId);
-
-//            foreach ($associations as $association){
-//
-//                foreach ($association->categories as $category) {
-//                    $sortRestaurants[$category->restaurant->id] = $category->restaurant;
-//                }
-//            }
         }
-//        dd($sortRestaurants);
 
-//        $associations = Association::all();
         return view('shop.restaurant.listRestaurant', [
             'restaurants'=>$sortRestaurants,
         ]);
     }
-
-
-
-
-
-//    public function filtreCtrl(Request $request){
-//        $requestData = $request->requestData;
-////        dd($requestData);
-//        $filtrRestaurants = array();
-//        if ($requestData == null){
-//            $restaurants = Restaurant::all();
-//
-//            return view('shop.restaurant.listRestaurant', [
-//                'restaurants'=>$restaurants,
-//            ]);
-//        }
-//        else{
-//            foreach ($requestData as $requestOne){
-//                if ($requestOne['name'] == 'special'){
-//                    /** @var Special $special */
-//                    $specials = Special::where('status', true)->get();
-//
-//                    foreach ($specials as $special){
-//                        $restaurants = $special->restaurants;
-//                        foreach ($restaurants as $restaurant){
-//                            $filtrRestaurants[$restaurant->id] = $restaurant;
-//                        }
-//                    }
-//                }
-//                elseif ($requestOne['name'] == 'online'){
-//                    dd($requestOne['name']);
-//                }
-//                elseif ($requestOne['name'] == 'cart'){
-//                    dd($requestOne['name']);
-//                }
-//                elseif ($requestOne['name'] == 'bonus'){
-//                    dd($requestOne['name']);
-//                }
-//            }
-//        }
-//        return view('shop.restaurant.listRestaurant', [
-//            'restaurants'=>$filtrRestaurants,
-//        ]);
-//    }
 }

@@ -9983,3 +9983,107 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
     }
 }
 
+/*about*/
+
+
+.textright{text-align: right;}
+@media all and (max-width:992px){
+    .textright{text-align: center!important;}
+    .textright img{width: 100%}
+}
+@media all and (max-width:460px){
+    .textright img{width: 100%;height: auto;}
+}
+/*contact*/
+.contacts{
+    background-color: #f2fcfe;
+}
+@media all and (max-width:992px){
+    .contacts{
+        background: url(../img/context/bg-about.jpg)no-repeat;
+    }
+    .contacts_phone{
+        width: 100%;
+        position: static;
+        margin: 100px auto;
+    }
+}
+/*partners*/
+.advantages_title--mod{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 60px;
+}
+.advantages--mod{
+    padding-top: 20px;
+}
+@media all and (max-width:992px){
+    .btn--padd{
+        margin-bottom: 30px!important;
+    }
+    .advantages_btn{
+        min-width: 300px!important;
+    }
+}
+
+/*баллы*/
+.js-get-modal{
+    text-decoration: none;
+}
+.js-get-modal:hover{
+    text-decoration: underline;
+}
+.btn--green{
+    background: #d94032;
+    outline: none;
+}
+.btn--green:hover{
+    background: #484747;
+}
+.product-item_bonus, .product-item_like{
+    padding-bottom: 50px;
+    padding-right: 10px;
+}
+.product-item{
+    width: 100%;
+}
+@media all and (max-width:1200px){
+    .howto .item{
+        width: 30%;
+    }
+    .product-item_description_title{
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 15px;
+    }
+}
+@media all and (max-width:992px){
+    .freefood .product_title{
+        text-align: center;
+    }
+    .freefood-promo .btn{
+        margin-bottom: 30px;
+    }
+    .howto .item {
+        width: 45%;
+    }
+}
+@media all and (max-width:500px){
+    .howto .item{
+        width: 100%;
+        padding: 40px 0px 0 0;
+    }
+    .product_title{
+        text-align: center;
+    }
+}
+.advantages_list li:before {
+    content: '';
+    display: block;
+    background: url(../img/context/sprite.png) no-repeat -776px -297px;
+    width: 30px;
+    height: 29px;
+    position: absolute;
+    left: 0;
+}
+

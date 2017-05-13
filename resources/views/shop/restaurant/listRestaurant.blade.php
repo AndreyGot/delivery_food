@@ -1,6 +1,6 @@
 <div class="catalog col-md-9">
 
-    <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
+<div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
 <div class="row">
     @foreach ($restaurants as $restaurant)
         <div class="col-md-12 float-r">

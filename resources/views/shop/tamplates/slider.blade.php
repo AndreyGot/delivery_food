@@ -3,7 +3,7 @@
         <ul class="main_bxslider">
             <li class="animation1">
                 <div class="title">Все рестораны и доставка еды<br>на одном сайте</div>
-                <a href="{{route('shop_restaurant_list')}}" class="rest-link">Показать все рестораны</a>
+                {{--<a href="{{route('shop_restaurant_list')}}" class="rest-link">Показать все рестораны</a>--}}
             </li>
             <li class="animation2">
                 <div class="title">Меняйте баллы<br>на бесплатные блюда</div>

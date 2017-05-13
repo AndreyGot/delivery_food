@@ -11,10 +11,14 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+
 Route::get('/', 'Shop\IndexController@index')->name('main_index');
+//////
+Route::get('/about', 'Shop\InfoPagesController@about')->name('about');
+Route::get('/contacts', 'Shop\InfoPagesController@contacts')->name('contacts');
+Route::get('/partners', 'Shop\InfoPagesController@partners')->name('partners');
+Route::get('/agreement', 'Shop\InfoPagesController@agreement')->name('agreement');
+//////
 
 Route::group([
     'namespace' => 'Shop',

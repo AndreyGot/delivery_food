@@ -165,19 +165,19 @@
                                     @endforeach
                                     @foreach($paymentMethods as $paymentMethod)
                                         @if($paymentMethod->alias == 'bonus')
-                                            @if(Auth::check() && (!empty(Auth::user()->profile) && Auth::user()->profile->bonus_score <= $cartSummary['totalCost']) )
+                                            @if(Auth::check() && (!empty(Auth::user()->profile) && Auth::user()->profile->bonus_score >= $cartSummary['totalCost']) )
                                                 <li>
                                                     <input id="{{$paymentMethod->id}}"
                                                            name="payment_method_id"
                                                            value="{{$paymentMethod->id}}"
                                                            type="radio">
                                                     <label for="{{$paymentMethod->id}}">
-                                                        {{$paymentMethod->name}} ({{ $cartSummary['totalCost'] }})
+                                                        {{$paymentMethod->name}} ({{ Auth::user()->profile->bonus_score}} )
                                                     </label>
                                                 </li>
                                             @else
                                                 <p>У Вас не достаточно бонусов для оплаты бонусами</p>
-                                                <p>Бонус счет: {{ $cartSummary['totalCost'] }}</p>
+                                                <p>Бонус счет: {{Auth::user()->profile->bonus_score}}</p>
                                             @endif
                                         @endif
                                     @endforeach
