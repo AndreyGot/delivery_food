@@ -132,5 +132,11 @@
 <script src="{{ asset('js/shop/ipsp_api.js') }}"></script>
 <script src="{{ asset('js/shop/shop.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
+<script>
+    $(".openMobFil").click(function (e) {
+        e.preventDefault();
+        $(".hidMob").slideToggle();
+    });
+</script>
 </body>
 </html>
