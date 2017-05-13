@@ -1,6 +1,10 @@
 <div class="catalog container">
+    <div class="new-header"><i class="sprite sprite-catalog"></i> Выберете ресторан</div>
+    <div class="blocFilter">
+        <a href="#" class="openMobFil">Фильтр</a>
+    </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 hidMob">
             <form method="POST" id="filterForm" action="{{route('filterCtrl')}}" enctype="multipart/form-data">
             <aside class="list-page_sidebar">
                 <div class="sort-block">

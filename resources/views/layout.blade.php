@@ -127,14 +127,14 @@
 <script src="{{ asset('js/slick/slick.js') }}"></script>
 <script src="{{ asset('js/settings-slik.js') }}"></script>
 <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
-<script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+{{--<script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>--}}
 <script src="{{ asset('js/shop/ipsp_api.js') }}"></script>
 <script src="{{ asset('js/shop/shop.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 <script>
-    $(".openMobilFilter").click(function (e) {
+    $(".openMobFil").click(function (e) {
         e.preventDefault();
-        $(".hid-mob").slideToggle();
+        $(".hidMob").slideToggle();
     });
 </script>
 </body>
