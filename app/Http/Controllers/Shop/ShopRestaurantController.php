@@ -17,6 +17,7 @@ class ShopRestaurantController extends Controller
 {
     public function listRestaurant()
     {
+
         $restaurants = Restaurant::all();
         $associations = Association::all();
 

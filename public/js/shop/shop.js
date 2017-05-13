@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
     function filterByOptions() {
 
         var selectedCheckBox = $("input:checked");
-        console.log(selectedCheckBox);
+        // console.log(selectedCheckBox);
 
         var url = 'filterCtrl';
 
@@ -81,11 +81,12 @@ jQuery(document).ready(function ($) {
 
     function addToCart(event) {
         var clickedButton = $(event.target);
-        var cart = $.parseJSON(getCookie('cart'));
+        var cartJSON = getCookie('cart');
         var currentRestaurantId = clickedButton.data('restaurant_id');
         var foodId = clickedButton.data('food_id');
         var isValidRestaurant = true;
-        if (clickedButton.data('to_validate') == true) {
+        if (clickedButton.data('to_validate') == true && !!cartJSON) {
+            var cart = $.parseJSON(cartJSON);
             isValidRestaurant = currentRestaurantId == cart.restaurant_id;
             // console.log(isValidRestaurant);
         }

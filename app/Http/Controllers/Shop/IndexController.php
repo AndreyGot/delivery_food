@@ -10,12 +10,13 @@ use App\Model\Special;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
 	public function index()
 	{
-		$restaurants = Restaurant::all();
+        $restaurants = Restaurant::all();
 		$specials = Special::where('status', true)->get();
 //		dd($restaurants[0]->paymentMethods);
 		$paymentMethods = PaymentMethod::all();
