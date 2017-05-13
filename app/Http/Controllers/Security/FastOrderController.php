@@ -42,7 +42,7 @@ class FastOrderController extends Controller
         $fastOrder->save();
 
         return response()->json([
-            'redirectURL' => route('admin_order_list'),
+            'redirectURL' => route('admin_fast_order_list'),
             'order_status_id' => $request->order_status_id,
         ]);
     }
