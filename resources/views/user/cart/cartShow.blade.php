@@ -4,7 +4,6 @@
     <div class="container profile-page">
 
         <div id="contentBox">
-
             <div class="cart-layout ">
                 <div class="row">
                     <div class="col-md-8">
@@ -177,7 +176,7 @@
                                                 </li>
                                             @else
                                                 <p>У Вас не достаточно бонусов для оплаты бонусами</p>
-                                                <p>Бонус счет: {{Auth::user()->profile->bonus_score}}</p>
+                                                <p>Бонус счет: 0</p>
                                             @endif
                                         @endif
                                     @endforeach
@@ -193,8 +192,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     </div>

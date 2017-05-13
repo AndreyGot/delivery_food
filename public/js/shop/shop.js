@@ -37,11 +37,11 @@ jQuery(document).ready(function ($) {
         $('.setip').remove();
     });
 
-    var button = $ipsp.get("button");
+    /*var button = $ipsp.get("button");
     button.setMerchantId(1397120);
     button.setAmount(orderData.totalCost, 'RUB', true);
     button.setHost('api.fondy.eu');
-    checkoutInit(button.getUrl());
+    checkoutInit(button.getUrl());*/
 
 
 

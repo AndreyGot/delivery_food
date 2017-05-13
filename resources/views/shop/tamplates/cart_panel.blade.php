@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-2.0.3.js"></script>
+{{--<script src="https://code.jquery.com/jquery-2.0.3.js"></script>--}}
 <script>
     if($("#zz-cartTotalCount").html() == 0){
         setTimeout($("#cart-pane").hide("slow"),5000);
