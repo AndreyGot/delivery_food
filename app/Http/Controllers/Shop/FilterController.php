@@ -98,9 +98,11 @@ class FilterController extends Controller
         $associations = Association::all();
         $associationSushi = Association::where('alias', 'sushi')->first();
         $sushiRestaurants = array();
-        $sushiCategories = $associationSushi->categories;
-        foreach ($sushiCategories as $category){
-            $sushiRestaurants[] = $category->restaurant;
+        if ($associationSushi) {
+            $sushiCategories = $associationSushi->categories;
+            foreach ($sushiCategories as $category) {
+                $sushiRestaurants[] = $category->restaurant;
+            }
         }
 
         return view('shop.tamplates.medium_filter_block', [
@@ -116,9 +118,11 @@ class FilterController extends Controller
         $associations = Association::all();
         $associationPicca = Association::where('alias', 'picca')->first();
         $piccaRestaurants = array();
-        $piccaCategories = $associationPicca->categories;
-        foreach ($piccaCategories as $category){
-            $piccaRestaurants[] = $category->restaurant;
+        if ($associationPicca) {
+            $piccaCategories = $associationPicca->categories;
+            foreach ($piccaCategories as $category) {
+                $piccaRestaurants[] = $category->restaurant;
+            }
         }
 
         return view('shop.tamplates.medium_filter_block', [
@@ -134,9 +138,11 @@ class FilterController extends Controller
         $associations = Association::all();
         $associationShashlyki = Association::where('alias', 'shashlyki')->first();
         $shashlykiRestaurants = array();
-        $shashlykiCategories = $associationShashlyki->categories;
-        foreach ($shashlykiCategories as $category){
-            $shashlykiRestaurants[] = $category->restaurant;
+        if ($associationShashlyki){
+            $shashlykiCategories = $associationShashlyki->categories;
+            foreach ($shashlykiCategories as $category){
+                $shashlykiRestaurants[] = $category->restaurant;
+            }
         }
 
         return view('shop.tamplates.medium_filter_block', [
@@ -151,9 +157,11 @@ class FilterController extends Controller
         $associations = Association::all();
         $associationPirogi = Association::where('alias', 'pirogi')->first();
         $pirogiRestaurants = array();
-        $pirogiCategories = $associationPirogi->categories;
-        foreach ($pirogiCategories as $category){
-            $pirogiRestaurants[] = $category->restaurant;
+        if ($associationPirogi) {
+            $pirogiCategories = $associationPirogi->categories;
+            foreach ($pirogiCategories as $category) {
+                $pirogiRestaurants[] = $category->restaurant;
+            }
         }
 
         return view('shop.tamplates.medium_filter_block', [
@@ -168,9 +176,11 @@ class FilterController extends Controller
         $associations = Association::all();
         $associationBurgery = Association::where('alias', 'burgery')->first();
         $burgeryRestaurants = array();
-        $burgeryCategories = $associationBurgery->categories;
-        foreach ($burgeryCategories as $category){
-            $burgeryRestaurants[] = $category->restaurant;
+        if ($associationBurgery) {
+            $burgeryCategories = $associationBurgery->categories;
+            foreach ($burgeryCategories as $category) {
+                $burgeryRestaurants[] = $category->restaurant;
+            }
         }
 
         return view('shop.tamplates.medium_filter_block', [
