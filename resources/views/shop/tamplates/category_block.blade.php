@@ -4,7 +4,7 @@
         <div class="catalog_container  js-tab js-tab--open js-tab-tovar">
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants.html">
+                    <a href="{{ route('getAllRestaurants') }}">
                         <img src="img/restaurants.png" alt="Все и сразу">
                         <div class="shadow"></div>
                         <div class="title">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/sushi.html">
+                    <a href="{{ route('getSushiRestaurants') }}">
                         <img src="https://cdn.zakazaka.ru/db/000/000/sushi.png" alt="Суши">
                         <div class="shadow"></div>
                         <div class="title">
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-4  col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/pizza.html">
+                    <a href="{{ route('getPiccaRestaurants') }}">
                         <img src="https://cdn.zakazaka.ru/db/000/000/pizza.png" alt="Пицца">
                         <div class="shadow"></div>
                         <div class="title">
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/shashlik.html">
+                    <a href="{{ route('getShashlykiRestaurants') }}">
                         <img src="https://cdn.zakazaka.ru/db/000/000/shashlik.png" alt="Шашлыки">
                         <div class="shadow"></div>
                         <div class="title">
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/desert.html">
+                    <a href="{{ route('getPirogiRestaurants') }}">
                         <img src="https://cdn.zakazaka.ru/db/000/000/desert.png" alt="Пироги">
                         <div class="shadow"></div>
                         <div class="title">
@@ -64,7 +64,7 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/burger.html">
+                    <a href="{{ route('getBurgeryRestaurants') }}">
                         <img src="https://cdn.zakazaka.ru/db/000/000/burger.png" alt="Бургеры">
                         <div class="shadow"></div>
                         <div class="title">
