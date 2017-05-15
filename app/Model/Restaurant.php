@@ -13,6 +13,7 @@ use App\Model\Helper\ImageSaver;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class Restaurant
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Auth;
  * @property [] paymentMethods
  * @property RestaurantContacts $restaurantContact
  * @property Collection $comments
+ * @property Collection $orders
  */
 class Restaurant extends Model
 {
@@ -101,5 +103,15 @@ class Restaurant extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function getRating()
+    {
+        return !empty($this->rating) ? $this->rating : (int)$this->comments()->avg('rating');;
     }
 }

@@ -26,9 +26,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(\App\Model\Comment::class, function (\Faker\Generator $faker) {
     return [
         'content' => $faker->text(200),
-        'rating' => $faker->biasedNumberBetween(0, 6),
+        'rating' => $faker->biasedNumberBetween(1, 5),
         'creation_date' => $faker->dateTime,
         'profile_id' => 1,
-        'restaurant_id' => 1,
+        'restaurant_id' => 2,
     ];
 });

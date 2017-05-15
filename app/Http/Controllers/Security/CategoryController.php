@@ -20,6 +20,7 @@ use App\Model\Helper\CyrToLatConverter;
 use App\Model\Category;
 use App\Model\Restaurant;
 use App\Model\Association;
+use PhpParser\Builder\Method;
 
 
 class CategoryController extends Controller
@@ -53,6 +54,7 @@ class CategoryController extends Controller
 
     public function addCategoryByRestaurant(Restaurant $restaurant, CategoryRequest $request)
     {
+
         $requestData = $request->all();
         Validator::make($request->all(),
             [
@@ -73,7 +75,12 @@ class CategoryController extends Controller
             $association = new Association();
 
             $association->fill($newAssociation);
+            $association->setAlias($association->name);
             $association->save();
+            try {
+                $category->associations()->attach($association);
+            } catch (QueryException $e) {
+            }
             $associationId = "$association->id";
             $requestData['association'][0] = $associationId;;
             $associations = Association::find($requestData['association']);

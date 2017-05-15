@@ -15,9 +15,9 @@
                             <input type="checkbox"
                             name="{{$paymentMethod->alias}}"
                             value="{{$paymentMethod->id}}"
-                            id="{{$paymentMethod->id}}"
+                            id="zz-pm_{{$paymentMethod->id}}"
                             class="checkFilter">
-                            <label for="{{$paymentMethod->id}}">{{$paymentMethod->name}}</label>
+                            <label for="zz-pm_{{$paymentMethod->id}}">{{$paymentMethod->name}}</label>
                         @endforeach
                             {{--<form method="POST" action="{{route('filterByAssociation')}}" enctype="multipart/form-data">--}}
 {{--<input type="checkbox" name="delivery" value="free" id="p2" class="checkFilter"><label for="p2">Бесплатная доставка</label>--}}

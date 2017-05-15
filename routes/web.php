@@ -225,6 +225,12 @@ Route::group(['namespace' => 'User'], function () {
 Route::group(['namespace' => 'Shop'], function () {
 
     Route::post('filterCtrl', 'FilterController@filterCtrl')->name('filterCtrl');
+    Route::get('getAllRestaurants', 'FilterController@getAllRestaurants')->name('getAllRestaurants');
+    Route::get('getSushiRestaurants', 'FilterController@getSushiRestaurants')->name('getSushiRestaurants');
+    Route::get('getPiccaRestaurants', 'FilterController@getPiccaRestaurants')->name('getPiccaRestaurants');
+    Route::get('getShashlykiRestaurants', 'FilterController@getShashlykiRestaurants')->name('getShashlykiRestaurants');
+    Route::get('getPirogiRestaurants', 'FilterController@getPirogiRestaurants')->name('getPirogiRestaurants');
+    Route::get('getBurgeryRestaurants', 'FilterController@getBurgeryRestaurants')->name('getBurgeryRestaurants');
 
 
 });

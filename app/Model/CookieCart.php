@@ -19,6 +19,11 @@ class CookieCart
     private $cartSummary = [];
     private $orderList = [];
 
+    /**
+     * @var Restaurant
+     */
+    private $restaurant;
+
     const CART_LIFETIME = 365 * 24 * 60;
 
     public function __construct()
@@ -206,5 +211,13 @@ class CookieCart
         $this->cart['restaurant_id'] = $restaurantId;
 //        dump($this->cart['restaurant_id']);
 
+    }
+
+    /**
+     * @return Restaurant|null
+     */
+    public function getRestaurant()
+    {
+        return !empty($this->cart['restaurant_id']) ? Restaurant::find($this->cart['restaurant_id']) : null;
     }
 }

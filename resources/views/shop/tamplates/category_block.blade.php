@@ -4,8 +4,8 @@
         <div class="catalog_container  js-tab js-tab--open js-tab-tovar">
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants.html">
-                        <img src="img/restaurants.png" alt="Все и сразу">
+                    <a href="{{ route('getAllRestaurants') }}">
+                        <img src="{{ asset("img/plitka/restaurants.png") }}" alt="Все и сразу">
                         <div class="shadow"></div>
                         <div class="title">
                             Все рестораны
@@ -16,8 +16,8 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/sushi.html">
-                        <img src="https://cdn.zakazaka.ru/db/000/000/sushi.png" alt="Суши">
+                    <a href="{{ route('getSushiRestaurants') }}">
+                        <img src="{{ asset("img/plitka/sushi.png") }}" alt="Суши">
                         <div class="shadow"></div>
                         <div class="title">
                             Суши
@@ -28,8 +28,8 @@
             </div>
             <div class="col-md-4  col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/pizza.html">
-                        <img src="https://cdn.zakazaka.ru/db/000/000/pizza.png" alt="Пицца">
+                    <a href="{{ route('getPiccaRestaurants') }}">
+                        <img src="{{ asset("img/plitka/pizza.png") }}" alt="Пицца">
                         <div class="shadow"></div>
                         <div class="title">
                             Пицца
@@ -40,8 +40,8 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/shashlik.html">
-                        <img src="https://cdn.zakazaka.ru/db/000/000/shashlik.png" alt="Шашлыки">
+                    <a href="{{ route('getShashlykiRestaurants') }}">
+                        <img src="{{ asset("img/plitka/shashlik.png") }}" alt="Шашлыки">
                         <div class="shadow"></div>
                         <div class="title">
                             Шашлыки
@@ -52,8 +52,8 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/desert.html">
-                        <img src="https://cdn.zakazaka.ru/db/000/000/desert.png" alt="Пироги">
+                    <a href="{{ route('getPirogiRestaurants') }}">
+                        <img src="{{ asset("img/plitka/pirogi.png") }}" alt="Пироги">
                         <div class="shadow"></div>
                         <div class="title">
                             Пироги
@@ -64,8 +64,8 @@
             </div>
             <div class="col-md-4 col-sm-4">
                 <div class="catalog-item">
-                    <a href="restaurants/burger.html">
-                        <img src="https://cdn.zakazaka.ru/db/000/000/burger.png" alt="Бургеры">
+                    <a href="{{ route('getBurgeryRestaurants') }}">
+                        <img src="{{ asset("img/plitka/burger.png") }}" alt="Бургеры">
                         <div class="shadow"></div>
                         <div class="title">
                             Бургеры
@@ -75,6 +75,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

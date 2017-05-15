@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
     function filterByOptions() {
 
         var selectedCheckBox = $("input:checked");
-        console.log(selectedCheckBox);
+        // console.log(selectedCheckBox);
 
         var url = 'filterCtrl';
 
