@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $order_status_id
  * @property integer $payment_method_id
  * @property PaymentMethod $paymentMethod
+ * @property Restaurant $restaurant
+ * @property Comment $comment
  */
 class Order extends Model
 {
@@ -103,4 +105,13 @@ class Order extends Model
         return $this->belongsTo('App\Model\PaymentMethod');
     }
 
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
+    }
 }

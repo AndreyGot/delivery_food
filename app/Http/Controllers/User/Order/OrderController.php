@@ -108,6 +108,7 @@ class OrderController extends Controller
         }
 
         $cart = new CookieCart();
+
         $cartFoodList = $cart->getCartFoodList();
 
         $data = $request->all();
@@ -150,6 +151,7 @@ class OrderController extends Controller
 
         $order->profile()->associate(Auth::user()->profile);
         $order->userAddress()->associate($userAddress);
+        $order->restaurant()->associate($cart->getRestaurant());
         $order->save();
         foreach ($cartFoodList as $cartFood) {
             $order->foods()->save($cartFood['food'], [

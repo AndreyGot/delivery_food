@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -44,7 +45,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        // custom error message
+        if ($exception instanceof \ErrorException && !env('APP_DEBUG')) {
+            return response()->view('errors.500', [], 500);
+        } else {
+            return parent::render($request, $exception);
+        }
     }
 
     /**
@@ -62,4 +68,5 @@ class Handler extends ExceptionHandler
 
         return redirect()->guest('login');
     }
+
 }
