@@ -101,7 +101,7 @@ class FilterController extends Controller
         if ($associationSushi) {
             $sushiCategories = $associationSushi->categories;
             foreach ($sushiCategories as $category) {
-                $sushiRestaurants[] = $category->restaurant;
+                $sushiRestaurants[$category->restaurant->id] = $category->restaurant;
             }
         }
 
@@ -121,7 +121,7 @@ class FilterController extends Controller
         if ($associationPicca) {
             $piccaCategories = $associationPicca->categories;
             foreach ($piccaCategories as $category) {
-                $piccaRestaurants[] = $category->restaurant;
+                $piccaRestaurants[$category->restaurant->id] = $category->restaurant;
             }
         }
 
@@ -141,7 +141,7 @@ class FilterController extends Controller
         if ($associationShashlyki){
             $shashlykiCategories = $associationShashlyki->categories;
             foreach ($shashlykiCategories as $category){
-                $shashlykiRestaurants[] = $category->restaurant;
+                $shashlykiRestaurants[$category->restaurant->id] = $category->restaurant;
             }
         }
 
@@ -160,7 +160,7 @@ class FilterController extends Controller
         if ($associationPirogi) {
             $pirogiCategories = $associationPirogi->categories;
             foreach ($pirogiCategories as $category) {
-                $pirogiRestaurants[] = $category->restaurant;
+                $pirogiRestaurants[$category->restaurant->id] = $category->restaurant;
             }
         }
 
@@ -179,10 +179,11 @@ class FilterController extends Controller
         if ($associationBurgery) {
             $burgeryCategories = $associationBurgery->categories;
             foreach ($burgeryCategories as $category) {
-                $burgeryRestaurants[] = $category->restaurant;
+
+                $burgeryRestaurants[$category->restaurant->id] = $category->restaurant;
             }
         }
-
+//        dd($associationBurgery->id);
         return view('shop.tamplates.medium_filter_block', [
             'restaurants'   =>$burgeryRestaurants,
             'paymentMethods'=>$paymentMethods,

@@ -49,7 +49,9 @@ class ShopUserController extends Controller
     $data = $request->all();
     $imageObj = $request->file('image_field');
     $profile->fill($data);
-    $profile->setUploadImage($imageObj); 
+    if ($imageObj != null){
+      $profile->setUploadImage($imageObj);
+    }
     $profile->registration_date = date("Y-m-d H:i:s");
     $profile->save();
 
