@@ -1,47 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('layout')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('content')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
+    <div class="comingcontainer">
+        <div class="checkbacksoon">
+            <p>
+                <span class="go3d">5</span>
+                <span class="go3d">0</span>
+                <span class="go3d">3</span>
+                <span class="go3d">!</span>
+            </p>
         </div>
-    </body>
-</html>
+    </div>
+    <h1 class="page404">Страница не найдена</h1>
+@endsection
