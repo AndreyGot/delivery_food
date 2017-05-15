@@ -69,8 +69,7 @@
                                 <div class="col-md-9 left">
                                     <div class="restoran-item_tabs">
                                         <a href="{{route('main_index')}}" role="button">Вернутся на главную</a>
-                                        <a href="{{route('shop_restaurant_list')}}" role="button">Вернутся к
-                                            ресторанам</a>
+                                        <a href="{{route('getAllRestaurants')}}" role="button">Вернутся к ресторанам</a>
                                     </div>
                                 </div>
                                 <div class="col-md-3 text-right">

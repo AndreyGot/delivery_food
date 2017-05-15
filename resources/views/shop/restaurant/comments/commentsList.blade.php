@@ -65,7 +65,9 @@
                             <div class="feedback-item">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        {{--<a href="/user/34402955">--}}<img class="img-ot" src="{{ asset($comment->profile->image) }}"  alt="{{ $comment->profile->first_name }}">{{--</a>--}}
+                                        {{--<a href="/user/34402955">--}}
+                                        <img class="img-ot" src="{{ asset($comment->profile->image) }}"  alt="{{ $comment->profile->first_name }}">
+                                        {{--</a>--}}
                                     </div>
                                     <div class="col-md-8">
                                         {{--<a href="/user/34402955" class="feedback-item_name">Лиля <span class="feedback-item_time">Вчера, 21:35</span></a>--}}

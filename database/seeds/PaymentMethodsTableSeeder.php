@@ -15,7 +15,7 @@ class PaymentMethodsTableSeeder extends Seeder
             ['name' => 'Оплата наличными', 'alias' => 'cash'],
             ['name' => 'VISA/MASTERCARD', 'alias' => 'online'],
             ['name' => 'Еда за баллы', 'alias' => 'bonus'],
-            ['name' => 'Оплата картой курьеру', 'alias' => 'cart']
+            ['name' => 'Оплата картой курьеру', 'alias' => 'card']
         ]);
     }
 }

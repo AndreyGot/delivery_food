@@ -52,7 +52,7 @@ class FilterController extends Controller
                     $option = $option['value'];
                     $this->filterByPaymentMethod($option);
                 }
-                elseif ($option['name'] == 'cart'){
+                elseif ($option['name'] == 'card'){
                     $option = $option['value'];
                     $this->filterByPaymentMethod($option);
                 }
