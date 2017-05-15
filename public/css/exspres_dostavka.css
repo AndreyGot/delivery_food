@@ -10057,6 +10057,9 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
         font-weight: 700;
         line-height: 15px;
     }
+    .restoran-item_tabs a:last-child{
+        border-left: 1px solid white;
+    }
 }
 @media all and (max-width:992px){
     .freefood .product_title{
@@ -10166,6 +10169,12 @@ input[type="text"], input[type="tel"], input[type="email"], textarea, select, in
 }
 .rate--1 i:nth-child(1) {
     background-position: -330px -346px;
+}
+.rate--2 i:nth-child(1), .rate--2 i:nth-child(2) {
+    background-position: -330px -346px;
+}
+.rate--3 i:nth-child(1), .rate--3 i:nth-child(2), .rate--3 i:nth-child(3) {
+    background-position: -330px -347px;
 }
 @media all and (max-width: 992px){
     .img-ot {
@@ -10277,14 +10286,63 @@ input[type="radio"] + label, input[type="checkbox"] + label {
     .catalog-ico{
         margin: 8px auto 0 auto;
     }
-}
-@media all and (max-width: 992px){
     .catalog-item {
         position: relative;
         max-width: 370px;
         margin: 0 auto 30px;
     }
     .catalog-ico{
-        margin: 30px auto 0 auto;
+        margin: 10px auto 0 auto;
     }
 }
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: #d94032;
+    border-color: #d94032;
+    cursor: default;
+}
+.pagination > li > a, .pagination > li > span{
+    color:#484747;
+}
+.modal-footer .btn-primary{
+    float: left;
+}
+.modal-footer .btn + .btn{
+    margin-top: 10px;
+}
+@media all and (max-width: 360px){
+    .modal-footer .btn-primary{
+        float: none;
+        display: block;
+        width: 200px;
+    }
+    .modal-footer .btn + .btn{
+        display: block;
+        width: 200px;
+        text-align: center;
+        margin: 10px auto;
+    }
+}
+@media all and (max-width: 768px){
+    .product-item {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -13,8 +13,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Styles -->
+    <link href="{{ asset('css/errors/404.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/laravel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/exspres_dostavka.css')}}" rel="stylesheet" type="text/css">
@@ -135,6 +135,9 @@
         e.preventDefault();
         $(".hidMob").slideToggle();
     });
+</script>
+<script>
+    $('#myModal2').modal(options);
 </script>
 </body>
 </html>
