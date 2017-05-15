@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $creation_date
  * @property Profile $profile
  * @property Restaurant $restaurant
+ * @property Order $order
  */
 class Comment extends Model
 {
@@ -52,5 +53,8 @@ class Comment extends Model
         return parent::save($options);
     }
 
-
+    public function order()
+    {
+        return $this->hasOne(Comment::class);
+    }
 }

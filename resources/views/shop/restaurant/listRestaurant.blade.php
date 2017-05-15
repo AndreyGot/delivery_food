@@ -27,7 +27,7 @@
                                     </p>
                                 </div>
                                 <div class="col-md-4 text-right ">
-                                    <div class="rate rate--4--5">
+                                    <div class="rate rate--{{$restaurant->getRating()}}">
                                         <i></i><i></i><i></i><i></i><i></i>
                                     </div>
                                     <p class="restoran-item_star-col">{{ $restaurant->rating }}</p>

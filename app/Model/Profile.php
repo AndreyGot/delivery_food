@@ -118,14 +118,11 @@ class Profile extends Model
 
     public function hasCommentPermission(Restaurant $restaurant)
     {
-        $orders = $this->orders;
+        $orders = $this->orders()->where([
+            ['restaurant_id', '=', $restaurant->id],
+            ['comment_id', '=', null]
+        ])->get();
 
-        if ($orders->isEmpty()) {
-            return false;
-        } else {
-            $comments = $this->comments;
-
-            return $orders->count() > $comments->count();
-        }
+        return !$orders->isEmpty();
     }
 }
